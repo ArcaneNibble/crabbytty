@@ -1,0 +1,17 @@
+[package]
+authors = ["Robert Ou"]
+edition = "2018"
+name = "atsamd11"
+version = "0.0.1"
+
+[dependencies]
+bare-metal = "0.2.5"
+cortex-m = "0.6.1"
+vcell = "0.1.2"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.6.11"
+
+[features]
+rt = ["cortex-m-rt/device"]
