@@ -10,13 +10,67 @@ impl crate::ResetValue for super::DFLLCTRL {
         0x80
     }
 }
+#[doc = "DFLL Enable\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ENABLE_A {
+    #[doc = "0: Disabled"]
+    DISABLED,
+    #[doc = "1: Enabled"]
+    ENABLED,
+}
+impl From<ENABLE_A> for bool {
+    #[inline(always)]
+    fn from(variant: ENABLE_A) -> Self {
+        match variant {
+            ENABLE_A::DISABLED => false,
+            ENABLE_A::ENABLED => true,
+        }
+    }
+}
 #[doc = "Reader of field `ENABLE`"]
-pub type ENABLE_R = crate::R<bool, bool>;
+pub type ENABLE_R = crate::R<bool, ENABLE_A>;
+impl ENABLE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> ENABLE_A {
+        match self.bits {
+            false => ENABLE_A::DISABLED,
+            true => ENABLE_A::ENABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == ENABLE_A::DISABLED
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == ENABLE_A::ENABLED
+    }
+}
 #[doc = "Write proxy for field `ENABLE`"]
 pub struct ENABLE_W<'a> {
     w: &'a mut W,
 }
 impl<'a> ENABLE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: ENABLE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Disabled"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(ENABLE_A::DISABLED)
+    }
+    #[doc = "Enabled"]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(ENABLE_A::ENABLED)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -34,13 +88,67 @@ impl<'a> ENABLE_W<'a> {
         self.w
     }
 }
+#[doc = "Operating Mode Selection\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum MODE_A {
+    #[doc = "0: Open-loop"]
+    OPENLOOP,
+    #[doc = "1: Closed-loop"]
+    CLOSEDLOOP,
+}
+impl From<MODE_A> for bool {
+    #[inline(always)]
+    fn from(variant: MODE_A) -> Self {
+        match variant {
+            MODE_A::OPENLOOP => false,
+            MODE_A::CLOSEDLOOP => true,
+        }
+    }
+}
 #[doc = "Reader of field `MODE`"]
-pub type MODE_R = crate::R<bool, bool>;
+pub type MODE_R = crate::R<bool, MODE_A>;
+impl MODE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> MODE_A {
+        match self.bits {
+            false => MODE_A::OPENLOOP,
+            true => MODE_A::CLOSEDLOOP,
+        }
+    }
+    #[doc = "Checks if the value of the field is `OPENLOOP`"]
+    #[inline(always)]
+    pub fn is_openloop(&self) -> bool {
+        *self == MODE_A::OPENLOOP
+    }
+    #[doc = "Checks if the value of the field is `CLOSEDLOOP`"]
+    #[inline(always)]
+    pub fn is_closedloop(&self) -> bool {
+        *self == MODE_A::CLOSEDLOOP
+    }
+}
 #[doc = "Write proxy for field `MODE`"]
 pub struct MODE_W<'a> {
     w: &'a mut W,
 }
 impl<'a> MODE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: MODE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Open-loop"]
+    #[inline(always)]
+    pub fn openloop(self) -> &'a mut W {
+        self.variant(MODE_A::OPENLOOP)
+    }
+    #[doc = "Closed-loop"]
+    #[inline(always)]
+    pub fn closedloop(self) -> &'a mut W {
+        self.variant(MODE_A::CLOSEDLOOP)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -58,13 +166,67 @@ impl<'a> MODE_W<'a> {
         self.w
     }
 }
+#[doc = "Stable DFLL Frequency\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum STABLE_A {
+    #[doc = "0: Track after lock"]
+    TRACK,
+    #[doc = "1: Fixed after lock"]
+    FIXED,
+}
+impl From<STABLE_A> for bool {
+    #[inline(always)]
+    fn from(variant: STABLE_A) -> Self {
+        match variant {
+            STABLE_A::TRACK => false,
+            STABLE_A::FIXED => true,
+        }
+    }
+}
 #[doc = "Reader of field `STABLE`"]
-pub type STABLE_R = crate::R<bool, bool>;
+pub type STABLE_R = crate::R<bool, STABLE_A>;
+impl STABLE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> STABLE_A {
+        match self.bits {
+            false => STABLE_A::TRACK,
+            true => STABLE_A::FIXED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `TRACK`"]
+    #[inline(always)]
+    pub fn is_track(&self) -> bool {
+        *self == STABLE_A::TRACK
+    }
+    #[doc = "Checks if the value of the field is `FIXED`"]
+    #[inline(always)]
+    pub fn is_fixed(&self) -> bool {
+        *self == STABLE_A::FIXED
+    }
+}
 #[doc = "Write proxy for field `STABLE`"]
 pub struct STABLE_W<'a> {
     w: &'a mut W,
 }
 impl<'a> STABLE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: STABLE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Track after lock"]
+    #[inline(always)]
+    pub fn track(self) -> &'a mut W {
+        self.variant(STABLE_A::TRACK)
+    }
+    #[doc = "Fixed after lock"]
+    #[inline(always)]
+    pub fn fixed(self) -> &'a mut W {
+        self.variant(STABLE_A::FIXED)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -82,13 +244,67 @@ impl<'a> STABLE_W<'a> {
         self.w
     }
 }
+#[doc = "Lose Lock After Wake\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum LLAW_A {
+    #[doc = "0: Keep lock"]
+    KEEP,
+    #[doc = "1: Lose lock"]
+    LOSE,
+}
+impl From<LLAW_A> for bool {
+    #[inline(always)]
+    fn from(variant: LLAW_A) -> Self {
+        match variant {
+            LLAW_A::KEEP => false,
+            LLAW_A::LOSE => true,
+        }
+    }
+}
 #[doc = "Reader of field `LLAW`"]
-pub type LLAW_R = crate::R<bool, bool>;
+pub type LLAW_R = crate::R<bool, LLAW_A>;
+impl LLAW_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> LLAW_A {
+        match self.bits {
+            false => LLAW_A::KEEP,
+            true => LLAW_A::LOSE,
+        }
+    }
+    #[doc = "Checks if the value of the field is `KEEP`"]
+    #[inline(always)]
+    pub fn is_keep(&self) -> bool {
+        *self == LLAW_A::KEEP
+    }
+    #[doc = "Checks if the value of the field is `LOSE`"]
+    #[inline(always)]
+    pub fn is_lose(&self) -> bool {
+        *self == LLAW_A::LOSE
+    }
+}
 #[doc = "Write proxy for field `LLAW`"]
 pub struct LLAW_W<'a> {
     w: &'a mut W,
 }
 impl<'a> LLAW_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LLAW_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Keep lock"]
+    #[inline(always)]
+    pub fn keep(self) -> &'a mut W {
+        self.variant(LLAW_A::KEEP)
+    }
+    #[doc = "Lose lock"]
+    #[inline(always)]
+    pub fn lose(self) -> &'a mut W {
+        self.variant(LLAW_A::LOSE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -106,13 +322,67 @@ impl<'a> LLAW_W<'a> {
         self.w
     }
 }
+#[doc = "USB Clock Recovery Mode\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum USBCRM_A {
+    #[doc = "0: Disabled"]
+    DISABLED,
+    #[doc = "1: Enabled"]
+    ENABLED,
+}
+impl From<USBCRM_A> for bool {
+    #[inline(always)]
+    fn from(variant: USBCRM_A) -> Self {
+        match variant {
+            USBCRM_A::DISABLED => false,
+            USBCRM_A::ENABLED => true,
+        }
+    }
+}
 #[doc = "Reader of field `USBCRM`"]
-pub type USBCRM_R = crate::R<bool, bool>;
+pub type USBCRM_R = crate::R<bool, USBCRM_A>;
+impl USBCRM_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> USBCRM_A {
+        match self.bits {
+            false => USBCRM_A::DISABLED,
+            true => USBCRM_A::ENABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == USBCRM_A::DISABLED
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == USBCRM_A::ENABLED
+    }
+}
 #[doc = "Write proxy for field `USBCRM`"]
 pub struct USBCRM_W<'a> {
     w: &'a mut W,
 }
 impl<'a> USBCRM_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: USBCRM_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Disabled"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(USBCRM_A::DISABLED)
+    }
+    #[doc = "Enabled"]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(USBCRM_A::ENABLED)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -154,13 +424,67 @@ impl<'a> RUNSTDBY_W<'a> {
         self.w
     }
 }
+#[doc = "On Demand Control\n\nValue on reset: 1"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ONDEMAND_A {
+    #[doc = "0: Always on"]
+    ALWAYSON,
+    #[doc = "1: On demand"]
+    ONDEMAND,
+}
+impl From<ONDEMAND_A> for bool {
+    #[inline(always)]
+    fn from(variant: ONDEMAND_A) -> Self {
+        match variant {
+            ONDEMAND_A::ALWAYSON => false,
+            ONDEMAND_A::ONDEMAND => true,
+        }
+    }
+}
 #[doc = "Reader of field `ONDEMAND`"]
-pub type ONDEMAND_R = crate::R<bool, bool>;
+pub type ONDEMAND_R = crate::R<bool, ONDEMAND_A>;
+impl ONDEMAND_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> ONDEMAND_A {
+        match self.bits {
+            false => ONDEMAND_A::ALWAYSON,
+            true => ONDEMAND_A::ONDEMAND,
+        }
+    }
+    #[doc = "Checks if the value of the field is `ALWAYSON`"]
+    #[inline(always)]
+    pub fn is_alwayson(&self) -> bool {
+        *self == ONDEMAND_A::ALWAYSON
+    }
+    #[doc = "Checks if the value of the field is `ONDEMAND`"]
+    #[inline(always)]
+    pub fn is_ondemand(&self) -> bool {
+        *self == ONDEMAND_A::ONDEMAND
+    }
+}
 #[doc = "Write proxy for field `ONDEMAND`"]
 pub struct ONDEMAND_W<'a> {
     w: &'a mut W,
 }
 impl<'a> ONDEMAND_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: ONDEMAND_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Always on"]
+    #[inline(always)]
+    pub fn alwayson(self) -> &'a mut W {
+        self.variant(ONDEMAND_A::ALWAYSON)
+    }
+    #[doc = "On demand"]
+    #[inline(always)]
+    pub fn ondemand(self) -> &'a mut W {
+        self.variant(ONDEMAND_A::ONDEMAND)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -178,13 +502,67 @@ impl<'a> ONDEMAND_W<'a> {
         self.w
     }
 }
+#[doc = "Chill Cycle Disable\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum CCDIS_A {
+    #[doc = "0: Chill Cycle enabled"]
+    CC,
+    #[doc = "1: Chill Cycle disabled"]
+    NOCC,
+}
+impl From<CCDIS_A> for bool {
+    #[inline(always)]
+    fn from(variant: CCDIS_A) -> Self {
+        match variant {
+            CCDIS_A::CC => false,
+            CCDIS_A::NOCC => true,
+        }
+    }
+}
 #[doc = "Reader of field `CCDIS`"]
-pub type CCDIS_R = crate::R<bool, bool>;
+pub type CCDIS_R = crate::R<bool, CCDIS_A>;
+impl CCDIS_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> CCDIS_A {
+        match self.bits {
+            false => CCDIS_A::CC,
+            true => CCDIS_A::NOCC,
+        }
+    }
+    #[doc = "Checks if the value of the field is `CC`"]
+    #[inline(always)]
+    pub fn is_cc(&self) -> bool {
+        *self == CCDIS_A::CC
+    }
+    #[doc = "Checks if the value of the field is `NOCC`"]
+    #[inline(always)]
+    pub fn is_nocc(&self) -> bool {
+        *self == CCDIS_A::NOCC
+    }
+}
 #[doc = "Write proxy for field `CCDIS`"]
 pub struct CCDIS_W<'a> {
     w: &'a mut W,
 }
 impl<'a> CCDIS_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CCDIS_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Chill Cycle enabled"]
+    #[inline(always)]
+    pub fn cc(self) -> &'a mut W {
+        self.variant(CCDIS_A::CC)
+    }
+    #[doc = "Chill Cycle disabled"]
+    #[inline(always)]
+    pub fn nocc(self) -> &'a mut W {
+        self.variant(CCDIS_A::NOCC)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -202,13 +580,67 @@ impl<'a> CCDIS_W<'a> {
         self.w
     }
 }
+#[doc = "Quick Lock Disable\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum QLDIS_A {
+    #[doc = "0: Quick Lock enabled"]
+    QL,
+    #[doc = "1: Quick Lock disabled"]
+    NOQL,
+}
+impl From<QLDIS_A> for bool {
+    #[inline(always)]
+    fn from(variant: QLDIS_A) -> Self {
+        match variant {
+            QLDIS_A::QL => false,
+            QLDIS_A::NOQL => true,
+        }
+    }
+}
 #[doc = "Reader of field `QLDIS`"]
-pub type QLDIS_R = crate::R<bool, bool>;
+pub type QLDIS_R = crate::R<bool, QLDIS_A>;
+impl QLDIS_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> QLDIS_A {
+        match self.bits {
+            false => QLDIS_A::QL,
+            true => QLDIS_A::NOQL,
+        }
+    }
+    #[doc = "Checks if the value of the field is `QL`"]
+    #[inline(always)]
+    pub fn is_ql(&self) -> bool {
+        *self == QLDIS_A::QL
+    }
+    #[doc = "Checks if the value of the field is `NOQL`"]
+    #[inline(always)]
+    pub fn is_noql(&self) -> bool {
+        *self == QLDIS_A::NOQL
+    }
+}
 #[doc = "Write proxy for field `QLDIS`"]
 pub struct QLDIS_W<'a> {
     w: &'a mut W,
 }
 impl<'a> QLDIS_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: QLDIS_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Quick Lock enabled"]
+    #[inline(always)]
+    pub fn ql(self) -> &'a mut W {
+        self.variant(QLDIS_A::QL)
+    }
+    #[doc = "Quick Lock disabled"]
+    #[inline(always)]
+    pub fn noql(self) -> &'a mut W {
+        self.variant(QLDIS_A::NOQL)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -226,13 +658,67 @@ impl<'a> QLDIS_W<'a> {
         self.w
     }
 }
+#[doc = "Bypass Coarse Lock\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum BPLCKC_A {
+    #[doc = "0: Do not bypass"]
+    NOBYPASS,
+    #[doc = "1: Bypass"]
+    BYPASS,
+}
+impl From<BPLCKC_A> for bool {
+    #[inline(always)]
+    fn from(variant: BPLCKC_A) -> Self {
+        match variant {
+            BPLCKC_A::NOBYPASS => false,
+            BPLCKC_A::BYPASS => true,
+        }
+    }
+}
 #[doc = "Reader of field `BPLCKC`"]
-pub type BPLCKC_R = crate::R<bool, bool>;
+pub type BPLCKC_R = crate::R<bool, BPLCKC_A>;
+impl BPLCKC_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> BPLCKC_A {
+        match self.bits {
+            false => BPLCKC_A::NOBYPASS,
+            true => BPLCKC_A::BYPASS,
+        }
+    }
+    #[doc = "Checks if the value of the field is `NOBYPASS`"]
+    #[inline(always)]
+    pub fn is_nobypass(&self) -> bool {
+        *self == BPLCKC_A::NOBYPASS
+    }
+    #[doc = "Checks if the value of the field is `BYPASS`"]
+    #[inline(always)]
+    pub fn is_bypass(&self) -> bool {
+        *self == BPLCKC_A::BYPASS
+    }
+}
 #[doc = "Write proxy for field `BPLCKC`"]
 pub struct BPLCKC_W<'a> {
     w: &'a mut W,
 }
 impl<'a> BPLCKC_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BPLCKC_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Do not bypass"]
+    #[inline(always)]
+    pub fn nobypass(self) -> &'a mut W {
+        self.variant(BPLCKC_A::NOBYPASS)
+    }
+    #[doc = "Bypass"]
+    #[inline(always)]
+    pub fn bypass(self) -> &'a mut W {
+        self.variant(BPLCKC_A::BYPASS)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -250,13 +736,67 @@ impl<'a> BPLCKC_W<'a> {
         self.w
     }
 }
+#[doc = "Wait Lock\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum WAITLOCK_A {
+    #[doc = "0: Output before lock"]
+    BEFORELOCK,
+    #[doc = "1: Output after lock"]
+    AFTERLOCK,
+}
+impl From<WAITLOCK_A> for bool {
+    #[inline(always)]
+    fn from(variant: WAITLOCK_A) -> Self {
+        match variant {
+            WAITLOCK_A::BEFORELOCK => false,
+            WAITLOCK_A::AFTERLOCK => true,
+        }
+    }
+}
 #[doc = "Reader of field `WAITLOCK`"]
-pub type WAITLOCK_R = crate::R<bool, bool>;
+pub type WAITLOCK_R = crate::R<bool, WAITLOCK_A>;
+impl WAITLOCK_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> WAITLOCK_A {
+        match self.bits {
+            false => WAITLOCK_A::BEFORELOCK,
+            true => WAITLOCK_A::AFTERLOCK,
+        }
+    }
+    #[doc = "Checks if the value of the field is `BEFORELOCK`"]
+    #[inline(always)]
+    pub fn is_beforelock(&self) -> bool {
+        *self == WAITLOCK_A::BEFORELOCK
+    }
+    #[doc = "Checks if the value of the field is `AFTERLOCK`"]
+    #[inline(always)]
+    pub fn is_afterlock(&self) -> bool {
+        *self == WAITLOCK_A::AFTERLOCK
+    }
+}
 #[doc = "Write proxy for field `WAITLOCK`"]
 pub struct WAITLOCK_W<'a> {
     w: &'a mut W,
 }
 impl<'a> WAITLOCK_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: WAITLOCK_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Output before lock"]
+    #[inline(always)]
+    pub fn beforelock(self) -> &'a mut W {
+        self.variant(WAITLOCK_A::BEFORELOCK)
+    }
+    #[doc = "Output after lock"]
+    #[inline(always)]
+    pub fn afterlock(self) -> &'a mut W {
+        self.variant(WAITLOCK_A::AFTERLOCK)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
