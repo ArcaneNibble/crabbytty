@@ -19,7 +19,7 @@ pub struct FINE_W<'a> {
 impl<'a> FINE_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+    pub fn bits(self, value: u16) -> &'a mut W {
         self.w.bits = (self.w.bits & !0x03ff) | ((value as u32) & 0x03ff);
         self.w
     }
@@ -33,7 +33,7 @@ pub struct COARSE_W<'a> {
 impl<'a> COARSE_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x3f << 10)) | (((value as u32) & 0x3f) << 10);
         self.w
     }

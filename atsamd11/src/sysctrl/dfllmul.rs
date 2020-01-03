@@ -19,7 +19,7 @@ pub struct MUL_W<'a> {
 impl<'a> MUL_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+    pub fn bits(self, value: u16) -> &'a mut W {
         self.w.bits = (self.w.bits & !0xffff) | ((value as u32) & 0xffff);
         self.w
     }
@@ -33,7 +33,7 @@ pub struct FSTEP_W<'a> {
 impl<'a> FSTEP_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+    pub fn bits(self, value: u16) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x03ff << 16)) | (((value as u32) & 0x03ff) << 16);
         self.w
     }
@@ -47,7 +47,7 @@ pub struct CSTEP_W<'a> {
 impl<'a> CSTEP_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x3f << 26)) | (((value as u32) & 0x3f) << 26);
         self.w
     }
