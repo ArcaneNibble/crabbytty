@@ -132,6 +132,12 @@ const APP: () = {
                 .genen().disabled()
         });
 
+        // Turn the 8 MHz oscillator off to save power
+        cx.device.SYSCTRL.osc8m.modify(|_, w| {
+            w.enable().bit(false)
+        });
+        while cx.device.SYSCTRL.osc8m.read().enable().bit() {}
+
         hprintln!("Hello world!").unwrap();
     }
 };
