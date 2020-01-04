@@ -12,31 +12,25 @@ impl crate::ResetValue for super::GENDIV {
 }
 #[doc = "Generic Clock Generator Selection\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum ID_A {
     #[doc = "0: Generic clock generator 0"]
-    GCLK0,
+    GCLK0 = 0,
     #[doc = "1: Generic clock generator 1"]
-    GCLK1,
+    GCLK1 = 1,
     #[doc = "2: Generic clock generator 2"]
-    GCLK2,
+    GCLK2 = 2,
     #[doc = "3: Generic clock generator 3"]
-    GCLK3,
+    GCLK3 = 3,
     #[doc = "4: Generic clock generator 4"]
-    GCLK4,
+    GCLK4 = 4,
     #[doc = "5: Generic clock generator 5"]
-    GCLK5,
+    GCLK5 = 5,
 }
 impl From<ID_A> for u8 {
     #[inline(always)]
     fn from(variant: ID_A) -> Self {
-        match variant {
-            ID_A::GCLK0 => 0,
-            ID_A::GCLK1 => 1,
-            ID_A::GCLK2 => 2,
-            ID_A::GCLK3 => 3,
-            ID_A::GCLK4 => 4,
-            ID_A::GCLK5 => 5,
-        }
+        variant as _
     }
 }
 #[doc = "Reader of field `ID`"]

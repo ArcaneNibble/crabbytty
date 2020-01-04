@@ -12,31 +12,25 @@ impl crate::ResetValue for super::GENCTRL {
 }
 #[doc = "Generic Clock Generator Selection\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum ID_A {
     #[doc = "0: Generic clock generator 0"]
-    GCLK0,
+    GCLK0 = 0,
     #[doc = "1: Generic clock generator 1"]
-    GCLK1,
+    GCLK1 = 1,
     #[doc = "2: Generic clock generator 2"]
-    GCLK2,
+    GCLK2 = 2,
     #[doc = "3: Generic clock generator 3"]
-    GCLK3,
+    GCLK3 = 3,
     #[doc = "4: Generic clock generator 4"]
-    GCLK4,
+    GCLK4 = 4,
     #[doc = "5: Generic clock generator 5"]
-    GCLK5,
+    GCLK5 = 5,
 }
 impl From<ID_A> for u8 {
     #[inline(always)]
     fn from(variant: ID_A) -> Self {
-        match variant {
-            ID_A::GCLK0 => 0,
-            ID_A::GCLK1 => 1,
-            ID_A::GCLK2 => 2,
-            ID_A::GCLK3 => 3,
-            ID_A::GCLK4 => 4,
-            ID_A::GCLK5 => 5,
-        }
+        variant as _
     }
 }
 #[doc = "Reader of field `ID`"]
@@ -136,40 +130,31 @@ impl<'a> ID_W<'a> {
 }
 #[doc = "Source Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum SRC_A {
     #[doc = "0: XOSC oscillator output"]
-    XOSC,
+    XOSC = 0,
     #[doc = "1: Generator input pad"]
-    GCLKIN,
+    GCLKIN = 1,
     #[doc = "2: Generic clock generator 1 output"]
-    GCLKGEN1,
+    GCLKGEN1 = 2,
     #[doc = "3: OSCULP32K oscillator output"]
-    OSCULP32K,
+    OSCULP32K = 3,
     #[doc = "4: OSC32K oscillator output"]
-    OSC32K,
+    OSC32K = 4,
     #[doc = "5: XOSC32K oscillator output"]
-    XOSC32K,
+    XOSC32K = 5,
     #[doc = "6: OSC8M oscillator output"]
-    OSC8M,
+    OSC8M = 6,
     #[doc = "7: DFLL48M output"]
-    DFLL48M,
+    DFLL48M = 7,
     #[doc = "8: DPLL96M output"]
-    DPLL96M,
+    DPLL96M = 8,
 }
 impl From<SRC_A> for u8 {
     #[inline(always)]
     fn from(variant: SRC_A) -> Self {
-        match variant {
-            SRC_A::XOSC => 0,
-            SRC_A::GCLKIN => 1,
-            SRC_A::GCLKGEN1 => 2,
-            SRC_A::OSCULP32K => 3,
-            SRC_A::OSC32K => 4,
-            SRC_A::XOSC32K => 5,
-            SRC_A::OSC8M => 6,
-            SRC_A::DFLL48M => 7,
-            SRC_A::DPLL96M => 8,
-        }
+        variant as _
     }
 }
 #[doc = "Reader of field `SRC`"]
@@ -304,17 +289,14 @@ impl<'a> SRC_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum GENEN_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<GENEN_A> for bool {
     #[inline(always)]
     fn from(variant: GENEN_A) -> Self {
-        match variant {
-            GENEN_A::DISABLED => false,
-            GENEN_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `GENEN`"]
@@ -382,17 +364,14 @@ impl<'a> GENEN_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IDC_A {
     #[doc = "0: Not 50/50"]
-    UNEVEN,
+    UNEVEN = 0,
     #[doc = "1: 50/50"]
-    EVEN,
+    EVEN = 1,
 }
 impl From<IDC_A> for bool {
     #[inline(always)]
     fn from(variant: IDC_A) -> Self {
-        match variant {
-            IDC_A::UNEVEN => false,
-            IDC_A::EVEN => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `IDC`"]
@@ -460,17 +439,14 @@ impl<'a> IDC_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OOV_A {
     #[doc = "0: 0"]
-    ZERO,
+    ZERO = 0,
     #[doc = "1: 1"]
-    ONE,
+    ONE = 1,
 }
 impl From<OOV_A> for bool {
     #[inline(always)]
     fn from(variant: OOV_A) -> Self {
-        match variant {
-            OOV_A::ZERO => false,
-            OOV_A::ONE => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `OOV`"]
@@ -538,17 +514,14 @@ impl<'a> OOV_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OE_A {
     #[doc = "0: Not output to pin"]
-    NOTOUTPUT,
+    NOTOUTPUT = 0,
     #[doc = "1: Output to pin"]
-    OUTPUT,
+    OUTPUT = 1,
 }
 impl From<OE_A> for bool {
     #[inline(always)]
     fn from(variant: OE_A) -> Self {
-        match variant {
-            OE_A::NOTOUTPUT => false,
-            OE_A::OUTPUT => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `OE`"]
@@ -616,17 +589,14 @@ impl<'a> OE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DIVSEL_A {
     #[doc = "0: Divide by DIV"]
-    DIV,
+    DIV = 0,
     #[doc = "1: Divide by 2^(DIV+1)"]
-    POWER,
+    POWER = 1,
 }
 impl From<DIVSEL_A> for bool {
     #[inline(always)]
     fn from(variant: DIVSEL_A) -> Self {
-        match variant {
-            DIVSEL_A::DIV => false,
-            DIVSEL_A::POWER => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DIVSEL`"]
@@ -694,17 +664,14 @@ impl<'a> DIVSEL_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RUNSTDBY_A {
     #[doc = "0: Stopped in standby"]
-    STOPPED,
+    STOPPED = 0,
     #[doc = "1: Running in standby"]
-    RUNNING,
+    RUNNING = 1,
 }
 impl From<RUNSTDBY_A> for bool {
     #[inline(always)]
     fn from(variant: RUNSTDBY_A) -> Self {
-        match variant {
-            RUNSTDBY_A::STOPPED => false,
-            RUNSTDBY_A::RUNNING => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `RUNSTDBY`"]

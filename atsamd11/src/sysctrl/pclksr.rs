@@ -12,17 +12,14 @@ pub type OSC8MRDY_R = crate::R<bool, bool>;
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DFLLRDY_A {
     #[doc = "0: Not ready"]
-    NOTREADY,
+    NOTREADY = 0,
     #[doc = "1: Ready"]
-    READY,
+    READY = 1,
 }
 impl From<DFLLRDY_A> for bool {
     #[inline(always)]
     fn from(variant: DFLLRDY_A) -> Self {
-        match variant {
-            DFLLRDY_A::NOTREADY => false,
-            DFLLRDY_A::READY => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DFLLRDY`"]
@@ -51,17 +48,14 @@ impl DFLLRDY_R {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DFLLOOB_A {
     #[doc = "0: Not out of bounds"]
-    NOOOB,
+    NOOOB = 0,
     #[doc = "1: Out of bounds"]
-    OOB,
+    OOB = 1,
 }
 impl From<DFLLOOB_A> for bool {
     #[inline(always)]
     fn from(variant: DFLLOOB_A) -> Self {
-        match variant {
-            DFLLOOB_A::NOOOB => false,
-            DFLLOOB_A::OOB => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DFLLOOB`"]
@@ -90,17 +84,14 @@ impl DFLLOOB_R {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DFLLLCKF_A {
     #[doc = "0: Not locked"]
-    UNLOCKED,
+    UNLOCKED = 0,
     #[doc = "1: Locked"]
-    LOCKED,
+    LOCKED = 1,
 }
 impl From<DFLLLCKF_A> for bool {
     #[inline(always)]
     fn from(variant: DFLLLCKF_A) -> Self {
-        match variant {
-            DFLLLCKF_A::UNLOCKED => false,
-            DFLLLCKF_A::LOCKED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DFLLLCKF`"]
@@ -129,17 +120,14 @@ impl DFLLLCKF_R {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DFLLLCKC_A {
     #[doc = "0: Not locked"]
-    UNLOCKED,
+    UNLOCKED = 0,
     #[doc = "1: Locked"]
-    LOCKED,
+    LOCKED = 1,
 }
 impl From<DFLLLCKC_A> for bool {
     #[inline(always)]
     fn from(variant: DFLLLCKC_A) -> Self {
-        match variant {
-            DFLLLCKC_A::UNLOCKED => false,
-            DFLLLCKC_A::LOCKED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DFLLLCKC`"]
@@ -168,17 +156,14 @@ impl DFLLLCKC_R {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DFLLRCS_A {
     #[doc = "0: Running"]
-    RUNNING,
+    RUNNING = 0,
     #[doc = "1: Stopped"]
-    STOPPED,
+    STOPPED = 1,
 }
 impl From<DFLLRCS_A> for bool {
     #[inline(always)]
     fn from(variant: DFLLRCS_A) -> Self {
-        match variant {
-            DFLLRCS_A::RUNNING => false,
-            DFLLRCS_A::STOPPED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `DFLLRCS`"]

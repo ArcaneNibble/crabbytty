@@ -14,17 +14,14 @@ impl crate::ResetValue for super::DFLLCTRL {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ENABLE_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ENABLE_A> for bool {
     #[inline(always)]
     fn from(variant: ENABLE_A) -> Self {
-        match variant {
-            ENABLE_A::DISABLED => false,
-            ENABLE_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `ENABLE`"]
@@ -92,17 +89,14 @@ impl<'a> ENABLE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODE_A {
     #[doc = "0: Open-loop"]
-    OPENLOOP,
+    OPENLOOP = 0,
     #[doc = "1: Closed-loop"]
-    CLOSEDLOOP,
+    CLOSEDLOOP = 1,
 }
 impl From<MODE_A> for bool {
     #[inline(always)]
     fn from(variant: MODE_A) -> Self {
-        match variant {
-            MODE_A::OPENLOOP => false,
-            MODE_A::CLOSEDLOOP => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `MODE`"]
@@ -170,17 +164,14 @@ impl<'a> MODE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum STABLE_A {
     #[doc = "0: Track after lock"]
-    TRACK,
+    TRACK = 0,
     #[doc = "1: Fixed after lock"]
-    FIXED,
+    FIXED = 1,
 }
 impl From<STABLE_A> for bool {
     #[inline(always)]
     fn from(variant: STABLE_A) -> Self {
-        match variant {
-            STABLE_A::TRACK => false,
-            STABLE_A::FIXED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `STABLE`"]
@@ -248,17 +239,14 @@ impl<'a> STABLE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LLAW_A {
     #[doc = "0: Keep lock"]
-    KEEP,
+    KEEP = 0,
     #[doc = "1: Lose lock"]
-    LOSE,
+    LOSE = 1,
 }
 impl From<LLAW_A> for bool {
     #[inline(always)]
     fn from(variant: LLAW_A) -> Self {
-        match variant {
-            LLAW_A::KEEP => false,
-            LLAW_A::LOSE => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `LLAW`"]
@@ -326,17 +314,14 @@ impl<'a> LLAW_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum USBCRM_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<USBCRM_A> for bool {
     #[inline(always)]
     fn from(variant: USBCRM_A) -> Self {
-        match variant {
-            USBCRM_A::DISABLED => false,
-            USBCRM_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `USBCRM`"]
@@ -428,17 +413,14 @@ impl<'a> RUNSTDBY_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ONDEMAND_A {
     #[doc = "0: Always on"]
-    ALWAYSON,
+    ALWAYSON = 0,
     #[doc = "1: On demand"]
-    ONDEMAND,
+    ONDEMAND = 1,
 }
 impl From<ONDEMAND_A> for bool {
     #[inline(always)]
     fn from(variant: ONDEMAND_A) -> Self {
-        match variant {
-            ONDEMAND_A::ALWAYSON => false,
-            ONDEMAND_A::ONDEMAND => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `ONDEMAND`"]
@@ -506,17 +488,14 @@ impl<'a> ONDEMAND_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CCDIS_A {
     #[doc = "0: Chill Cycle enabled"]
-    CC,
+    CC = 0,
     #[doc = "1: Chill Cycle disabled"]
-    NOCC,
+    NOCC = 1,
 }
 impl From<CCDIS_A> for bool {
     #[inline(always)]
     fn from(variant: CCDIS_A) -> Self {
-        match variant {
-            CCDIS_A::CC => false,
-            CCDIS_A::NOCC => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `CCDIS`"]
@@ -584,17 +563,14 @@ impl<'a> CCDIS_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum QLDIS_A {
     #[doc = "0: Quick Lock enabled"]
-    QL,
+    QL = 0,
     #[doc = "1: Quick Lock disabled"]
-    NOQL,
+    NOQL = 1,
 }
 impl From<QLDIS_A> for bool {
     #[inline(always)]
     fn from(variant: QLDIS_A) -> Self {
-        match variant {
-            QLDIS_A::QL => false,
-            QLDIS_A::NOQL => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `QLDIS`"]
@@ -662,17 +638,14 @@ impl<'a> QLDIS_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BPLCKC_A {
     #[doc = "0: Do not bypass"]
-    NOBYPASS,
+    NOBYPASS = 0,
     #[doc = "1: Bypass"]
-    BYPASS,
+    BYPASS = 1,
 }
 impl From<BPLCKC_A> for bool {
     #[inline(always)]
     fn from(variant: BPLCKC_A) -> Self {
-        match variant {
-            BPLCKC_A::NOBYPASS => false,
-            BPLCKC_A::BYPASS => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `BPLCKC`"]
@@ -740,17 +713,14 @@ impl<'a> BPLCKC_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WAITLOCK_A {
     #[doc = "0: Output before lock"]
-    BEFORELOCK,
+    BEFORELOCK = 0,
     #[doc = "1: Output after lock"]
-    AFTERLOCK,
+    AFTERLOCK = 1,
 }
 impl From<WAITLOCK_A> for bool {
     #[inline(always)]
     fn from(variant: WAITLOCK_A) -> Self {
-        match variant {
-            WAITLOCK_A::BEFORELOCK => false,
-            WAITLOCK_A::AFTERLOCK => true,
-        }
+        variant as u8 != 0
     }
 }
 #[doc = "Reader of field `WAITLOCK`"]
