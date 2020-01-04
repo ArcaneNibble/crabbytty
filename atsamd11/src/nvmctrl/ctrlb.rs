@@ -10,84 +10,16 @@ impl crate::ResetValue for super::CTRLB {
         0
     }
 }
-#[doc = "NVM Read Wait States\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RWS_A {
-    #[doc = "0: Single Auto Wait State"]
-    SINGLE,
-    #[doc = "1: Half Auto Wait State"]
-    HALF,
-    #[doc = "2: Dual Auto Wait State"]
-    DUAL,
-}
-impl From<RWS_A> for u8 {
-    #[inline(always)]
-    fn from(variant: RWS_A) -> Self {
-        match variant {
-            RWS_A::SINGLE => 0,
-            RWS_A::HALF => 1,
-            RWS_A::DUAL => 2,
-        }
-    }
-}
 #[doc = "Reader of field `RWS`"]
-pub type RWS_R = crate::R<u8, RWS_A>;
-impl RWS_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, RWS_A> {
-        use crate::Variant::*;
-        match self.bits {
-            0 => Val(RWS_A::SINGLE),
-            1 => Val(RWS_A::HALF),
-            2 => Val(RWS_A::DUAL),
-            i => Res(i),
-        }
-    }
-    #[doc = "Checks if the value of the field is `SINGLE`"]
-    #[inline(always)]
-    pub fn is_single(&self) -> bool {
-        *self == RWS_A::SINGLE
-    }
-    #[doc = "Checks if the value of the field is `HALF`"]
-    #[inline(always)]
-    pub fn is_half(&self) -> bool {
-        *self == RWS_A::HALF
-    }
-    #[doc = "Checks if the value of the field is `DUAL`"]
-    #[inline(always)]
-    pub fn is_dual(&self) -> bool {
-        *self == RWS_A::DUAL
-    }
-}
+pub type RWS_R = crate::R<u8, u8>;
 #[doc = "Write proxy for field `RWS`"]
 pub struct RWS_W<'a> {
     w: &'a mut W,
 }
 impl<'a> RWS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RWS_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
-    #[doc = "Single Auto Wait State"]
-    #[inline(always)]
-    pub fn single(self) -> &'a mut W {
-        self.variant(RWS_A::SINGLE)
-    }
-    #[doc = "Half Auto Wait State"]
-    #[inline(always)]
-    pub fn half(self) -> &'a mut W {
-        self.variant(RWS_A::HALF)
-    }
-    #[doc = "Dual Auto Wait State"]
-    #[inline(always)]
-    pub fn dual(self) -> &'a mut W {
-        self.variant(RWS_A::DUAL)
-    }
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x0f << 1)) | (((value as u32) & 0x0f) << 1);
         self.w
     }

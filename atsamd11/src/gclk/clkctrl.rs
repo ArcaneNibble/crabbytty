@@ -59,6 +59,8 @@ pub enum ID_A {
     AC_ANA,
     #[doc = "22: DAC"]
     DAC,
+    #[doc = "23: PTC"]
+    PTC,
 }
 impl From<ID_A> for u8 {
     #[inline(always)]
@@ -87,6 +89,7 @@ impl From<ID_A> for u8 {
             ID_A::AC_DIG => 20,
             ID_A::AC_ANA => 21,
             ID_A::DAC => 22,
+            ID_A::PTC => 23,
         }
     }
 }
@@ -121,6 +124,7 @@ impl ID_R {
             20 => Val(ID_A::AC_DIG),
             21 => Val(ID_A::AC_ANA),
             22 => Val(ID_A::DAC),
+            23 => Val(ID_A::PTC),
             i => Res(i),
         }
     }
@@ -238,6 +242,11 @@ impl ID_R {
     #[inline(always)]
     pub fn is_dac(&self) -> bool {
         *self == ID_A::DAC
+    }
+    #[doc = "Checks if the value of the field is `PTC`"]
+    #[inline(always)]
+    pub fn is_ptc(&self) -> bool {
+        *self == ID_A::PTC
     }
 }
 #[doc = "Write proxy for field `ID`"]
@@ -364,6 +373,11 @@ impl<'a> ID_W<'a> {
     #[inline(always)]
     pub fn dac(self) -> &'a mut W {
         self.variant(ID_A::DAC)
+    }
+    #[doc = "PTC"]
+    #[inline(always)]
+    pub fn ptc(self) -> &'a mut W {
+        self.variant(ID_A::PTC)
     }
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
@@ -496,13 +510,67 @@ impl<'a> GEN_W<'a> {
         self.w
     }
 }
+#[doc = "Clock Enable\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum CLKEN_A {
+    #[doc = "0: Disabled"]
+    DISABLED,
+    #[doc = "1: Enabled"]
+    ENABLED,
+}
+impl From<CLKEN_A> for bool {
+    #[inline(always)]
+    fn from(variant: CLKEN_A) -> Self {
+        match variant {
+            CLKEN_A::DISABLED => false,
+            CLKEN_A::ENABLED => true,
+        }
+    }
+}
 #[doc = "Reader of field `CLKEN`"]
-pub type CLKEN_R = crate::R<bool, bool>;
+pub type CLKEN_R = crate::R<bool, CLKEN_A>;
+impl CLKEN_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> CLKEN_A {
+        match self.bits {
+            false => CLKEN_A::DISABLED,
+            true => CLKEN_A::ENABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == CLKEN_A::DISABLED
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == CLKEN_A::ENABLED
+    }
+}
 #[doc = "Write proxy for field `CLKEN`"]
 pub struct CLKEN_W<'a> {
     w: &'a mut W,
 }
 impl<'a> CLKEN_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CLKEN_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Disabled"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(CLKEN_A::DISABLED)
+    }
+    #[doc = "Enabled"]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(CLKEN_A::ENABLED)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -520,13 +588,67 @@ impl<'a> CLKEN_W<'a> {
         self.w
     }
 }
+#[doc = "Write Lock\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum WRTLOCK_A {
+    #[doc = "0: Unlocked"]
+    UNLOCKED,
+    #[doc = "1: Locked"]
+    LOCKED,
+}
+impl From<WRTLOCK_A> for bool {
+    #[inline(always)]
+    fn from(variant: WRTLOCK_A) -> Self {
+        match variant {
+            WRTLOCK_A::UNLOCKED => false,
+            WRTLOCK_A::LOCKED => true,
+        }
+    }
+}
 #[doc = "Reader of field `WRTLOCK`"]
-pub type WRTLOCK_R = crate::R<bool, bool>;
+pub type WRTLOCK_R = crate::R<bool, WRTLOCK_A>;
+impl WRTLOCK_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> WRTLOCK_A {
+        match self.bits {
+            false => WRTLOCK_A::UNLOCKED,
+            true => WRTLOCK_A::LOCKED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `UNLOCKED`"]
+    #[inline(always)]
+    pub fn is_unlocked(&self) -> bool {
+        *self == WRTLOCK_A::UNLOCKED
+    }
+    #[doc = "Checks if the value of the field is `LOCKED`"]
+    #[inline(always)]
+    pub fn is_locked(&self) -> bool {
+        *self == WRTLOCK_A::LOCKED
+    }
+}
 #[doc = "Write proxy for field `WRTLOCK`"]
 pub struct WRTLOCK_W<'a> {
     w: &'a mut W,
 }
 impl<'a> WRTLOCK_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: WRTLOCK_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Unlocked"]
+    #[inline(always)]
+    pub fn unlocked(self) -> &'a mut W {
+        self.variant(WRTLOCK_A::UNLOCKED)
+    }
+    #[doc = "Locked"]
+    #[inline(always)]
+    pub fn locked(self) -> &'a mut W {
+        self.variant(WRTLOCK_A::LOCKED)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {

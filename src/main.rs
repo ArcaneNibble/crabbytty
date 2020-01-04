@@ -77,6 +77,61 @@ const APP: () = {
         // Wait for it to be ready
         while cx.device.SYSCTRL.pclksr.read().dfllrdy().is_notready() {}
 
+        // Need 1 wait state according to the datasheet table
+        cx.device.NVMCTRL.ctrlb.write(|w| {
+            w.rws().bits(1)
+        });
+        // Set CPU and bus dividers all to 1
+        cx.device.PM.cpusel.write(|w| {
+            w.cpudiv().div1()
+        });
+        cx.device.PM.apbasel.write(|w| {
+            w.apbadiv().div1()
+        });
+        cx.device.PM.apbbsel.write(|w| {
+            w.apbbdiv().div1()
+        });
+        cx.device.PM.apbcsel.write(|w| {
+            w.apbcdiv().div1()
+        });
+
+        // Configure GCLK0 (which is also GCLK_MAIN) to use the DFLL
+        cx.device.GCLK.gendiv.write(|w| {
+            w.id().gclk0().div().bits(1)
+        });
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk0()
+                .src().dfll48m()
+                .genen().enabled()
+                .oe().notoutput()
+                .divsel().div()
+                .runstdby().running()
+        });
+
+        // Ok, we should be running at 48 MHz now
+
+        // Turn everything else off to save power
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk1()
+                .genen().disabled()
+        });
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk2()
+                .genen().disabled()
+        });
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk3()
+                .genen().disabled()
+        });
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk4()
+                .genen().disabled()
+        });
+        cx.device.GCLK.genctrl.write(|w| {
+            w.id().gclk5()
+                .genen().disabled()
+        });
+
         hprintln!("Hello world!").unwrap();
     }
 };
