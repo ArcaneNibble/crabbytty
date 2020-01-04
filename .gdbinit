@@ -21,7 +21,7 @@ break main
 
 # set up BMP
 set mem inaccessible-by-default off
-mon connect_srst disable
+# mon hard_srst
 mon sw
 at 1
 

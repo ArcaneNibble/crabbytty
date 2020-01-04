@@ -8,16 +8,201 @@ pub type XOSC32KRDY_R = crate::R<bool, bool>;
 pub type OSC32KRDY_R = crate::R<bool, bool>;
 #[doc = "Reader of field `OSC8MRDY`"]
 pub type OSC8MRDY_R = crate::R<bool, bool>;
+#[doc = "DFLL Ready\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DFLLRDY_A {
+    #[doc = "0: Not ready"]
+    NOTREADY,
+    #[doc = "1: Ready"]
+    READY,
+}
+impl From<DFLLRDY_A> for bool {
+    #[inline(always)]
+    fn from(variant: DFLLRDY_A) -> Self {
+        match variant {
+            DFLLRDY_A::NOTREADY => false,
+            DFLLRDY_A::READY => true,
+        }
+    }
+}
 #[doc = "Reader of field `DFLLRDY`"]
-pub type DFLLRDY_R = crate::R<bool, bool>;
+pub type DFLLRDY_R = crate::R<bool, DFLLRDY_A>;
+impl DFLLRDY_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DFLLRDY_A {
+        match self.bits {
+            false => DFLLRDY_A::NOTREADY,
+            true => DFLLRDY_A::READY,
+        }
+    }
+    #[doc = "Checks if the value of the field is `NOTREADY`"]
+    #[inline(always)]
+    pub fn is_notready(&self) -> bool {
+        *self == DFLLRDY_A::NOTREADY
+    }
+    #[doc = "Checks if the value of the field is `READY`"]
+    #[inline(always)]
+    pub fn is_ready(&self) -> bool {
+        *self == DFLLRDY_A::READY
+    }
+}
+#[doc = "DFLL Out Of Bounds\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DFLLOOB_A {
+    #[doc = "0: Not out of bounds"]
+    NOOOB,
+    #[doc = "1: Out of bounds"]
+    OOB,
+}
+impl From<DFLLOOB_A> for bool {
+    #[inline(always)]
+    fn from(variant: DFLLOOB_A) -> Self {
+        match variant {
+            DFLLOOB_A::NOOOB => false,
+            DFLLOOB_A::OOB => true,
+        }
+    }
+}
 #[doc = "Reader of field `DFLLOOB`"]
-pub type DFLLOOB_R = crate::R<bool, bool>;
+pub type DFLLOOB_R = crate::R<bool, DFLLOOB_A>;
+impl DFLLOOB_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DFLLOOB_A {
+        match self.bits {
+            false => DFLLOOB_A::NOOOB,
+            true => DFLLOOB_A::OOB,
+        }
+    }
+    #[doc = "Checks if the value of the field is `NOOOB`"]
+    #[inline(always)]
+    pub fn is_nooob(&self) -> bool {
+        *self == DFLLOOB_A::NOOOB
+    }
+    #[doc = "Checks if the value of the field is `OOB`"]
+    #[inline(always)]
+    pub fn is_oob(&self) -> bool {
+        *self == DFLLOOB_A::OOB
+    }
+}
+#[doc = "DFLL Lock Fine\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DFLLLCKF_A {
+    #[doc = "0: Not locked"]
+    UNLOCKED,
+    #[doc = "1: Locked"]
+    LOCKED,
+}
+impl From<DFLLLCKF_A> for bool {
+    #[inline(always)]
+    fn from(variant: DFLLLCKF_A) -> Self {
+        match variant {
+            DFLLLCKF_A::UNLOCKED => false,
+            DFLLLCKF_A::LOCKED => true,
+        }
+    }
+}
 #[doc = "Reader of field `DFLLLCKF`"]
-pub type DFLLLCKF_R = crate::R<bool, bool>;
+pub type DFLLLCKF_R = crate::R<bool, DFLLLCKF_A>;
+impl DFLLLCKF_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DFLLLCKF_A {
+        match self.bits {
+            false => DFLLLCKF_A::UNLOCKED,
+            true => DFLLLCKF_A::LOCKED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `UNLOCKED`"]
+    #[inline(always)]
+    pub fn is_unlocked(&self) -> bool {
+        *self == DFLLLCKF_A::UNLOCKED
+    }
+    #[doc = "Checks if the value of the field is `LOCKED`"]
+    #[inline(always)]
+    pub fn is_locked(&self) -> bool {
+        *self == DFLLLCKF_A::LOCKED
+    }
+}
+#[doc = "DFLL Lock Coarse\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DFLLLCKC_A {
+    #[doc = "0: Not locked"]
+    UNLOCKED,
+    #[doc = "1: Locked"]
+    LOCKED,
+}
+impl From<DFLLLCKC_A> for bool {
+    #[inline(always)]
+    fn from(variant: DFLLLCKC_A) -> Self {
+        match variant {
+            DFLLLCKC_A::UNLOCKED => false,
+            DFLLLCKC_A::LOCKED => true,
+        }
+    }
+}
 #[doc = "Reader of field `DFLLLCKC`"]
-pub type DFLLLCKC_R = crate::R<bool, bool>;
+pub type DFLLLCKC_R = crate::R<bool, DFLLLCKC_A>;
+impl DFLLLCKC_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DFLLLCKC_A {
+        match self.bits {
+            false => DFLLLCKC_A::UNLOCKED,
+            true => DFLLLCKC_A::LOCKED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `UNLOCKED`"]
+    #[inline(always)]
+    pub fn is_unlocked(&self) -> bool {
+        *self == DFLLLCKC_A::UNLOCKED
+    }
+    #[doc = "Checks if the value of the field is `LOCKED`"]
+    #[inline(always)]
+    pub fn is_locked(&self) -> bool {
+        *self == DFLLLCKC_A::LOCKED
+    }
+}
+#[doc = "DFLL Reference Clock Stopped\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DFLLRCS_A {
+    #[doc = "0: Running"]
+    RUNNING,
+    #[doc = "1: Stopped"]
+    STOPPED,
+}
+impl From<DFLLRCS_A> for bool {
+    #[inline(always)]
+    fn from(variant: DFLLRCS_A) -> Self {
+        match variant {
+            DFLLRCS_A::RUNNING => false,
+            DFLLRCS_A::STOPPED => true,
+        }
+    }
+}
 #[doc = "Reader of field `DFLLRCS`"]
-pub type DFLLRCS_R = crate::R<bool, bool>;
+pub type DFLLRCS_R = crate::R<bool, DFLLRCS_A>;
+impl DFLLRCS_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DFLLRCS_A {
+        match self.bits {
+            false => DFLLRCS_A::RUNNING,
+            true => DFLLRCS_A::STOPPED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `RUNNING`"]
+    #[inline(always)]
+    pub fn is_running(&self) -> bool {
+        *self == DFLLRCS_A::RUNNING
+    }
+    #[doc = "Checks if the value of the field is `STOPPED`"]
+    #[inline(always)]
+    pub fn is_stopped(&self) -> bool {
+        *self == DFLLRCS_A::STOPPED
+    }
+}
 #[doc = "Reader of field `BOD33RDY`"]
 pub type BOD33RDY_R = crate::R<bool, bool>;
 #[doc = "Reader of field `BOD33DET`"]
