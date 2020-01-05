@@ -1,0 +1,5 @@
+[package]
+authors = ["Robert Ou"]
+edition = "2018"
+name = "usb-justthebits"
+version = "0.0.1"

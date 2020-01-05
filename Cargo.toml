@@ -22,6 +22,9 @@ panic-halt = "0.2.0"
 features = ["rt"]
 path = "atsamd11"
 
+[dependencies.usb-justthebits]
+path = "usb-justthebits"
+
 # this lets you use `cargo fix`!
 [[bin]]
 name = "crabbytty"
