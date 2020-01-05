@@ -139,5 +139,16 @@ const APP: () = {
         while cx.device.SYSCTRL.osc8m.read().enable().bit() {}
 
         hprintln!("Hello world!").unwrap();
+
+        // TEST: Set up PIN 10 PA23 and toggle it
+        cx.device.PORT.dirset0.write(|w| {
+            w.dirset23().setoutput()
+        });
+
+        loop {
+            cx.device.PORT_IOBUS.outtgl0.write(|w| {
+                w.outtgl23().toggle()
+            });
+        }
     }
 };
