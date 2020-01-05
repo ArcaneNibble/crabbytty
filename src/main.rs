@@ -215,16 +215,27 @@ const APP: () = {
 
     #[task(binds = USB, resources = [USB_PERIPH])]
     fn usb_isr(cx: usb_isr::Context) {
-        hprintln!("USB ISR!").unwrap();
+        // hprintln!("USB ISR!").unwrap();
 
-        // TODO: Handle USB device interrupts
+        if cx.resources.USB_PERIPH.intflag.read().eorst().is_pending() {
+            hprintln!("USB reset").unwrap();
+        }
 
         // Acknowledge all the USB device interrupts
         cx.resources.USB_PERIPH.intflag.modify(|_, w| {w});
 
         if cx.resources.USB_PERIPH.epintsmry.read().epint0().is_pending() {
-            // TODO: Handle USB endpoint interrupts
             // TODO: Handle all the endpoints
+
+            if cx.resources.USB_PERIPH.epintflag0.read().rxstp().is_pending() {
+                hprintln!("EP0 setup").unwrap();
+            }
+            if cx.resources.USB_PERIPH.epintflag0.read().trcpt1().is_pending() {
+                hprintln!("EP0 Bank1 IN done").unwrap();
+            }
+            if cx.resources.USB_PERIPH.epintflag0.read().trcpt0().is_pending() {
+                hprintln!("EP0 Bank0 OUT done").unwrap();
+            }
 
             // Acknowledge all the USB endpoint interrupts
             cx.resources.USB_PERIPH.epintflag0.modify(|_, w| {w});
