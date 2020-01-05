@@ -8,11 +8,30 @@ impl crate::ResetValue for super::EPSTATUSCLR {
         0
     }
 }
+#[doc = "Data Toggle OUT Clear"]
+pub type DTGLOUT_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `DTGLOUT`"]
 pub struct DTGLOUT_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DTGLOUT_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DTGLOUT_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -30,11 +49,30 @@ impl<'a> DTGLOUT_W<'a> {
         self.w
     }
 }
+#[doc = "Data Toggle IN Clear"]
+pub type DTGLIN_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `DTGLIN`"]
 pub struct DTGLIN_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DTGLIN_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DTGLIN_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -52,11 +90,30 @@ impl<'a> DTGLIN_W<'a> {
         self.w
     }
 }
+#[doc = "Current Bank Clear"]
+pub type CURBK_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `CURBK`"]
 pub struct CURBK_W<'a> {
     w: &'a mut W,
 }
 impl<'a> CURBK_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CURBK_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -74,11 +131,30 @@ impl<'a> CURBK_W<'a> {
         self.w
     }
 }
+#[doc = "Stall 0 Request Clear"]
+pub type STALLRQ0_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `STALLRQ0`"]
 pub struct STALLRQ0_W<'a> {
     w: &'a mut W,
 }
 impl<'a> STALLRQ0_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: STALLRQ0_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -96,11 +172,30 @@ impl<'a> STALLRQ0_W<'a> {
         self.w
     }
 }
+#[doc = "Stall 1 Request Clear"]
+pub type STALLRQ1_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `STALLRQ1`"]
 pub struct STALLRQ1_W<'a> {
     w: &'a mut W,
 }
 impl<'a> STALLRQ1_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: STALLRQ1_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -118,11 +213,30 @@ impl<'a> STALLRQ1_W<'a> {
         self.w
     }
 }
+#[doc = "Bank 0 Ready Clear"]
+pub type BK0RDY_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `BK0RDY`"]
 pub struct BK0RDY_W<'a> {
     w: &'a mut W,
 }
 impl<'a> BK0RDY_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BK0RDY_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -140,11 +254,30 @@ impl<'a> BK0RDY_W<'a> {
         self.w
     }
 }
+#[doc = "Bank 1 Ready Clear"]
+pub type BK1RDY_AW = crate::usb::intflag::SUSPEND_AW;
 #[doc = "Write proxy for field `BK1RDY`"]
 pub struct BK1RDY_W<'a> {
     w: &'a mut W,
 }
 impl<'a> BK1RDY_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BK1RDY_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::NOP)
+    }
+    #[doc = "Clear flag"]
+    #[inline(always)]
+    pub fn clear(self) -> &'a mut W {
+        self.variant(crate::usb::intflag::SUSPEND_AW::CLEAR)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {

@@ -8,11 +8,42 @@ impl crate::ResetValue for super::EPSTATUSSET {
         0
     }
 }
+#[doc = "Data Toggle OUT Set\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DTGLOUT_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Set flag"]
+    SET = 1,
+}
+impl From<DTGLOUT_AW> for bool {
+    #[inline(always)]
+    fn from(variant: DTGLOUT_AW) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Write proxy for field `DTGLOUT`"]
 pub struct DTGLOUT_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DTGLOUT_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DTGLOUT_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -30,11 +61,30 @@ impl<'a> DTGLOUT_W<'a> {
         self.w
     }
 }
+#[doc = "Data Toggle IN Set"]
+pub type DTGLIN_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `DTGLIN`"]
 pub struct DTGLIN_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DTGLIN_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DTGLIN_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -52,11 +102,30 @@ impl<'a> DTGLIN_W<'a> {
         self.w
     }
 }
+#[doc = "Current Bank Set"]
+pub type CURBK_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `CURBK`"]
 pub struct CURBK_W<'a> {
     w: &'a mut W,
 }
 impl<'a> CURBK_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CURBK_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -74,11 +143,30 @@ impl<'a> CURBK_W<'a> {
         self.w
     }
 }
+#[doc = "Stall 0 Request Set"]
+pub type STALLRQ0_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `STALLRQ0`"]
 pub struct STALLRQ0_W<'a> {
     w: &'a mut W,
 }
 impl<'a> STALLRQ0_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: STALLRQ0_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -96,11 +184,30 @@ impl<'a> STALLRQ0_W<'a> {
         self.w
     }
 }
+#[doc = "Stall 1 Request Set"]
+pub type STALLRQ1_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `STALLRQ1`"]
 pub struct STALLRQ1_W<'a> {
     w: &'a mut W,
 }
 impl<'a> STALLRQ1_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: STALLRQ1_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -118,11 +225,30 @@ impl<'a> STALLRQ1_W<'a> {
         self.w
     }
 }
+#[doc = "Bank 0 Ready Set"]
+pub type BK0RDY_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `BK0RDY`"]
 pub struct BK0RDY_W<'a> {
     w: &'a mut W,
 }
 impl<'a> BK0RDY_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BK0RDY_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -140,11 +266,30 @@ impl<'a> BK0RDY_W<'a> {
         self.w
     }
 }
+#[doc = "Bank 1 Ready Set"]
+pub type BK1RDY_AW = DTGLOUT_AW;
 #[doc = "Write proxy for field `BK1RDY`"]
 pub struct BK1RDY_W<'a> {
     w: &'a mut W,
 }
 impl<'a> BK1RDY_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BK1RDY_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::NOP)
+    }
+    #[doc = "Set flag"]
+    #[inline(always)]
+    pub fn set(self) -> &'a mut W {
+        self.variant(DTGLOUT_AW::SET)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
