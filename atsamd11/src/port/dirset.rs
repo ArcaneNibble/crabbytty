@@ -13,10 +13,10 @@ impl crate::ResetValue for super::DIRSET {
 #[doc = "Port Data Direction Set 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DIRSET0_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
+    #[doc = "0: Input"]
+    INPUT = 0,
+    #[doc = "1: Output"]
+    OUTPUT = 1,
 }
 impl From<DIRSET0_A> for bool {
     #[inline(always)]
@@ -31,19 +31,33 @@ impl DIRSET0_R {
     #[inline(always)]
     pub fn variant(&self) -> DIRSET0_A {
         match self.bits {
-            false => DIRSET0_A::NOP,
-            true => DIRSET0_A::SETOUTPUT,
+            false => DIRSET0_A::INPUT,
+            true => DIRSET0_A::OUTPUT,
         }
     }
-    #[doc = "Checks if the value of the field is `NOP`"]
+    #[doc = "Checks if the value of the field is `INPUT`"]
     #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET0_A::NOP
+    pub fn is_input(&self) -> bool {
+        *self == DIRSET0_A::INPUT
     }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
+    #[doc = "Checks if the value of the field is `OUTPUT`"]
     #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET0_A::SETOUTPUT
+    pub fn is_output(&self) -> bool {
+        *self == DIRSET0_A::OUTPUT
+    }
+}
+#[doc = "Port Data Direction Set 0\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DIRSET0_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Make pin output"]
+    SETOUTPUT = 1,
+}
+impl From<DIRSET0_AW> for bool {
+    #[inline(always)]
+    fn from(variant: DIRSET0_AW) -> Self {
+        variant as u8 != 0
     }
 }
 #[doc = "Write proxy for field `DIRSET0`"]
@@ -53,7 +67,7 @@ pub struct DIRSET0_W<'a> {
 impl<'a> DIRSET0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET0_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET0_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -61,12 +75,12 @@ impl<'a> DIRSET0_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET0_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET0_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -85,42 +99,12 @@ impl<'a> DIRSET0_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET1_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET1_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 1"]
+pub type DIRSET1_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET1`"]
-pub type DIRSET1_R = crate::R<bool, DIRSET1_A>;
-impl DIRSET1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET1_A {
-        match self.bits {
-            false => DIRSET1_A::NOP,
-            true => DIRSET1_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET1_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET1_A::SETOUTPUT
-    }
-}
+pub type DIRSET1_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 1"]
+pub type DIRSET1_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET1`"]
 pub struct DIRSET1_W<'a> {
     w: &'a mut W,
@@ -128,7 +112,7 @@ pub struct DIRSET1_W<'a> {
 impl<'a> DIRSET1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET1_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET1_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -136,12 +120,12 @@ impl<'a> DIRSET1_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET1_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET1_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +144,12 @@ impl<'a> DIRSET1_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET2_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET2_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 2"]
+pub type DIRSET2_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET2`"]
-pub type DIRSET2_R = crate::R<bool, DIRSET2_A>;
-impl DIRSET2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET2_A {
-        match self.bits {
-            false => DIRSET2_A::NOP,
-            true => DIRSET2_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET2_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET2_A::SETOUTPUT
-    }
-}
+pub type DIRSET2_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 2"]
+pub type DIRSET2_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET2`"]
 pub struct DIRSET2_W<'a> {
     w: &'a mut W,
@@ -203,7 +157,7 @@ pub struct DIRSET2_W<'a> {
 impl<'a> DIRSET2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET2_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET2_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -211,12 +165,12 @@ impl<'a> DIRSET2_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET2_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET2_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +189,12 @@ impl<'a> DIRSET2_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET3_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET3_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 3"]
+pub type DIRSET3_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET3`"]
-pub type DIRSET3_R = crate::R<bool, DIRSET3_A>;
-impl DIRSET3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET3_A {
-        match self.bits {
-            false => DIRSET3_A::NOP,
-            true => DIRSET3_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET3_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET3_A::SETOUTPUT
-    }
-}
+pub type DIRSET3_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 3"]
+pub type DIRSET3_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET3`"]
 pub struct DIRSET3_W<'a> {
     w: &'a mut W,
@@ -278,7 +202,7 @@ pub struct DIRSET3_W<'a> {
 impl<'a> DIRSET3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET3_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET3_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -286,12 +210,12 @@ impl<'a> DIRSET3_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET3_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET3_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +234,12 @@ impl<'a> DIRSET3_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET4_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET4_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 4"]
+pub type DIRSET4_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET4`"]
-pub type DIRSET4_R = crate::R<bool, DIRSET4_A>;
-impl DIRSET4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET4_A {
-        match self.bits {
-            false => DIRSET4_A::NOP,
-            true => DIRSET4_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET4_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET4_A::SETOUTPUT
-    }
-}
+pub type DIRSET4_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 4"]
+pub type DIRSET4_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET4`"]
 pub struct DIRSET4_W<'a> {
     w: &'a mut W,
@@ -353,7 +247,7 @@ pub struct DIRSET4_W<'a> {
 impl<'a> DIRSET4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET4_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET4_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -361,12 +255,12 @@ impl<'a> DIRSET4_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET4_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET4_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +279,12 @@ impl<'a> DIRSET4_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET5_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET5_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 5"]
+pub type DIRSET5_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET5`"]
-pub type DIRSET5_R = crate::R<bool, DIRSET5_A>;
-impl DIRSET5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET5_A {
-        match self.bits {
-            false => DIRSET5_A::NOP,
-            true => DIRSET5_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET5_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET5_A::SETOUTPUT
-    }
-}
+pub type DIRSET5_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 5"]
+pub type DIRSET5_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET5`"]
 pub struct DIRSET5_W<'a> {
     w: &'a mut W,
@@ -428,7 +292,7 @@ pub struct DIRSET5_W<'a> {
 impl<'a> DIRSET5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET5_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET5_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -436,12 +300,12 @@ impl<'a> DIRSET5_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET5_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET5_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +324,12 @@ impl<'a> DIRSET5_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET6_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET6_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 6"]
+pub type DIRSET6_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET6`"]
-pub type DIRSET6_R = crate::R<bool, DIRSET6_A>;
-impl DIRSET6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET6_A {
-        match self.bits {
-            false => DIRSET6_A::NOP,
-            true => DIRSET6_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET6_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET6_A::SETOUTPUT
-    }
-}
+pub type DIRSET6_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 6"]
+pub type DIRSET6_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET6`"]
 pub struct DIRSET6_W<'a> {
     w: &'a mut W,
@@ -503,7 +337,7 @@ pub struct DIRSET6_W<'a> {
 impl<'a> DIRSET6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET6_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET6_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -511,12 +345,12 @@ impl<'a> DIRSET6_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET6_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET6_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +369,12 @@ impl<'a> DIRSET6_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET7_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET7_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 7"]
+pub type DIRSET7_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET7`"]
-pub type DIRSET7_R = crate::R<bool, DIRSET7_A>;
-impl DIRSET7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET7_A {
-        match self.bits {
-            false => DIRSET7_A::NOP,
-            true => DIRSET7_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET7_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET7_A::SETOUTPUT
-    }
-}
+pub type DIRSET7_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 7"]
+pub type DIRSET7_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET7`"]
 pub struct DIRSET7_W<'a> {
     w: &'a mut W,
@@ -578,7 +382,7 @@ pub struct DIRSET7_W<'a> {
 impl<'a> DIRSET7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET7_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET7_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -586,12 +390,12 @@ impl<'a> DIRSET7_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET7_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET7_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +414,12 @@ impl<'a> DIRSET7_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET8_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET8_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 8"]
+pub type DIRSET8_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET8`"]
-pub type DIRSET8_R = crate::R<bool, DIRSET8_A>;
-impl DIRSET8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET8_A {
-        match self.bits {
-            false => DIRSET8_A::NOP,
-            true => DIRSET8_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET8_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET8_A::SETOUTPUT
-    }
-}
+pub type DIRSET8_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 8"]
+pub type DIRSET8_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET8`"]
 pub struct DIRSET8_W<'a> {
     w: &'a mut W,
@@ -653,7 +427,7 @@ pub struct DIRSET8_W<'a> {
 impl<'a> DIRSET8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET8_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET8_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -661,12 +435,12 @@ impl<'a> DIRSET8_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET8_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET8_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +459,12 @@ impl<'a> DIRSET8_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET9_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET9_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 9"]
+pub type DIRSET9_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET9`"]
-pub type DIRSET9_R = crate::R<bool, DIRSET9_A>;
-impl DIRSET9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET9_A {
-        match self.bits {
-            false => DIRSET9_A::NOP,
-            true => DIRSET9_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET9_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET9_A::SETOUTPUT
-    }
-}
+pub type DIRSET9_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 9"]
+pub type DIRSET9_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET9`"]
 pub struct DIRSET9_W<'a> {
     w: &'a mut W,
@@ -728,7 +472,7 @@ pub struct DIRSET9_W<'a> {
 impl<'a> DIRSET9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET9_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET9_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -736,12 +480,12 @@ impl<'a> DIRSET9_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET9_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET9_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +504,12 @@ impl<'a> DIRSET9_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET10_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET10_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 10"]
+pub type DIRSET10_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET10`"]
-pub type DIRSET10_R = crate::R<bool, DIRSET10_A>;
-impl DIRSET10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET10_A {
-        match self.bits {
-            false => DIRSET10_A::NOP,
-            true => DIRSET10_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET10_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET10_A::SETOUTPUT
-    }
-}
+pub type DIRSET10_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 10"]
+pub type DIRSET10_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET10`"]
 pub struct DIRSET10_W<'a> {
     w: &'a mut W,
@@ -803,7 +517,7 @@ pub struct DIRSET10_W<'a> {
 impl<'a> DIRSET10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET10_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET10_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -811,12 +525,12 @@ impl<'a> DIRSET10_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET10_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET10_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +549,12 @@ impl<'a> DIRSET10_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET11_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET11_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 11"]
+pub type DIRSET11_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET11`"]
-pub type DIRSET11_R = crate::R<bool, DIRSET11_A>;
-impl DIRSET11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET11_A {
-        match self.bits {
-            false => DIRSET11_A::NOP,
-            true => DIRSET11_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET11_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET11_A::SETOUTPUT
-    }
-}
+pub type DIRSET11_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 11"]
+pub type DIRSET11_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET11`"]
 pub struct DIRSET11_W<'a> {
     w: &'a mut W,
@@ -878,7 +562,7 @@ pub struct DIRSET11_W<'a> {
 impl<'a> DIRSET11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET11_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET11_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -886,12 +570,12 @@ impl<'a> DIRSET11_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET11_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET11_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +594,12 @@ impl<'a> DIRSET11_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET12_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET12_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 12"]
+pub type DIRSET12_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET12`"]
-pub type DIRSET12_R = crate::R<bool, DIRSET12_A>;
-impl DIRSET12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET12_A {
-        match self.bits {
-            false => DIRSET12_A::NOP,
-            true => DIRSET12_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET12_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET12_A::SETOUTPUT
-    }
-}
+pub type DIRSET12_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 12"]
+pub type DIRSET12_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET12`"]
 pub struct DIRSET12_W<'a> {
     w: &'a mut W,
@@ -953,7 +607,7 @@ pub struct DIRSET12_W<'a> {
 impl<'a> DIRSET12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET12_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET12_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -961,12 +615,12 @@ impl<'a> DIRSET12_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET12_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET12_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +639,12 @@ impl<'a> DIRSET12_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET13_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET13_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 13"]
+pub type DIRSET13_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET13`"]
-pub type DIRSET13_R = crate::R<bool, DIRSET13_A>;
-impl DIRSET13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET13_A {
-        match self.bits {
-            false => DIRSET13_A::NOP,
-            true => DIRSET13_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET13_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET13_A::SETOUTPUT
-    }
-}
+pub type DIRSET13_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 13"]
+pub type DIRSET13_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET13`"]
 pub struct DIRSET13_W<'a> {
     w: &'a mut W,
@@ -1028,7 +652,7 @@ pub struct DIRSET13_W<'a> {
 impl<'a> DIRSET13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET13_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET13_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1036,12 +660,12 @@ impl<'a> DIRSET13_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET13_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET13_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +684,12 @@ impl<'a> DIRSET13_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET14_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET14_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 14"]
+pub type DIRSET14_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET14`"]
-pub type DIRSET14_R = crate::R<bool, DIRSET14_A>;
-impl DIRSET14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET14_A {
-        match self.bits {
-            false => DIRSET14_A::NOP,
-            true => DIRSET14_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET14_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET14_A::SETOUTPUT
-    }
-}
+pub type DIRSET14_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 14"]
+pub type DIRSET14_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET14`"]
 pub struct DIRSET14_W<'a> {
     w: &'a mut W,
@@ -1103,7 +697,7 @@ pub struct DIRSET14_W<'a> {
 impl<'a> DIRSET14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET14_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET14_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1111,12 +705,12 @@ impl<'a> DIRSET14_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET14_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET14_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +729,12 @@ impl<'a> DIRSET14_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET15_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET15_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 15"]
+pub type DIRSET15_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET15`"]
-pub type DIRSET15_R = crate::R<bool, DIRSET15_A>;
-impl DIRSET15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET15_A {
-        match self.bits {
-            false => DIRSET15_A::NOP,
-            true => DIRSET15_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET15_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET15_A::SETOUTPUT
-    }
-}
+pub type DIRSET15_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 15"]
+pub type DIRSET15_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET15`"]
 pub struct DIRSET15_W<'a> {
     w: &'a mut W,
@@ -1178,7 +742,7 @@ pub struct DIRSET15_W<'a> {
 impl<'a> DIRSET15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET15_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET15_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1186,12 +750,12 @@ impl<'a> DIRSET15_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET15_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET15_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +774,12 @@ impl<'a> DIRSET15_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET16_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET16_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 16"]
+pub type DIRSET16_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET16`"]
-pub type DIRSET16_R = crate::R<bool, DIRSET16_A>;
-impl DIRSET16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET16_A {
-        match self.bits {
-            false => DIRSET16_A::NOP,
-            true => DIRSET16_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET16_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET16_A::SETOUTPUT
-    }
-}
+pub type DIRSET16_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 16"]
+pub type DIRSET16_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET16`"]
 pub struct DIRSET16_W<'a> {
     w: &'a mut W,
@@ -1253,7 +787,7 @@ pub struct DIRSET16_W<'a> {
 impl<'a> DIRSET16_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET16_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET16_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1261,12 +795,12 @@ impl<'a> DIRSET16_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET16_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET16_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +819,12 @@ impl<'a> DIRSET16_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET17_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET17_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 17"]
+pub type DIRSET17_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET17`"]
-pub type DIRSET17_R = crate::R<bool, DIRSET17_A>;
-impl DIRSET17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET17_A {
-        match self.bits {
-            false => DIRSET17_A::NOP,
-            true => DIRSET17_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET17_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET17_A::SETOUTPUT
-    }
-}
+pub type DIRSET17_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 17"]
+pub type DIRSET17_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET17`"]
 pub struct DIRSET17_W<'a> {
     w: &'a mut W,
@@ -1328,7 +832,7 @@ pub struct DIRSET17_W<'a> {
 impl<'a> DIRSET17_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET17_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET17_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1336,12 +840,12 @@ impl<'a> DIRSET17_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET17_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET17_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +864,12 @@ impl<'a> DIRSET17_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET18_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET18_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 18"]
+pub type DIRSET18_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET18`"]
-pub type DIRSET18_R = crate::R<bool, DIRSET18_A>;
-impl DIRSET18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET18_A {
-        match self.bits {
-            false => DIRSET18_A::NOP,
-            true => DIRSET18_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET18_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET18_A::SETOUTPUT
-    }
-}
+pub type DIRSET18_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 18"]
+pub type DIRSET18_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET18`"]
 pub struct DIRSET18_W<'a> {
     w: &'a mut W,
@@ -1403,7 +877,7 @@ pub struct DIRSET18_W<'a> {
 impl<'a> DIRSET18_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET18_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET18_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1411,12 +885,12 @@ impl<'a> DIRSET18_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET18_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET18_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +909,12 @@ impl<'a> DIRSET18_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET19_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET19_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 19"]
+pub type DIRSET19_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET19`"]
-pub type DIRSET19_R = crate::R<bool, DIRSET19_A>;
-impl DIRSET19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET19_A {
-        match self.bits {
-            false => DIRSET19_A::NOP,
-            true => DIRSET19_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET19_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET19_A::SETOUTPUT
-    }
-}
+pub type DIRSET19_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 19"]
+pub type DIRSET19_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET19`"]
 pub struct DIRSET19_W<'a> {
     w: &'a mut W,
@@ -1478,7 +922,7 @@ pub struct DIRSET19_W<'a> {
 impl<'a> DIRSET19_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET19_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET19_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1486,12 +930,12 @@ impl<'a> DIRSET19_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET19_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET19_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +954,12 @@ impl<'a> DIRSET19_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET20_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET20_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 20"]
+pub type DIRSET20_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET20`"]
-pub type DIRSET20_R = crate::R<bool, DIRSET20_A>;
-impl DIRSET20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET20_A {
-        match self.bits {
-            false => DIRSET20_A::NOP,
-            true => DIRSET20_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET20_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET20_A::SETOUTPUT
-    }
-}
+pub type DIRSET20_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 20"]
+pub type DIRSET20_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET20`"]
 pub struct DIRSET20_W<'a> {
     w: &'a mut W,
@@ -1553,7 +967,7 @@ pub struct DIRSET20_W<'a> {
 impl<'a> DIRSET20_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET20_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET20_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1561,12 +975,12 @@ impl<'a> DIRSET20_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET20_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET20_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +999,12 @@ impl<'a> DIRSET20_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET21_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET21_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 21"]
+pub type DIRSET21_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET21`"]
-pub type DIRSET21_R = crate::R<bool, DIRSET21_A>;
-impl DIRSET21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET21_A {
-        match self.bits {
-            false => DIRSET21_A::NOP,
-            true => DIRSET21_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET21_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET21_A::SETOUTPUT
-    }
-}
+pub type DIRSET21_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 21"]
+pub type DIRSET21_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET21`"]
 pub struct DIRSET21_W<'a> {
     w: &'a mut W,
@@ -1628,7 +1012,7 @@ pub struct DIRSET21_W<'a> {
 impl<'a> DIRSET21_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET21_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET21_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1636,12 +1020,12 @@ impl<'a> DIRSET21_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET21_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET21_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +1044,12 @@ impl<'a> DIRSET21_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET22_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET22_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 22"]
+pub type DIRSET22_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET22`"]
-pub type DIRSET22_R = crate::R<bool, DIRSET22_A>;
-impl DIRSET22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET22_A {
-        match self.bits {
-            false => DIRSET22_A::NOP,
-            true => DIRSET22_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET22_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET22_A::SETOUTPUT
-    }
-}
+pub type DIRSET22_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 22"]
+pub type DIRSET22_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET22`"]
 pub struct DIRSET22_W<'a> {
     w: &'a mut W,
@@ -1703,7 +1057,7 @@ pub struct DIRSET22_W<'a> {
 impl<'a> DIRSET22_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET22_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET22_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1711,12 +1065,12 @@ impl<'a> DIRSET22_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET22_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET22_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1089,12 @@ impl<'a> DIRSET22_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET23_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET23_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 23"]
+pub type DIRSET23_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET23`"]
-pub type DIRSET23_R = crate::R<bool, DIRSET23_A>;
-impl DIRSET23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET23_A {
-        match self.bits {
-            false => DIRSET23_A::NOP,
-            true => DIRSET23_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET23_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET23_A::SETOUTPUT
-    }
-}
+pub type DIRSET23_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 23"]
+pub type DIRSET23_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET23`"]
 pub struct DIRSET23_W<'a> {
     w: &'a mut W,
@@ -1778,7 +1102,7 @@ pub struct DIRSET23_W<'a> {
 impl<'a> DIRSET23_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET23_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET23_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1786,12 +1110,12 @@ impl<'a> DIRSET23_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET23_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET23_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1134,12 @@ impl<'a> DIRSET23_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET24_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET24_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 24"]
+pub type DIRSET24_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET24`"]
-pub type DIRSET24_R = crate::R<bool, DIRSET24_A>;
-impl DIRSET24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET24_A {
-        match self.bits {
-            false => DIRSET24_A::NOP,
-            true => DIRSET24_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET24_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET24_A::SETOUTPUT
-    }
-}
+pub type DIRSET24_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 24"]
+pub type DIRSET24_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET24`"]
 pub struct DIRSET24_W<'a> {
     w: &'a mut W,
@@ -1853,7 +1147,7 @@ pub struct DIRSET24_W<'a> {
 impl<'a> DIRSET24_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET24_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET24_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1861,12 +1155,12 @@ impl<'a> DIRSET24_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET24_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET24_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1179,12 @@ impl<'a> DIRSET24_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET25_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET25_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 25"]
+pub type DIRSET25_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET25`"]
-pub type DIRSET25_R = crate::R<bool, DIRSET25_A>;
-impl DIRSET25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET25_A {
-        match self.bits {
-            false => DIRSET25_A::NOP,
-            true => DIRSET25_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET25_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET25_A::SETOUTPUT
-    }
-}
+pub type DIRSET25_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 25"]
+pub type DIRSET25_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET25`"]
 pub struct DIRSET25_W<'a> {
     w: &'a mut W,
@@ -1928,7 +1192,7 @@ pub struct DIRSET25_W<'a> {
 impl<'a> DIRSET25_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET25_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET25_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1936,12 +1200,12 @@ impl<'a> DIRSET25_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET25_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET25_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1224,12 @@ impl<'a> DIRSET25_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET26_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET26_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 26"]
+pub type DIRSET26_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET26`"]
-pub type DIRSET26_R = crate::R<bool, DIRSET26_A>;
-impl DIRSET26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET26_A {
-        match self.bits {
-            false => DIRSET26_A::NOP,
-            true => DIRSET26_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET26_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET26_A::SETOUTPUT
-    }
-}
+pub type DIRSET26_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 26"]
+pub type DIRSET26_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET26`"]
 pub struct DIRSET26_W<'a> {
     w: &'a mut W,
@@ -2003,7 +1237,7 @@ pub struct DIRSET26_W<'a> {
 impl<'a> DIRSET26_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET26_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET26_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2011,12 +1245,12 @@ impl<'a> DIRSET26_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET26_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET26_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1269,12 @@ impl<'a> DIRSET26_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET27_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET27_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 27"]
+pub type DIRSET27_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET27`"]
-pub type DIRSET27_R = crate::R<bool, DIRSET27_A>;
-impl DIRSET27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET27_A {
-        match self.bits {
-            false => DIRSET27_A::NOP,
-            true => DIRSET27_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET27_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET27_A::SETOUTPUT
-    }
-}
+pub type DIRSET27_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 27"]
+pub type DIRSET27_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET27`"]
 pub struct DIRSET27_W<'a> {
     w: &'a mut W,
@@ -2078,7 +1282,7 @@ pub struct DIRSET27_W<'a> {
 impl<'a> DIRSET27_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET27_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET27_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2086,12 +1290,12 @@ impl<'a> DIRSET27_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET27_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET27_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1314,12 @@ impl<'a> DIRSET27_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET28_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET28_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 28"]
+pub type DIRSET28_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET28`"]
-pub type DIRSET28_R = crate::R<bool, DIRSET28_A>;
-impl DIRSET28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET28_A {
-        match self.bits {
-            false => DIRSET28_A::NOP,
-            true => DIRSET28_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET28_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET28_A::SETOUTPUT
-    }
-}
+pub type DIRSET28_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 28"]
+pub type DIRSET28_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET28`"]
 pub struct DIRSET28_W<'a> {
     w: &'a mut W,
@@ -2153,7 +1327,7 @@ pub struct DIRSET28_W<'a> {
 impl<'a> DIRSET28_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET28_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET28_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2161,12 +1335,12 @@ impl<'a> DIRSET28_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET28_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET28_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1359,12 @@ impl<'a> DIRSET28_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET29_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET29_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 29"]
+pub type DIRSET29_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET29`"]
-pub type DIRSET29_R = crate::R<bool, DIRSET29_A>;
-impl DIRSET29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET29_A {
-        match self.bits {
-            false => DIRSET29_A::NOP,
-            true => DIRSET29_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET29_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET29_A::SETOUTPUT
-    }
-}
+pub type DIRSET29_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 29"]
+pub type DIRSET29_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET29`"]
 pub struct DIRSET29_W<'a> {
     w: &'a mut W,
@@ -2228,7 +1372,7 @@ pub struct DIRSET29_W<'a> {
 impl<'a> DIRSET29_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET29_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET29_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2236,12 +1380,12 @@ impl<'a> DIRSET29_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET29_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET29_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1404,12 @@ impl<'a> DIRSET29_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET30_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET30_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 30"]
+pub type DIRSET30_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET30`"]
-pub type DIRSET30_R = crate::R<bool, DIRSET30_A>;
-impl DIRSET30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET30_A {
-        match self.bits {
-            false => DIRSET30_A::NOP,
-            true => DIRSET30_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET30_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET30_A::SETOUTPUT
-    }
-}
+pub type DIRSET30_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 30"]
+pub type DIRSET30_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET30`"]
 pub struct DIRSET30_W<'a> {
     w: &'a mut W,
@@ -2303,7 +1417,7 @@ pub struct DIRSET30_W<'a> {
 impl<'a> DIRSET30_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET30_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET30_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2311,12 +1425,12 @@ impl<'a> DIRSET30_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET30_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET30_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1449,12 @@ impl<'a> DIRSET30_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Set 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRSET31_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Make pin output"]
-    SETOUTPUT = 1,
-}
-impl From<DIRSET31_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRSET31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Set 31"]
+pub type DIRSET31_A = DIRSET0_A;
 #[doc = "Reader of field `DIRSET31`"]
-pub type DIRSET31_R = crate::R<bool, DIRSET31_A>;
-impl DIRSET31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRSET31_A {
-        match self.bits {
-            false => DIRSET31_A::NOP,
-            true => DIRSET31_A::SETOUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRSET31_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `SETOUTPUT`"]
-    #[inline(always)]
-    pub fn is_setoutput(&self) -> bool {
-        *self == DIRSET31_A::SETOUTPUT
-    }
-}
+pub type DIRSET31_R = crate::R<bool, DIRSET0_A>;
+#[doc = "Port Data Direction Set 31"]
+pub type DIRSET31_AW = DIRSET0_AW;
 #[doc = "Write proxy for field `DIRSET31`"]
 pub struct DIRSET31_W<'a> {
     w: &'a mut W,
@@ -2378,7 +1462,7 @@ pub struct DIRSET31_W<'a> {
 impl<'a> DIRSET31_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRSET31_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRSET31_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2386,12 +1470,12 @@ impl<'a> DIRSET31_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRSET31_A::NOP)
+        self.variant(DIRSET0_AW::NOP)
     }
     #[doc = "Make pin output"]
     #[inline(always)]
     pub fn setoutput(self) -> &'a mut W {
-        self.variant(DIRSET31_A::SETOUTPUT)
+        self.variant(DIRSET0_AW::SETOUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]

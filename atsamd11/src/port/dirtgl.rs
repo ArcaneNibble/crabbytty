@@ -13,10 +13,10 @@ impl crate::ResetValue for super::DIRTGL {
 #[doc = "Port Data Direction Toggle 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DIRTGL0_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
+    #[doc = "0: Input"]
+    INPUT = 0,
+    #[doc = "1: Output"]
+    OUTPUT = 1,
 }
 impl From<DIRTGL0_A> for bool {
     #[inline(always)]
@@ -31,19 +31,33 @@ impl DIRTGL0_R {
     #[inline(always)]
     pub fn variant(&self) -> DIRTGL0_A {
         match self.bits {
-            false => DIRTGL0_A::NOP,
-            true => DIRTGL0_A::TOGGLE,
+            false => DIRTGL0_A::INPUT,
+            true => DIRTGL0_A::OUTPUT,
         }
     }
-    #[doc = "Checks if the value of the field is `NOP`"]
+    #[doc = "Checks if the value of the field is `INPUT`"]
     #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL0_A::NOP
+    pub fn is_input(&self) -> bool {
+        *self == DIRTGL0_A::INPUT
     }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
+    #[doc = "Checks if the value of the field is `OUTPUT`"]
     #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL0_A::TOGGLE
+    pub fn is_output(&self) -> bool {
+        *self == DIRTGL0_A::OUTPUT
+    }
+}
+#[doc = "Port Data Direction Toggle 0\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DIRTGL0_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Toggle pin direction"]
+    TOGGLE = 1,
+}
+impl From<DIRTGL0_AW> for bool {
+    #[inline(always)]
+    fn from(variant: DIRTGL0_AW) -> Self {
+        variant as u8 != 0
     }
 }
 #[doc = "Write proxy for field `DIRTGL0`"]
@@ -53,7 +67,7 @@ pub struct DIRTGL0_W<'a> {
 impl<'a> DIRTGL0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL0_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL0_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -61,12 +75,12 @@ impl<'a> DIRTGL0_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL0_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL0_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -85,42 +99,12 @@ impl<'a> DIRTGL0_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL1_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL1_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 1"]
+pub type DIRTGL1_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL1`"]
-pub type DIRTGL1_R = crate::R<bool, DIRTGL1_A>;
-impl DIRTGL1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL1_A {
-        match self.bits {
-            false => DIRTGL1_A::NOP,
-            true => DIRTGL1_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL1_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL1_A::TOGGLE
-    }
-}
+pub type DIRTGL1_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 1"]
+pub type DIRTGL1_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL1`"]
 pub struct DIRTGL1_W<'a> {
     w: &'a mut W,
@@ -128,7 +112,7 @@ pub struct DIRTGL1_W<'a> {
 impl<'a> DIRTGL1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL1_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL1_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -136,12 +120,12 @@ impl<'a> DIRTGL1_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL1_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL1_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +144,12 @@ impl<'a> DIRTGL1_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL2_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL2_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 2"]
+pub type DIRTGL2_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL2`"]
-pub type DIRTGL2_R = crate::R<bool, DIRTGL2_A>;
-impl DIRTGL2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL2_A {
-        match self.bits {
-            false => DIRTGL2_A::NOP,
-            true => DIRTGL2_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL2_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL2_A::TOGGLE
-    }
-}
+pub type DIRTGL2_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 2"]
+pub type DIRTGL2_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL2`"]
 pub struct DIRTGL2_W<'a> {
     w: &'a mut W,
@@ -203,7 +157,7 @@ pub struct DIRTGL2_W<'a> {
 impl<'a> DIRTGL2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL2_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL2_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -211,12 +165,12 @@ impl<'a> DIRTGL2_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL2_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL2_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +189,12 @@ impl<'a> DIRTGL2_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL3_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL3_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 3"]
+pub type DIRTGL3_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL3`"]
-pub type DIRTGL3_R = crate::R<bool, DIRTGL3_A>;
-impl DIRTGL3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL3_A {
-        match self.bits {
-            false => DIRTGL3_A::NOP,
-            true => DIRTGL3_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL3_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL3_A::TOGGLE
-    }
-}
+pub type DIRTGL3_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 3"]
+pub type DIRTGL3_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL3`"]
 pub struct DIRTGL3_W<'a> {
     w: &'a mut W,
@@ -278,7 +202,7 @@ pub struct DIRTGL3_W<'a> {
 impl<'a> DIRTGL3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL3_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL3_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -286,12 +210,12 @@ impl<'a> DIRTGL3_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL3_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL3_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +234,12 @@ impl<'a> DIRTGL3_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL4_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL4_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 4"]
+pub type DIRTGL4_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL4`"]
-pub type DIRTGL4_R = crate::R<bool, DIRTGL4_A>;
-impl DIRTGL4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL4_A {
-        match self.bits {
-            false => DIRTGL4_A::NOP,
-            true => DIRTGL4_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL4_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL4_A::TOGGLE
-    }
-}
+pub type DIRTGL4_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 4"]
+pub type DIRTGL4_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL4`"]
 pub struct DIRTGL4_W<'a> {
     w: &'a mut W,
@@ -353,7 +247,7 @@ pub struct DIRTGL4_W<'a> {
 impl<'a> DIRTGL4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL4_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL4_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -361,12 +255,12 @@ impl<'a> DIRTGL4_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL4_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL4_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +279,12 @@ impl<'a> DIRTGL4_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL5_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL5_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 5"]
+pub type DIRTGL5_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL5`"]
-pub type DIRTGL5_R = crate::R<bool, DIRTGL5_A>;
-impl DIRTGL5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL5_A {
-        match self.bits {
-            false => DIRTGL5_A::NOP,
-            true => DIRTGL5_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL5_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL5_A::TOGGLE
-    }
-}
+pub type DIRTGL5_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 5"]
+pub type DIRTGL5_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL5`"]
 pub struct DIRTGL5_W<'a> {
     w: &'a mut W,
@@ -428,7 +292,7 @@ pub struct DIRTGL5_W<'a> {
 impl<'a> DIRTGL5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL5_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL5_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -436,12 +300,12 @@ impl<'a> DIRTGL5_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL5_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL5_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +324,12 @@ impl<'a> DIRTGL5_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL6_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL6_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 6"]
+pub type DIRTGL6_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL6`"]
-pub type DIRTGL6_R = crate::R<bool, DIRTGL6_A>;
-impl DIRTGL6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL6_A {
-        match self.bits {
-            false => DIRTGL6_A::NOP,
-            true => DIRTGL6_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL6_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL6_A::TOGGLE
-    }
-}
+pub type DIRTGL6_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 6"]
+pub type DIRTGL6_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL6`"]
 pub struct DIRTGL6_W<'a> {
     w: &'a mut W,
@@ -503,7 +337,7 @@ pub struct DIRTGL6_W<'a> {
 impl<'a> DIRTGL6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL6_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL6_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -511,12 +345,12 @@ impl<'a> DIRTGL6_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL6_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL6_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +369,12 @@ impl<'a> DIRTGL6_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL7_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL7_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 7"]
+pub type DIRTGL7_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL7`"]
-pub type DIRTGL7_R = crate::R<bool, DIRTGL7_A>;
-impl DIRTGL7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL7_A {
-        match self.bits {
-            false => DIRTGL7_A::NOP,
-            true => DIRTGL7_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL7_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL7_A::TOGGLE
-    }
-}
+pub type DIRTGL7_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 7"]
+pub type DIRTGL7_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL7`"]
 pub struct DIRTGL7_W<'a> {
     w: &'a mut W,
@@ -578,7 +382,7 @@ pub struct DIRTGL7_W<'a> {
 impl<'a> DIRTGL7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL7_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL7_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -586,12 +390,12 @@ impl<'a> DIRTGL7_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL7_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL7_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +414,12 @@ impl<'a> DIRTGL7_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL8_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL8_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 8"]
+pub type DIRTGL8_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL8`"]
-pub type DIRTGL8_R = crate::R<bool, DIRTGL8_A>;
-impl DIRTGL8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL8_A {
-        match self.bits {
-            false => DIRTGL8_A::NOP,
-            true => DIRTGL8_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL8_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL8_A::TOGGLE
-    }
-}
+pub type DIRTGL8_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 8"]
+pub type DIRTGL8_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL8`"]
 pub struct DIRTGL8_W<'a> {
     w: &'a mut W,
@@ -653,7 +427,7 @@ pub struct DIRTGL8_W<'a> {
 impl<'a> DIRTGL8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL8_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL8_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -661,12 +435,12 @@ impl<'a> DIRTGL8_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL8_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL8_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +459,12 @@ impl<'a> DIRTGL8_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL9_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL9_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 9"]
+pub type DIRTGL9_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL9`"]
-pub type DIRTGL9_R = crate::R<bool, DIRTGL9_A>;
-impl DIRTGL9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL9_A {
-        match self.bits {
-            false => DIRTGL9_A::NOP,
-            true => DIRTGL9_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL9_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL9_A::TOGGLE
-    }
-}
+pub type DIRTGL9_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 9"]
+pub type DIRTGL9_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL9`"]
 pub struct DIRTGL9_W<'a> {
     w: &'a mut W,
@@ -728,7 +472,7 @@ pub struct DIRTGL9_W<'a> {
 impl<'a> DIRTGL9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL9_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL9_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -736,12 +480,12 @@ impl<'a> DIRTGL9_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL9_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL9_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +504,12 @@ impl<'a> DIRTGL9_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL10_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL10_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 10"]
+pub type DIRTGL10_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL10`"]
-pub type DIRTGL10_R = crate::R<bool, DIRTGL10_A>;
-impl DIRTGL10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL10_A {
-        match self.bits {
-            false => DIRTGL10_A::NOP,
-            true => DIRTGL10_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL10_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL10_A::TOGGLE
-    }
-}
+pub type DIRTGL10_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 10"]
+pub type DIRTGL10_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL10`"]
 pub struct DIRTGL10_W<'a> {
     w: &'a mut W,
@@ -803,7 +517,7 @@ pub struct DIRTGL10_W<'a> {
 impl<'a> DIRTGL10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL10_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL10_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -811,12 +525,12 @@ impl<'a> DIRTGL10_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL10_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL10_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +549,12 @@ impl<'a> DIRTGL10_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL11_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL11_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 11"]
+pub type DIRTGL11_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL11`"]
-pub type DIRTGL11_R = crate::R<bool, DIRTGL11_A>;
-impl DIRTGL11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL11_A {
-        match self.bits {
-            false => DIRTGL11_A::NOP,
-            true => DIRTGL11_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL11_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL11_A::TOGGLE
-    }
-}
+pub type DIRTGL11_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 11"]
+pub type DIRTGL11_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL11`"]
 pub struct DIRTGL11_W<'a> {
     w: &'a mut W,
@@ -878,7 +562,7 @@ pub struct DIRTGL11_W<'a> {
 impl<'a> DIRTGL11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL11_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL11_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -886,12 +570,12 @@ impl<'a> DIRTGL11_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL11_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL11_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +594,12 @@ impl<'a> DIRTGL11_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL12_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL12_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 12"]
+pub type DIRTGL12_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL12`"]
-pub type DIRTGL12_R = crate::R<bool, DIRTGL12_A>;
-impl DIRTGL12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL12_A {
-        match self.bits {
-            false => DIRTGL12_A::NOP,
-            true => DIRTGL12_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL12_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL12_A::TOGGLE
-    }
-}
+pub type DIRTGL12_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 12"]
+pub type DIRTGL12_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL12`"]
 pub struct DIRTGL12_W<'a> {
     w: &'a mut W,
@@ -953,7 +607,7 @@ pub struct DIRTGL12_W<'a> {
 impl<'a> DIRTGL12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL12_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL12_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -961,12 +615,12 @@ impl<'a> DIRTGL12_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL12_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL12_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +639,12 @@ impl<'a> DIRTGL12_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL13_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL13_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 13"]
+pub type DIRTGL13_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL13`"]
-pub type DIRTGL13_R = crate::R<bool, DIRTGL13_A>;
-impl DIRTGL13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL13_A {
-        match self.bits {
-            false => DIRTGL13_A::NOP,
-            true => DIRTGL13_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL13_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL13_A::TOGGLE
-    }
-}
+pub type DIRTGL13_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 13"]
+pub type DIRTGL13_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL13`"]
 pub struct DIRTGL13_W<'a> {
     w: &'a mut W,
@@ -1028,7 +652,7 @@ pub struct DIRTGL13_W<'a> {
 impl<'a> DIRTGL13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL13_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL13_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1036,12 +660,12 @@ impl<'a> DIRTGL13_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL13_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL13_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +684,12 @@ impl<'a> DIRTGL13_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL14_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL14_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 14"]
+pub type DIRTGL14_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL14`"]
-pub type DIRTGL14_R = crate::R<bool, DIRTGL14_A>;
-impl DIRTGL14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL14_A {
-        match self.bits {
-            false => DIRTGL14_A::NOP,
-            true => DIRTGL14_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL14_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL14_A::TOGGLE
-    }
-}
+pub type DIRTGL14_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 14"]
+pub type DIRTGL14_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL14`"]
 pub struct DIRTGL14_W<'a> {
     w: &'a mut W,
@@ -1103,7 +697,7 @@ pub struct DIRTGL14_W<'a> {
 impl<'a> DIRTGL14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL14_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL14_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1111,12 +705,12 @@ impl<'a> DIRTGL14_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL14_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL14_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +729,12 @@ impl<'a> DIRTGL14_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL15_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL15_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 15"]
+pub type DIRTGL15_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL15`"]
-pub type DIRTGL15_R = crate::R<bool, DIRTGL15_A>;
-impl DIRTGL15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL15_A {
-        match self.bits {
-            false => DIRTGL15_A::NOP,
-            true => DIRTGL15_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL15_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL15_A::TOGGLE
-    }
-}
+pub type DIRTGL15_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 15"]
+pub type DIRTGL15_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL15`"]
 pub struct DIRTGL15_W<'a> {
     w: &'a mut W,
@@ -1178,7 +742,7 @@ pub struct DIRTGL15_W<'a> {
 impl<'a> DIRTGL15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL15_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL15_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1186,12 +750,12 @@ impl<'a> DIRTGL15_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL15_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL15_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +774,12 @@ impl<'a> DIRTGL15_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL16_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL16_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 16"]
+pub type DIRTGL16_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL16`"]
-pub type DIRTGL16_R = crate::R<bool, DIRTGL16_A>;
-impl DIRTGL16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL16_A {
-        match self.bits {
-            false => DIRTGL16_A::NOP,
-            true => DIRTGL16_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL16_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL16_A::TOGGLE
-    }
-}
+pub type DIRTGL16_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 16"]
+pub type DIRTGL16_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL16`"]
 pub struct DIRTGL16_W<'a> {
     w: &'a mut W,
@@ -1253,7 +787,7 @@ pub struct DIRTGL16_W<'a> {
 impl<'a> DIRTGL16_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL16_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL16_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1261,12 +795,12 @@ impl<'a> DIRTGL16_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL16_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL16_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +819,12 @@ impl<'a> DIRTGL16_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL17_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL17_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 17"]
+pub type DIRTGL17_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL17`"]
-pub type DIRTGL17_R = crate::R<bool, DIRTGL17_A>;
-impl DIRTGL17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL17_A {
-        match self.bits {
-            false => DIRTGL17_A::NOP,
-            true => DIRTGL17_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL17_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL17_A::TOGGLE
-    }
-}
+pub type DIRTGL17_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 17"]
+pub type DIRTGL17_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL17`"]
 pub struct DIRTGL17_W<'a> {
     w: &'a mut W,
@@ -1328,7 +832,7 @@ pub struct DIRTGL17_W<'a> {
 impl<'a> DIRTGL17_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL17_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL17_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1336,12 +840,12 @@ impl<'a> DIRTGL17_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL17_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL17_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +864,12 @@ impl<'a> DIRTGL17_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL18_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL18_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 18"]
+pub type DIRTGL18_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL18`"]
-pub type DIRTGL18_R = crate::R<bool, DIRTGL18_A>;
-impl DIRTGL18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL18_A {
-        match self.bits {
-            false => DIRTGL18_A::NOP,
-            true => DIRTGL18_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL18_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL18_A::TOGGLE
-    }
-}
+pub type DIRTGL18_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 18"]
+pub type DIRTGL18_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL18`"]
 pub struct DIRTGL18_W<'a> {
     w: &'a mut W,
@@ -1403,7 +877,7 @@ pub struct DIRTGL18_W<'a> {
 impl<'a> DIRTGL18_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL18_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL18_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1411,12 +885,12 @@ impl<'a> DIRTGL18_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL18_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL18_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +909,12 @@ impl<'a> DIRTGL18_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL19_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL19_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 19"]
+pub type DIRTGL19_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL19`"]
-pub type DIRTGL19_R = crate::R<bool, DIRTGL19_A>;
-impl DIRTGL19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL19_A {
-        match self.bits {
-            false => DIRTGL19_A::NOP,
-            true => DIRTGL19_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL19_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL19_A::TOGGLE
-    }
-}
+pub type DIRTGL19_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 19"]
+pub type DIRTGL19_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL19`"]
 pub struct DIRTGL19_W<'a> {
     w: &'a mut W,
@@ -1478,7 +922,7 @@ pub struct DIRTGL19_W<'a> {
 impl<'a> DIRTGL19_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL19_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL19_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1486,12 +930,12 @@ impl<'a> DIRTGL19_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL19_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL19_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +954,12 @@ impl<'a> DIRTGL19_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL20_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL20_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 20"]
+pub type DIRTGL20_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL20`"]
-pub type DIRTGL20_R = crate::R<bool, DIRTGL20_A>;
-impl DIRTGL20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL20_A {
-        match self.bits {
-            false => DIRTGL20_A::NOP,
-            true => DIRTGL20_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL20_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL20_A::TOGGLE
-    }
-}
+pub type DIRTGL20_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 20"]
+pub type DIRTGL20_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL20`"]
 pub struct DIRTGL20_W<'a> {
     w: &'a mut W,
@@ -1553,7 +967,7 @@ pub struct DIRTGL20_W<'a> {
 impl<'a> DIRTGL20_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL20_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL20_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1561,12 +975,12 @@ impl<'a> DIRTGL20_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL20_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL20_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +999,12 @@ impl<'a> DIRTGL20_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL21_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL21_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 21"]
+pub type DIRTGL21_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL21`"]
-pub type DIRTGL21_R = crate::R<bool, DIRTGL21_A>;
-impl DIRTGL21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL21_A {
-        match self.bits {
-            false => DIRTGL21_A::NOP,
-            true => DIRTGL21_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL21_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL21_A::TOGGLE
-    }
-}
+pub type DIRTGL21_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 21"]
+pub type DIRTGL21_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL21`"]
 pub struct DIRTGL21_W<'a> {
     w: &'a mut W,
@@ -1628,7 +1012,7 @@ pub struct DIRTGL21_W<'a> {
 impl<'a> DIRTGL21_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL21_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL21_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1636,12 +1020,12 @@ impl<'a> DIRTGL21_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL21_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL21_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +1044,12 @@ impl<'a> DIRTGL21_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL22_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL22_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 22"]
+pub type DIRTGL22_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL22`"]
-pub type DIRTGL22_R = crate::R<bool, DIRTGL22_A>;
-impl DIRTGL22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL22_A {
-        match self.bits {
-            false => DIRTGL22_A::NOP,
-            true => DIRTGL22_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL22_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL22_A::TOGGLE
-    }
-}
+pub type DIRTGL22_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 22"]
+pub type DIRTGL22_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL22`"]
 pub struct DIRTGL22_W<'a> {
     w: &'a mut W,
@@ -1703,7 +1057,7 @@ pub struct DIRTGL22_W<'a> {
 impl<'a> DIRTGL22_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL22_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL22_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1711,12 +1065,12 @@ impl<'a> DIRTGL22_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL22_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL22_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1089,12 @@ impl<'a> DIRTGL22_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL23_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL23_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 23"]
+pub type DIRTGL23_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL23`"]
-pub type DIRTGL23_R = crate::R<bool, DIRTGL23_A>;
-impl DIRTGL23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL23_A {
-        match self.bits {
-            false => DIRTGL23_A::NOP,
-            true => DIRTGL23_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL23_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL23_A::TOGGLE
-    }
-}
+pub type DIRTGL23_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 23"]
+pub type DIRTGL23_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL23`"]
 pub struct DIRTGL23_W<'a> {
     w: &'a mut W,
@@ -1778,7 +1102,7 @@ pub struct DIRTGL23_W<'a> {
 impl<'a> DIRTGL23_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL23_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL23_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1786,12 +1110,12 @@ impl<'a> DIRTGL23_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL23_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL23_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1134,12 @@ impl<'a> DIRTGL23_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL24_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL24_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 24"]
+pub type DIRTGL24_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL24`"]
-pub type DIRTGL24_R = crate::R<bool, DIRTGL24_A>;
-impl DIRTGL24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL24_A {
-        match self.bits {
-            false => DIRTGL24_A::NOP,
-            true => DIRTGL24_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL24_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL24_A::TOGGLE
-    }
-}
+pub type DIRTGL24_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 24"]
+pub type DIRTGL24_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL24`"]
 pub struct DIRTGL24_W<'a> {
     w: &'a mut W,
@@ -1853,7 +1147,7 @@ pub struct DIRTGL24_W<'a> {
 impl<'a> DIRTGL24_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL24_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL24_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1861,12 +1155,12 @@ impl<'a> DIRTGL24_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL24_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL24_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1179,12 @@ impl<'a> DIRTGL24_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL25_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL25_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 25"]
+pub type DIRTGL25_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL25`"]
-pub type DIRTGL25_R = crate::R<bool, DIRTGL25_A>;
-impl DIRTGL25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL25_A {
-        match self.bits {
-            false => DIRTGL25_A::NOP,
-            true => DIRTGL25_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL25_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL25_A::TOGGLE
-    }
-}
+pub type DIRTGL25_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 25"]
+pub type DIRTGL25_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL25`"]
 pub struct DIRTGL25_W<'a> {
     w: &'a mut W,
@@ -1928,7 +1192,7 @@ pub struct DIRTGL25_W<'a> {
 impl<'a> DIRTGL25_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL25_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL25_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1936,12 +1200,12 @@ impl<'a> DIRTGL25_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL25_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL25_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1224,12 @@ impl<'a> DIRTGL25_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL26_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL26_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 26"]
+pub type DIRTGL26_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL26`"]
-pub type DIRTGL26_R = crate::R<bool, DIRTGL26_A>;
-impl DIRTGL26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL26_A {
-        match self.bits {
-            false => DIRTGL26_A::NOP,
-            true => DIRTGL26_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL26_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL26_A::TOGGLE
-    }
-}
+pub type DIRTGL26_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 26"]
+pub type DIRTGL26_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL26`"]
 pub struct DIRTGL26_W<'a> {
     w: &'a mut W,
@@ -2003,7 +1237,7 @@ pub struct DIRTGL26_W<'a> {
 impl<'a> DIRTGL26_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL26_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL26_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2011,12 +1245,12 @@ impl<'a> DIRTGL26_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL26_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL26_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1269,12 @@ impl<'a> DIRTGL26_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL27_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL27_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 27"]
+pub type DIRTGL27_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL27`"]
-pub type DIRTGL27_R = crate::R<bool, DIRTGL27_A>;
-impl DIRTGL27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL27_A {
-        match self.bits {
-            false => DIRTGL27_A::NOP,
-            true => DIRTGL27_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL27_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL27_A::TOGGLE
-    }
-}
+pub type DIRTGL27_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 27"]
+pub type DIRTGL27_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL27`"]
 pub struct DIRTGL27_W<'a> {
     w: &'a mut W,
@@ -2078,7 +1282,7 @@ pub struct DIRTGL27_W<'a> {
 impl<'a> DIRTGL27_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL27_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL27_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2086,12 +1290,12 @@ impl<'a> DIRTGL27_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL27_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL27_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1314,12 @@ impl<'a> DIRTGL27_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL28_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL28_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 28"]
+pub type DIRTGL28_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL28`"]
-pub type DIRTGL28_R = crate::R<bool, DIRTGL28_A>;
-impl DIRTGL28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL28_A {
-        match self.bits {
-            false => DIRTGL28_A::NOP,
-            true => DIRTGL28_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL28_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL28_A::TOGGLE
-    }
-}
+pub type DIRTGL28_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 28"]
+pub type DIRTGL28_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL28`"]
 pub struct DIRTGL28_W<'a> {
     w: &'a mut W,
@@ -2153,7 +1327,7 @@ pub struct DIRTGL28_W<'a> {
 impl<'a> DIRTGL28_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL28_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL28_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2161,12 +1335,12 @@ impl<'a> DIRTGL28_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL28_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL28_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1359,12 @@ impl<'a> DIRTGL28_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL29_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL29_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 29"]
+pub type DIRTGL29_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL29`"]
-pub type DIRTGL29_R = crate::R<bool, DIRTGL29_A>;
-impl DIRTGL29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL29_A {
-        match self.bits {
-            false => DIRTGL29_A::NOP,
-            true => DIRTGL29_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL29_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL29_A::TOGGLE
-    }
-}
+pub type DIRTGL29_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 29"]
+pub type DIRTGL29_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL29`"]
 pub struct DIRTGL29_W<'a> {
     w: &'a mut W,
@@ -2228,7 +1372,7 @@ pub struct DIRTGL29_W<'a> {
 impl<'a> DIRTGL29_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL29_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL29_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2236,12 +1380,12 @@ impl<'a> DIRTGL29_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL29_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL29_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1404,12 @@ impl<'a> DIRTGL29_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL30_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL30_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 30"]
+pub type DIRTGL30_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL30`"]
-pub type DIRTGL30_R = crate::R<bool, DIRTGL30_A>;
-impl DIRTGL30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL30_A {
-        match self.bits {
-            false => DIRTGL30_A::NOP,
-            true => DIRTGL30_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL30_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL30_A::TOGGLE
-    }
-}
+pub type DIRTGL30_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 30"]
+pub type DIRTGL30_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL30`"]
 pub struct DIRTGL30_W<'a> {
     w: &'a mut W,
@@ -2303,7 +1417,7 @@ pub struct DIRTGL30_W<'a> {
 impl<'a> DIRTGL30_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL30_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL30_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2311,12 +1425,12 @@ impl<'a> DIRTGL30_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL30_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL30_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1449,12 @@ impl<'a> DIRTGL30_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction Toggle 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIRTGL31_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Toggle pin direction"]
-    TOGGLE = 1,
-}
-impl From<DIRTGL31_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIRTGL31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction Toggle 31"]
+pub type DIRTGL31_A = DIRTGL0_A;
 #[doc = "Reader of field `DIRTGL31`"]
-pub type DIRTGL31_R = crate::R<bool, DIRTGL31_A>;
-impl DIRTGL31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIRTGL31_A {
-        match self.bits {
-            false => DIRTGL31_A::NOP,
-            true => DIRTGL31_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == DIRTGL31_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == DIRTGL31_A::TOGGLE
-    }
-}
+pub type DIRTGL31_R = crate::R<bool, DIRTGL0_A>;
+#[doc = "Port Data Direction Toggle 31"]
+pub type DIRTGL31_AW = DIRTGL0_AW;
 #[doc = "Write proxy for field `DIRTGL31`"]
 pub struct DIRTGL31_W<'a> {
     w: &'a mut W,
@@ -2378,7 +1462,7 @@ pub struct DIRTGL31_W<'a> {
 impl<'a> DIRTGL31_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: DIRTGL31_A) -> &'a mut W {
+    pub fn variant(self, variant: DIRTGL31_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2386,12 +1470,12 @@ impl<'a> DIRTGL31_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(DIRTGL31_A::NOP)
+        self.variant(DIRTGL0_AW::NOP)
     }
     #[doc = "Toggle pin direction"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(DIRTGL31_A::TOGGLE)
+        self.variant(DIRTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]

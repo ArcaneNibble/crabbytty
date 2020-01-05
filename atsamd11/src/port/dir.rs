@@ -85,42 +85,10 @@ impl<'a> DIR0_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR1_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR1_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 1"]
+pub type DIR1_A = DIR0_A;
 #[doc = "Reader of field `DIR1`"]
-pub type DIR1_R = crate::R<bool, DIR1_A>;
-impl DIR1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR1_A {
-        match self.bits {
-            false => DIR1_A::INPUT,
-            true => DIR1_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR1_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR1_A::OUTPUT
-    }
-}
+pub type DIR1_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR1`"]
 pub struct DIR1_W<'a> {
     w: &'a mut W,
@@ -136,12 +104,12 @@ impl<'a> DIR1_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR1_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR1_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +128,10 @@ impl<'a> DIR1_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR2_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR2_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 2"]
+pub type DIR2_A = DIR0_A;
 #[doc = "Reader of field `DIR2`"]
-pub type DIR2_R = crate::R<bool, DIR2_A>;
-impl DIR2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR2_A {
-        match self.bits {
-            false => DIR2_A::INPUT,
-            true => DIR2_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR2_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR2_A::OUTPUT
-    }
-}
+pub type DIR2_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR2`"]
 pub struct DIR2_W<'a> {
     w: &'a mut W,
@@ -211,12 +147,12 @@ impl<'a> DIR2_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR2_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR2_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +171,10 @@ impl<'a> DIR2_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR3_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR3_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 3"]
+pub type DIR3_A = DIR0_A;
 #[doc = "Reader of field `DIR3`"]
-pub type DIR3_R = crate::R<bool, DIR3_A>;
-impl DIR3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR3_A {
-        match self.bits {
-            false => DIR3_A::INPUT,
-            true => DIR3_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR3_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR3_A::OUTPUT
-    }
-}
+pub type DIR3_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR3`"]
 pub struct DIR3_W<'a> {
     w: &'a mut W,
@@ -286,12 +190,12 @@ impl<'a> DIR3_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR3_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR3_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +214,10 @@ impl<'a> DIR3_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR4_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR4_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 4"]
+pub type DIR4_A = DIR0_A;
 #[doc = "Reader of field `DIR4`"]
-pub type DIR4_R = crate::R<bool, DIR4_A>;
-impl DIR4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR4_A {
-        match self.bits {
-            false => DIR4_A::INPUT,
-            true => DIR4_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR4_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR4_A::OUTPUT
-    }
-}
+pub type DIR4_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR4`"]
 pub struct DIR4_W<'a> {
     w: &'a mut W,
@@ -361,12 +233,12 @@ impl<'a> DIR4_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR4_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR4_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +257,10 @@ impl<'a> DIR4_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR5_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR5_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 5"]
+pub type DIR5_A = DIR0_A;
 #[doc = "Reader of field `DIR5`"]
-pub type DIR5_R = crate::R<bool, DIR5_A>;
-impl DIR5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR5_A {
-        match self.bits {
-            false => DIR5_A::INPUT,
-            true => DIR5_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR5_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR5_A::OUTPUT
-    }
-}
+pub type DIR5_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR5`"]
 pub struct DIR5_W<'a> {
     w: &'a mut W,
@@ -436,12 +276,12 @@ impl<'a> DIR5_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR5_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR5_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +300,10 @@ impl<'a> DIR5_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR6_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR6_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 6"]
+pub type DIR6_A = DIR0_A;
 #[doc = "Reader of field `DIR6`"]
-pub type DIR6_R = crate::R<bool, DIR6_A>;
-impl DIR6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR6_A {
-        match self.bits {
-            false => DIR6_A::INPUT,
-            true => DIR6_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR6_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR6_A::OUTPUT
-    }
-}
+pub type DIR6_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR6`"]
 pub struct DIR6_W<'a> {
     w: &'a mut W,
@@ -511,12 +319,12 @@ impl<'a> DIR6_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR6_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR6_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +343,10 @@ impl<'a> DIR6_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR7_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR7_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 7"]
+pub type DIR7_A = DIR0_A;
 #[doc = "Reader of field `DIR7`"]
-pub type DIR7_R = crate::R<bool, DIR7_A>;
-impl DIR7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR7_A {
-        match self.bits {
-            false => DIR7_A::INPUT,
-            true => DIR7_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR7_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR7_A::OUTPUT
-    }
-}
+pub type DIR7_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR7`"]
 pub struct DIR7_W<'a> {
     w: &'a mut W,
@@ -586,12 +362,12 @@ impl<'a> DIR7_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR7_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR7_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +386,10 @@ impl<'a> DIR7_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR8_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR8_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 8"]
+pub type DIR8_A = DIR0_A;
 #[doc = "Reader of field `DIR8`"]
-pub type DIR8_R = crate::R<bool, DIR8_A>;
-impl DIR8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR8_A {
-        match self.bits {
-            false => DIR8_A::INPUT,
-            true => DIR8_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR8_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR8_A::OUTPUT
-    }
-}
+pub type DIR8_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR8`"]
 pub struct DIR8_W<'a> {
     w: &'a mut W,
@@ -661,12 +405,12 @@ impl<'a> DIR8_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR8_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR8_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +429,10 @@ impl<'a> DIR8_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR9_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR9_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 9"]
+pub type DIR9_A = DIR0_A;
 #[doc = "Reader of field `DIR9`"]
-pub type DIR9_R = crate::R<bool, DIR9_A>;
-impl DIR9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR9_A {
-        match self.bits {
-            false => DIR9_A::INPUT,
-            true => DIR9_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR9_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR9_A::OUTPUT
-    }
-}
+pub type DIR9_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR9`"]
 pub struct DIR9_W<'a> {
     w: &'a mut W,
@@ -736,12 +448,12 @@ impl<'a> DIR9_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR9_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR9_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +472,10 @@ impl<'a> DIR9_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR10_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR10_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 10"]
+pub type DIR10_A = DIR0_A;
 #[doc = "Reader of field `DIR10`"]
-pub type DIR10_R = crate::R<bool, DIR10_A>;
-impl DIR10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR10_A {
-        match self.bits {
-            false => DIR10_A::INPUT,
-            true => DIR10_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR10_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR10_A::OUTPUT
-    }
-}
+pub type DIR10_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR10`"]
 pub struct DIR10_W<'a> {
     w: &'a mut W,
@@ -811,12 +491,12 @@ impl<'a> DIR10_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR10_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR10_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +515,10 @@ impl<'a> DIR10_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR11_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR11_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 11"]
+pub type DIR11_A = DIR0_A;
 #[doc = "Reader of field `DIR11`"]
-pub type DIR11_R = crate::R<bool, DIR11_A>;
-impl DIR11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR11_A {
-        match self.bits {
-            false => DIR11_A::INPUT,
-            true => DIR11_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR11_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR11_A::OUTPUT
-    }
-}
+pub type DIR11_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR11`"]
 pub struct DIR11_W<'a> {
     w: &'a mut W,
@@ -886,12 +534,12 @@ impl<'a> DIR11_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR11_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR11_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +558,10 @@ impl<'a> DIR11_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR12_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR12_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 12"]
+pub type DIR12_A = DIR0_A;
 #[doc = "Reader of field `DIR12`"]
-pub type DIR12_R = crate::R<bool, DIR12_A>;
-impl DIR12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR12_A {
-        match self.bits {
-            false => DIR12_A::INPUT,
-            true => DIR12_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR12_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR12_A::OUTPUT
-    }
-}
+pub type DIR12_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR12`"]
 pub struct DIR12_W<'a> {
     w: &'a mut W,
@@ -961,12 +577,12 @@ impl<'a> DIR12_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR12_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR12_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +601,10 @@ impl<'a> DIR12_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR13_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR13_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 13"]
+pub type DIR13_A = DIR0_A;
 #[doc = "Reader of field `DIR13`"]
-pub type DIR13_R = crate::R<bool, DIR13_A>;
-impl DIR13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR13_A {
-        match self.bits {
-            false => DIR13_A::INPUT,
-            true => DIR13_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR13_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR13_A::OUTPUT
-    }
-}
+pub type DIR13_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR13`"]
 pub struct DIR13_W<'a> {
     w: &'a mut W,
@@ -1036,12 +620,12 @@ impl<'a> DIR13_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR13_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR13_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +644,10 @@ impl<'a> DIR13_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR14_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR14_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 14"]
+pub type DIR14_A = DIR0_A;
 #[doc = "Reader of field `DIR14`"]
-pub type DIR14_R = crate::R<bool, DIR14_A>;
-impl DIR14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR14_A {
-        match self.bits {
-            false => DIR14_A::INPUT,
-            true => DIR14_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR14_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR14_A::OUTPUT
-    }
-}
+pub type DIR14_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR14`"]
 pub struct DIR14_W<'a> {
     w: &'a mut W,
@@ -1111,12 +663,12 @@ impl<'a> DIR14_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR14_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR14_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +687,10 @@ impl<'a> DIR14_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR15_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR15_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 15"]
+pub type DIR15_A = DIR0_A;
 #[doc = "Reader of field `DIR15`"]
-pub type DIR15_R = crate::R<bool, DIR15_A>;
-impl DIR15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR15_A {
-        match self.bits {
-            false => DIR15_A::INPUT,
-            true => DIR15_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR15_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR15_A::OUTPUT
-    }
-}
+pub type DIR15_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR15`"]
 pub struct DIR15_W<'a> {
     w: &'a mut W,
@@ -1186,12 +706,12 @@ impl<'a> DIR15_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR15_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR15_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +730,10 @@ impl<'a> DIR15_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR16_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR16_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 16"]
+pub type DIR16_A = DIR0_A;
 #[doc = "Reader of field `DIR16`"]
-pub type DIR16_R = crate::R<bool, DIR16_A>;
-impl DIR16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR16_A {
-        match self.bits {
-            false => DIR16_A::INPUT,
-            true => DIR16_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR16_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR16_A::OUTPUT
-    }
-}
+pub type DIR16_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR16`"]
 pub struct DIR16_W<'a> {
     w: &'a mut W,
@@ -1261,12 +749,12 @@ impl<'a> DIR16_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR16_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR16_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +773,10 @@ impl<'a> DIR16_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR17_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR17_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 17"]
+pub type DIR17_A = DIR0_A;
 #[doc = "Reader of field `DIR17`"]
-pub type DIR17_R = crate::R<bool, DIR17_A>;
-impl DIR17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR17_A {
-        match self.bits {
-            false => DIR17_A::INPUT,
-            true => DIR17_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR17_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR17_A::OUTPUT
-    }
-}
+pub type DIR17_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR17`"]
 pub struct DIR17_W<'a> {
     w: &'a mut W,
@@ -1336,12 +792,12 @@ impl<'a> DIR17_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR17_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR17_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +816,10 @@ impl<'a> DIR17_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR18_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR18_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 18"]
+pub type DIR18_A = DIR0_A;
 #[doc = "Reader of field `DIR18`"]
-pub type DIR18_R = crate::R<bool, DIR18_A>;
-impl DIR18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR18_A {
-        match self.bits {
-            false => DIR18_A::INPUT,
-            true => DIR18_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR18_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR18_A::OUTPUT
-    }
-}
+pub type DIR18_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR18`"]
 pub struct DIR18_W<'a> {
     w: &'a mut W,
@@ -1411,12 +835,12 @@ impl<'a> DIR18_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR18_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR18_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +859,10 @@ impl<'a> DIR18_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR19_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR19_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 19"]
+pub type DIR19_A = DIR0_A;
 #[doc = "Reader of field `DIR19`"]
-pub type DIR19_R = crate::R<bool, DIR19_A>;
-impl DIR19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR19_A {
-        match self.bits {
-            false => DIR19_A::INPUT,
-            true => DIR19_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR19_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR19_A::OUTPUT
-    }
-}
+pub type DIR19_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR19`"]
 pub struct DIR19_W<'a> {
     w: &'a mut W,
@@ -1486,12 +878,12 @@ impl<'a> DIR19_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR19_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR19_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +902,10 @@ impl<'a> DIR19_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR20_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR20_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 20"]
+pub type DIR20_A = DIR0_A;
 #[doc = "Reader of field `DIR20`"]
-pub type DIR20_R = crate::R<bool, DIR20_A>;
-impl DIR20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR20_A {
-        match self.bits {
-            false => DIR20_A::INPUT,
-            true => DIR20_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR20_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR20_A::OUTPUT
-    }
-}
+pub type DIR20_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR20`"]
 pub struct DIR20_W<'a> {
     w: &'a mut W,
@@ -1561,12 +921,12 @@ impl<'a> DIR20_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR20_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR20_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +945,10 @@ impl<'a> DIR20_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR21_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR21_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 21"]
+pub type DIR21_A = DIR0_A;
 #[doc = "Reader of field `DIR21`"]
-pub type DIR21_R = crate::R<bool, DIR21_A>;
-impl DIR21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR21_A {
-        match self.bits {
-            false => DIR21_A::INPUT,
-            true => DIR21_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR21_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR21_A::OUTPUT
-    }
-}
+pub type DIR21_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR21`"]
 pub struct DIR21_W<'a> {
     w: &'a mut W,
@@ -1636,12 +964,12 @@ impl<'a> DIR21_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR21_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR21_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +988,10 @@ impl<'a> DIR21_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR22_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR22_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 22"]
+pub type DIR22_A = DIR0_A;
 #[doc = "Reader of field `DIR22`"]
-pub type DIR22_R = crate::R<bool, DIR22_A>;
-impl DIR22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR22_A {
-        match self.bits {
-            false => DIR22_A::INPUT,
-            true => DIR22_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR22_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR22_A::OUTPUT
-    }
-}
+pub type DIR22_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR22`"]
 pub struct DIR22_W<'a> {
     w: &'a mut W,
@@ -1711,12 +1007,12 @@ impl<'a> DIR22_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR22_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR22_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1031,10 @@ impl<'a> DIR22_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR23_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR23_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 23"]
+pub type DIR23_A = DIR0_A;
 #[doc = "Reader of field `DIR23`"]
-pub type DIR23_R = crate::R<bool, DIR23_A>;
-impl DIR23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR23_A {
-        match self.bits {
-            false => DIR23_A::INPUT,
-            true => DIR23_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR23_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR23_A::OUTPUT
-    }
-}
+pub type DIR23_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR23`"]
 pub struct DIR23_W<'a> {
     w: &'a mut W,
@@ -1786,12 +1050,12 @@ impl<'a> DIR23_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR23_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR23_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1074,10 @@ impl<'a> DIR23_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR24_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR24_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 24"]
+pub type DIR24_A = DIR0_A;
 #[doc = "Reader of field `DIR24`"]
-pub type DIR24_R = crate::R<bool, DIR24_A>;
-impl DIR24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR24_A {
-        match self.bits {
-            false => DIR24_A::INPUT,
-            true => DIR24_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR24_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR24_A::OUTPUT
-    }
-}
+pub type DIR24_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR24`"]
 pub struct DIR24_W<'a> {
     w: &'a mut W,
@@ -1861,12 +1093,12 @@ impl<'a> DIR24_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR24_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR24_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1117,10 @@ impl<'a> DIR24_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR25_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR25_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 25"]
+pub type DIR25_A = DIR0_A;
 #[doc = "Reader of field `DIR25`"]
-pub type DIR25_R = crate::R<bool, DIR25_A>;
-impl DIR25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR25_A {
-        match self.bits {
-            false => DIR25_A::INPUT,
-            true => DIR25_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR25_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR25_A::OUTPUT
-    }
-}
+pub type DIR25_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR25`"]
 pub struct DIR25_W<'a> {
     w: &'a mut W,
@@ -1936,12 +1136,12 @@ impl<'a> DIR25_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR25_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR25_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1160,10 @@ impl<'a> DIR25_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR26_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR26_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 26"]
+pub type DIR26_A = DIR0_A;
 #[doc = "Reader of field `DIR26`"]
-pub type DIR26_R = crate::R<bool, DIR26_A>;
-impl DIR26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR26_A {
-        match self.bits {
-            false => DIR26_A::INPUT,
-            true => DIR26_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR26_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR26_A::OUTPUT
-    }
-}
+pub type DIR26_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR26`"]
 pub struct DIR26_W<'a> {
     w: &'a mut W,
@@ -2011,12 +1179,12 @@ impl<'a> DIR26_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR26_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR26_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1203,10 @@ impl<'a> DIR26_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR27_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR27_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 27"]
+pub type DIR27_A = DIR0_A;
 #[doc = "Reader of field `DIR27`"]
-pub type DIR27_R = crate::R<bool, DIR27_A>;
-impl DIR27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR27_A {
-        match self.bits {
-            false => DIR27_A::INPUT,
-            true => DIR27_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR27_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR27_A::OUTPUT
-    }
-}
+pub type DIR27_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR27`"]
 pub struct DIR27_W<'a> {
     w: &'a mut W,
@@ -2086,12 +1222,12 @@ impl<'a> DIR27_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR27_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR27_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1246,10 @@ impl<'a> DIR27_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR28_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR28_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 28"]
+pub type DIR28_A = DIR0_A;
 #[doc = "Reader of field `DIR28`"]
-pub type DIR28_R = crate::R<bool, DIR28_A>;
-impl DIR28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR28_A {
-        match self.bits {
-            false => DIR28_A::INPUT,
-            true => DIR28_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR28_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR28_A::OUTPUT
-    }
-}
+pub type DIR28_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR28`"]
 pub struct DIR28_W<'a> {
     w: &'a mut W,
@@ -2161,12 +1265,12 @@ impl<'a> DIR28_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR28_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR28_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1289,10 @@ impl<'a> DIR28_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR29_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR29_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 29"]
+pub type DIR29_A = DIR0_A;
 #[doc = "Reader of field `DIR29`"]
-pub type DIR29_R = crate::R<bool, DIR29_A>;
-impl DIR29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR29_A {
-        match self.bits {
-            false => DIR29_A::INPUT,
-            true => DIR29_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR29_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR29_A::OUTPUT
-    }
-}
+pub type DIR29_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR29`"]
 pub struct DIR29_W<'a> {
     w: &'a mut W,
@@ -2236,12 +1308,12 @@ impl<'a> DIR29_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR29_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR29_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1332,10 @@ impl<'a> DIR29_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR30_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR30_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 30"]
+pub type DIR30_A = DIR0_A;
 #[doc = "Reader of field `DIR30`"]
-pub type DIR30_R = crate::R<bool, DIR30_A>;
-impl DIR30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR30_A {
-        match self.bits {
-            false => DIR30_A::INPUT,
-            true => DIR30_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR30_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR30_A::OUTPUT
-    }
-}
+pub type DIR30_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR30`"]
 pub struct DIR30_W<'a> {
     w: &'a mut W,
@@ -2311,12 +1351,12 @@ impl<'a> DIR30_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR30_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR30_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1375,10 @@ impl<'a> DIR30_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Direction 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DIR31_A {
-    #[doc = "0: Input"]
-    INPUT = 0,
-    #[doc = "1: Output"]
-    OUTPUT = 1,
-}
-impl From<DIR31_A> for bool {
-    #[inline(always)]
-    fn from(variant: DIR31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Direction 31"]
+pub type DIR31_A = DIR0_A;
 #[doc = "Reader of field `DIR31`"]
-pub type DIR31_R = crate::R<bool, DIR31_A>;
-impl DIR31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DIR31_A {
-        match self.bits {
-            false => DIR31_A::INPUT,
-            true => DIR31_A::OUTPUT,
-        }
-    }
-    #[doc = "Checks if the value of the field is `INPUT`"]
-    #[inline(always)]
-    pub fn is_input(&self) -> bool {
-        *self == DIR31_A::INPUT
-    }
-    #[doc = "Checks if the value of the field is `OUTPUT`"]
-    #[inline(always)]
-    pub fn is_output(&self) -> bool {
-        *self == DIR31_A::OUTPUT
-    }
-}
+pub type DIR31_R = crate::R<bool, DIR0_A>;
 #[doc = "Write proxy for field `DIR31`"]
 pub struct DIR31_W<'a> {
     w: &'a mut W,
@@ -2386,12 +1394,12 @@ impl<'a> DIR31_W<'a> {
     #[doc = "Input"]
     #[inline(always)]
     pub fn input(self) -> &'a mut W {
-        self.variant(DIR31_A::INPUT)
+        self.variant(DIR0_A::INPUT)
     }
     #[doc = "Output"]
     #[inline(always)]
     pub fn output(self) -> &'a mut W {
-        self.variant(DIR31_A::OUTPUT)
+        self.variant(DIR0_A::OUTPUT)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
