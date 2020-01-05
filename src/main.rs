@@ -142,10 +142,10 @@ const APP: () = {
 
         // Set up clocks for USB
         cx.device.PM.ahbmask.modify(|_, w| {
-            w.usb_().bit(true)
+            w.usb_().enabled()
         });
         cx.device.PM.apbbmask.modify(|_, w| {
-            w.usb_().bit(true)
+            w.usb_().enabled()
         });
         cx.device.GCLK.clkctrl.write(|w| {
             w.id().usb()
