@@ -77,7 +77,7 @@ impl USBCoreEPDescriptorPcksize {
 }
 
 #[repr(C)]
-#[repr(packed)]
+#[repr(align(4))]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
 pub struct USBCoreEPDescriptor {
     pub bank0_addr: *mut u8,
@@ -109,14 +109,17 @@ impl USBCoreEPDescriptor {
     }
 }
 
+#[repr(align(4))]
+pub struct Buf8Bytes([u8; 8]);
+
 #[app(device = atsamd11, peripherals = true)]
 const APP: () = {
     struct Resources {
         USB_PERIPH: atsamd11::USB,
-        #[init([0; 8])]
-        ep0outbuf: [u8; 8],
-        #[init([0; 8])]
-        ep0inbuf: [u8; 8],
+        #[init(Buf8Bytes([0; 8]))]
+        ep0outbuf: Buf8Bytes,
+        #[init(Buf8Bytes([0; 8]))]
+        ep0inbuf: Buf8Bytes,
         #[init([USBCoreEPDescriptor::default(); 1])]
         epdescs: [USBCoreEPDescriptor; 1],
     }
@@ -296,11 +299,11 @@ const APP: () = {
 
         // Set up descriptors
         cx.resources.epdescs[0].bank0_addr =
-            cx.resources.ep0outbuf.as_mut_ptr();
+            cx.resources.ep0outbuf.0.as_mut_ptr();
         cx.resources.epdescs[0].bank0_pcksize.set_size(USBCoreEPBufSize::_8);
 
         cx.resources.epdescs[0].bank1_addr =
-            cx.resources.ep0inbuf.as_mut_ptr();
+            cx.resources.ep0inbuf.0.as_mut_ptr();
         cx.resources.epdescs[0].bank1_pcksize.set_size(USBCoreEPBufSize::_8);
         cx.resources.epdescs[0].bank1_pcksize.enable_auto_zlp();
 
@@ -356,6 +359,8 @@ const APP: () = {
 
             if cx.resources.USB_PERIPH.epintflag0.read().rxstp().is_pending() {
                 hprintln!("EP0 setup").unwrap();
+
+                hprintln!("{:?}", cx.resources.ep0outbuf.0).unwrap();
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt1().is_pending() {
                 hprintln!("EP0 Bank1 IN done").unwrap();
