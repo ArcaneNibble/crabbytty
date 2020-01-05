@@ -19,7 +19,7 @@ pub struct TRANSP_W<'a> {
 impl<'a> TRANSP_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !0x1f) | ((value as u16) & 0x1f);
         self.w
     }
@@ -33,7 +33,7 @@ pub struct TRANSN_W<'a> {
 impl<'a> TRANSN_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x1f << 6)) | (((value as u16) & 0x1f) << 6);
         self.w
     }
@@ -47,7 +47,7 @@ pub struct TRIM_W<'a> {
 impl<'a> TRIM_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x07 << 12)) | (((value as u16) & 0x07) << 12);
         self.w
     }

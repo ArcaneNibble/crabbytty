@@ -138,7 +138,7 @@ const APP: () = {
         });
         while cx.device.SYSCTRL.osc8m.read().enable().bit() {}
 
-        hprintln!("Hello world!").unwrap();
+        // hprintln!("Hello world!").unwrap();
 
         // Set up clocks for USB
         cx.device.PM.ahbmask.modify(|_, w| {
@@ -164,32 +164,32 @@ const APP: () = {
         });
 
         // Reset USB
-        cx.device.USB.device.ctrla.write(|w| {
+        cx.device.USB.ctrla.write(|w| {
             w.swrst().bit(true)
         });
-        while cx.device.USB.device.ctrla.read().swrst().bit() ||
-            cx.device.USB.device.syncbusy.read().swrst().bit() {}
+        while cx.device.USB.ctrla.read().swrst().bit() ||
+            cx.device.USB.syncbusy.read().swrst().bit() {}
 
         // Pad calibration
         let nvm_transn_cal = ((nvm_cal_1 >> (45 - 32)) & 0b11111) as u8;
         let nvm_transp_cal = ((nvm_cal_1 >> (50 - 32)) & 0b11111) as u8;
         let nvm_trim_cal = ((nvm_cal_1 >> (55 - 32)) & 0b111) as u8;
-        cx.device.USB.device.padcal.write(|w| unsafe {
+        cx.device.USB.padcal.write(|w| {
             w.trim().bits(nvm_trim_cal)
                 .transn().bits(nvm_transn_cal)
                 .transp().bits(nvm_transp_cal)
         });
 
         // Enable USB
-        cx.device.USB.device.ctrla.write(|w| {
+        cx.device.USB.ctrla.write(|w| {
             w.enable().bit(true)
         });
         // Attach USB
-        cx.device.USB.device.ctrlb.write(|w| {
+        cx.device.USB.ctrlb.write(|w| {
             w.detach().bit(false)
         });
 
-        hprintln!("Survived init!").unwrap();
+        // hprintln!("Survived init!").unwrap();
     }
 
     #[task(binds = USB)]
