@@ -14,8 +14,12 @@ use rtfm::app;
 
 #[app(device = atsamd11, peripherals = true)]
 const APP: () = {
+    struct Resources {
+        USB_PERIPH: atsamd11::USB,
+    }
+
     #[init]
-    fn init(cx: init::Context) {
+    fn init(cx: init::Context) -> init::LateResources {
         // Atmel has an "Errata 9905" that says that ondemand must be
         // disabled before doing any other writes. The ASF code seems to
         // set the control register this way.
@@ -186,16 +190,44 @@ const APP: () = {
         cx.device.USB.ctrla.write(|w| {
             w.enable().enabled().mode().device()
         });
+
+        // Turn on interrupts
+        cx.device.USB.intenset.write(|w| {
+            w.eorst().enable()
+        });
+        cx.device.USB.epintenset0.write(|w| {
+            w.rxstp().enable()
+                .trcpt1().enable()
+                .trcpt0().enable()
+        });
+
         // Attach USB
         cx.device.USB.ctrlb.write(|w| {
             w.spdconf().fs().detach().attach()
         });
 
-        // hprintln!("Survived init!").unwrap();
+        hprintln!("Survived init!").unwrap();
+
+        init::LateResources {
+            USB_PERIPH: cx.device.USB,
+        }
     }
 
-    #[task(binds = USB)]
-    fn usb_isr(_cx: usb_isr::Context) {
+    #[task(binds = USB, resources = [USB_PERIPH])]
+    fn usb_isr(cx: usb_isr::Context) {
+        hprintln!("USB ISR!").unwrap();
 
+        // TODO: Handle USB device interrupts
+
+        // Acknowledge all the USB device interrupts
+        cx.resources.USB_PERIPH.intflag.modify(|_, w| {w});
+
+        if cx.resources.USB_PERIPH.epintsmry.read().epint0().is_pending() {
+            // TODO: Handle USB endpoint interrupts
+            // TODO: Handle all the endpoints
+
+            // Acknowledge all the USB endpoint interrupts
+            cx.resources.USB_PERIPH.epintflag0.modify(|_, w| {w});
+        }
     }
 };
