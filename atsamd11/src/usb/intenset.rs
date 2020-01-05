@@ -10,13 +10,46 @@ impl crate::ResetValue for super::INTENSET {
         0
     }
 }
+#[doc = "Suspend Interrupt Enable"]
+pub type SUSPEND_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `SUSPEND`"]
-pub type SUSPEND_R = crate::R<bool, bool>;
+pub type SUSPEND_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Suspend Interrupt Enable\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SUSPEND_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Set enabled"]
+    ENABLE = 1,
+}
+impl From<SUSPEND_AW> for bool {
+    #[inline(always)]
+    fn from(variant: SUSPEND_AW) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Write proxy for field `SUSPEND`"]
 pub struct SUSPEND_W<'a> {
     w: &'a mut W,
 }
 impl<'a> SUSPEND_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: SUSPEND_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -34,13 +67,34 @@ impl<'a> SUSPEND_W<'a> {
         self.w
     }
 }
+#[doc = "Micro Start of Frame Interrupt Enable in High Speed Mode"]
+pub type MSOF_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `MSOF`"]
-pub type MSOF_R = crate::R<bool, bool>;
+pub type MSOF_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Micro Start of Frame Interrupt Enable in High Speed Mode"]
+pub type MSOF_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `MSOF`"]
 pub struct MSOF_W<'a> {
     w: &'a mut W,
 }
 impl<'a> MSOF_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: MSOF_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -58,13 +112,34 @@ impl<'a> MSOF_W<'a> {
         self.w
     }
 }
+#[doc = "Start Of Frame Interrupt Enable"]
+pub type SOF_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `SOF`"]
-pub type SOF_R = crate::R<bool, bool>;
+pub type SOF_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Start Of Frame Interrupt Enable"]
+pub type SOF_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `SOF`"]
 pub struct SOF_W<'a> {
     w: &'a mut W,
 }
 impl<'a> SOF_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: SOF_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -82,13 +157,34 @@ impl<'a> SOF_W<'a> {
         self.w
     }
 }
+#[doc = "End of Reset Interrupt Enable"]
+pub type EORST_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `EORST`"]
-pub type EORST_R = crate::R<bool, bool>;
+pub type EORST_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "End of Reset Interrupt Enable"]
+pub type EORST_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `EORST`"]
 pub struct EORST_W<'a> {
     w: &'a mut W,
 }
 impl<'a> EORST_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: EORST_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -106,13 +202,34 @@ impl<'a> EORST_W<'a> {
         self.w
     }
 }
+#[doc = "Wake Up Interrupt Enable"]
+pub type WAKEUP_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `WAKEUP`"]
-pub type WAKEUP_R = crate::R<bool, bool>;
+pub type WAKEUP_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Wake Up Interrupt Enable"]
+pub type WAKEUP_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `WAKEUP`"]
 pub struct WAKEUP_W<'a> {
     w: &'a mut W,
 }
 impl<'a> WAKEUP_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: WAKEUP_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -130,13 +247,34 @@ impl<'a> WAKEUP_W<'a> {
         self.w
     }
 }
+#[doc = "End Of Resume Interrupt Enable"]
+pub type EORSM_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `EORSM`"]
-pub type EORSM_R = crate::R<bool, bool>;
+pub type EORSM_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "End Of Resume Interrupt Enable"]
+pub type EORSM_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `EORSM`"]
 pub struct EORSM_W<'a> {
     w: &'a mut W,
 }
 impl<'a> EORSM_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: EORSM_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -154,13 +292,34 @@ impl<'a> EORSM_W<'a> {
         self.w
     }
 }
+#[doc = "Upstream Resume Interrupt Enable"]
+pub type UPRSM_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `UPRSM`"]
-pub type UPRSM_R = crate::R<bool, bool>;
+pub type UPRSM_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Upstream Resume Interrupt Enable"]
+pub type UPRSM_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `UPRSM`"]
 pub struct UPRSM_W<'a> {
     w: &'a mut W,
 }
 impl<'a> UPRSM_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: UPRSM_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -178,13 +337,34 @@ impl<'a> UPRSM_W<'a> {
         self.w
     }
 }
+#[doc = "Ram Access Interrupt Enable"]
+pub type RAMACER_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `RAMACER`"]
-pub type RAMACER_R = crate::R<bool, bool>;
+pub type RAMACER_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Ram Access Interrupt Enable"]
+pub type RAMACER_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `RAMACER`"]
 pub struct RAMACER_W<'a> {
     w: &'a mut W,
 }
 impl<'a> RAMACER_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: RAMACER_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -202,13 +382,34 @@ impl<'a> RAMACER_W<'a> {
         self.w
     }
 }
+#[doc = "Link Power Management Not Yet Interrupt Enable"]
+pub type LPMNYET_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `LPMNYET`"]
-pub type LPMNYET_R = crate::R<bool, bool>;
+pub type LPMNYET_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Link Power Management Not Yet Interrupt Enable"]
+pub type LPMNYET_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `LPMNYET`"]
 pub struct LPMNYET_W<'a> {
     w: &'a mut W,
 }
 impl<'a> LPMNYET_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LPMNYET_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -226,13 +427,34 @@ impl<'a> LPMNYET_W<'a> {
         self.w
     }
 }
+#[doc = "Link Power Management Suspend Interrupt Enable"]
+pub type LPMSUSP_A = crate::usb::intenclr::SUSPEND_A;
 #[doc = "Reader of field `LPMSUSP`"]
-pub type LPMSUSP_R = crate::R<bool, bool>;
+pub type LPMSUSP_R = crate::R<bool, crate::usb::intenclr::SUSPEND_A>;
+#[doc = "Link Power Management Suspend Interrupt Enable"]
+pub type LPMSUSP_AW = SUSPEND_AW;
 #[doc = "Write proxy for field `LPMSUSP`"]
 pub struct LPMSUSP_W<'a> {
     w: &'a mut W,
 }
 impl<'a> LPMSUSP_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LPMSUSP_AW) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::NOP)
+    }
+    #[doc = "Set enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut W {
+        self.variant(SUSPEND_AW::ENABLE)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
