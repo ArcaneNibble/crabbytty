@@ -13,10 +13,10 @@ impl crate::ResetValue for super::CTRLB {
 #[doc = "Detach\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DETACH_A {
-    #[doc = "0: Detach USB"]
-    DETACH = 0,
-    #[doc = "1: Attach USB"]
-    ATTACH = 1,
+    #[doc = "0: Attach USB"]
+    ATTACH = 0,
+    #[doc = "1: Detach USB"]
+    DETACH = 1,
 }
 impl From<DETACH_A> for bool {
     #[inline(always)]
@@ -31,19 +31,19 @@ impl DETACH_R {
     #[inline(always)]
     pub fn variant(&self) -> DETACH_A {
         match self.bits {
-            false => DETACH_A::DETACH,
-            true => DETACH_A::ATTACH,
+            false => DETACH_A::ATTACH,
+            true => DETACH_A::DETACH,
         }
-    }
-    #[doc = "Checks if the value of the field is `DETACH`"]
-    #[inline(always)]
-    pub fn is_detach(&self) -> bool {
-        *self == DETACH_A::DETACH
     }
     #[doc = "Checks if the value of the field is `ATTACH`"]
     #[inline(always)]
     pub fn is_attach(&self) -> bool {
         *self == DETACH_A::ATTACH
+    }
+    #[doc = "Checks if the value of the field is `DETACH`"]
+    #[inline(always)]
+    pub fn is_detach(&self) -> bool {
+        *self == DETACH_A::DETACH
     }
 }
 #[doc = "Write proxy for field `DETACH`"]
@@ -58,15 +58,15 @@ impl<'a> DETACH_W<'a> {
             self.bit(variant.into())
         }
     }
-    #[doc = "Detach USB"]
-    #[inline(always)]
-    pub fn detach(self) -> &'a mut W {
-        self.variant(DETACH_A::DETACH)
-    }
     #[doc = "Attach USB"]
     #[inline(always)]
     pub fn attach(self) -> &'a mut W {
         self.variant(DETACH_A::ATTACH)
+    }
+    #[doc = "Detach USB"]
+    #[inline(always)]
+    pub fn detach(self) -> &'a mut W {
+        self.variant(DETACH_A::DETACH)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
