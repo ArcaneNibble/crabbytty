@@ -13,10 +13,10 @@ impl crate::ResetValue for super::OUTTGL {
 #[doc = "Port Data Output Value Toggle 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUTTGL0_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
+    #[doc = "0: Output 0"]
+    _0 = 0,
+    #[doc = "1: Output 1"]
+    _1 = 1,
 }
 impl From<OUTTGL0_A> for bool {
     #[inline(always)]
@@ -31,19 +31,33 @@ impl OUTTGL0_R {
     #[inline(always)]
     pub fn variant(&self) -> OUTTGL0_A {
         match self.bits {
-            false => OUTTGL0_A::NOP,
-            true => OUTTGL0_A::TOGGLE,
+            false => OUTTGL0_A::_0,
+            true => OUTTGL0_A::_1,
         }
     }
-    #[doc = "Checks if the value of the field is `NOP`"]
+    #[doc = "Checks if the value of the field is `_0`"]
     #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL0_A::NOP
+    pub fn is_0(&self) -> bool {
+        *self == OUTTGL0_A::_0
     }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
+    #[doc = "Checks if the value of the field is `_1`"]
     #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL0_A::TOGGLE
+    pub fn is_1(&self) -> bool {
+        *self == OUTTGL0_A::_1
+    }
+}
+#[doc = "Port Data Output Value Toggle 0\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum OUTTGL0_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Output toggle"]
+    TOGGLE = 1,
+}
+impl From<OUTTGL0_AW> for bool {
+    #[inline(always)]
+    fn from(variant: OUTTGL0_AW) -> Self {
+        variant as u8 != 0
     }
 }
 #[doc = "Write proxy for field `OUTTGL0`"]
@@ -53,7 +67,7 @@ pub struct OUTTGL0_W<'a> {
 impl<'a> OUTTGL0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL0_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL0_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -61,12 +75,12 @@ impl<'a> OUTTGL0_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL0_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL0_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -85,42 +99,12 @@ impl<'a> OUTTGL0_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL1_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL1_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 1"]
+pub type OUTTGL1_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL1`"]
-pub type OUTTGL1_R = crate::R<bool, OUTTGL1_A>;
-impl OUTTGL1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL1_A {
-        match self.bits {
-            false => OUTTGL1_A::NOP,
-            true => OUTTGL1_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL1_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL1_A::TOGGLE
-    }
-}
+pub type OUTTGL1_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 1"]
+pub type OUTTGL1_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL1`"]
 pub struct OUTTGL1_W<'a> {
     w: &'a mut W,
@@ -128,7 +112,7 @@ pub struct OUTTGL1_W<'a> {
 impl<'a> OUTTGL1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL1_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL1_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -136,12 +120,12 @@ impl<'a> OUTTGL1_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL1_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL1_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +144,12 @@ impl<'a> OUTTGL1_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL2_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL2_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 2"]
+pub type OUTTGL2_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL2`"]
-pub type OUTTGL2_R = crate::R<bool, OUTTGL2_A>;
-impl OUTTGL2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL2_A {
-        match self.bits {
-            false => OUTTGL2_A::NOP,
-            true => OUTTGL2_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL2_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL2_A::TOGGLE
-    }
-}
+pub type OUTTGL2_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 2"]
+pub type OUTTGL2_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL2`"]
 pub struct OUTTGL2_W<'a> {
     w: &'a mut W,
@@ -203,7 +157,7 @@ pub struct OUTTGL2_W<'a> {
 impl<'a> OUTTGL2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL2_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL2_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -211,12 +165,12 @@ impl<'a> OUTTGL2_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL2_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL2_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +189,12 @@ impl<'a> OUTTGL2_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL3_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL3_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 3"]
+pub type OUTTGL3_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL3`"]
-pub type OUTTGL3_R = crate::R<bool, OUTTGL3_A>;
-impl OUTTGL3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL3_A {
-        match self.bits {
-            false => OUTTGL3_A::NOP,
-            true => OUTTGL3_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL3_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL3_A::TOGGLE
-    }
-}
+pub type OUTTGL3_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 3"]
+pub type OUTTGL3_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL3`"]
 pub struct OUTTGL3_W<'a> {
     w: &'a mut W,
@@ -278,7 +202,7 @@ pub struct OUTTGL3_W<'a> {
 impl<'a> OUTTGL3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL3_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL3_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -286,12 +210,12 @@ impl<'a> OUTTGL3_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL3_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL3_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +234,12 @@ impl<'a> OUTTGL3_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL4_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL4_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 4"]
+pub type OUTTGL4_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL4`"]
-pub type OUTTGL4_R = crate::R<bool, OUTTGL4_A>;
-impl OUTTGL4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL4_A {
-        match self.bits {
-            false => OUTTGL4_A::NOP,
-            true => OUTTGL4_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL4_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL4_A::TOGGLE
-    }
-}
+pub type OUTTGL4_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 4"]
+pub type OUTTGL4_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL4`"]
 pub struct OUTTGL4_W<'a> {
     w: &'a mut W,
@@ -353,7 +247,7 @@ pub struct OUTTGL4_W<'a> {
 impl<'a> OUTTGL4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL4_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL4_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -361,12 +255,12 @@ impl<'a> OUTTGL4_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL4_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL4_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +279,12 @@ impl<'a> OUTTGL4_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL5_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL5_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 5"]
+pub type OUTTGL5_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL5`"]
-pub type OUTTGL5_R = crate::R<bool, OUTTGL5_A>;
-impl OUTTGL5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL5_A {
-        match self.bits {
-            false => OUTTGL5_A::NOP,
-            true => OUTTGL5_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL5_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL5_A::TOGGLE
-    }
-}
+pub type OUTTGL5_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 5"]
+pub type OUTTGL5_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL5`"]
 pub struct OUTTGL5_W<'a> {
     w: &'a mut W,
@@ -428,7 +292,7 @@ pub struct OUTTGL5_W<'a> {
 impl<'a> OUTTGL5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL5_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL5_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -436,12 +300,12 @@ impl<'a> OUTTGL5_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL5_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL5_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +324,12 @@ impl<'a> OUTTGL5_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL6_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL6_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 6"]
+pub type OUTTGL6_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL6`"]
-pub type OUTTGL6_R = crate::R<bool, OUTTGL6_A>;
-impl OUTTGL6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL6_A {
-        match self.bits {
-            false => OUTTGL6_A::NOP,
-            true => OUTTGL6_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL6_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL6_A::TOGGLE
-    }
-}
+pub type OUTTGL6_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 6"]
+pub type OUTTGL6_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL6`"]
 pub struct OUTTGL6_W<'a> {
     w: &'a mut W,
@@ -503,7 +337,7 @@ pub struct OUTTGL6_W<'a> {
 impl<'a> OUTTGL6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL6_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL6_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -511,12 +345,12 @@ impl<'a> OUTTGL6_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL6_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL6_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +369,12 @@ impl<'a> OUTTGL6_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL7_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL7_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 7"]
+pub type OUTTGL7_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL7`"]
-pub type OUTTGL7_R = crate::R<bool, OUTTGL7_A>;
-impl OUTTGL7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL7_A {
-        match self.bits {
-            false => OUTTGL7_A::NOP,
-            true => OUTTGL7_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL7_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL7_A::TOGGLE
-    }
-}
+pub type OUTTGL7_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 7"]
+pub type OUTTGL7_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL7`"]
 pub struct OUTTGL7_W<'a> {
     w: &'a mut W,
@@ -578,7 +382,7 @@ pub struct OUTTGL7_W<'a> {
 impl<'a> OUTTGL7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL7_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL7_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -586,12 +390,12 @@ impl<'a> OUTTGL7_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL7_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL7_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +414,12 @@ impl<'a> OUTTGL7_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL8_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL8_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 8"]
+pub type OUTTGL8_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL8`"]
-pub type OUTTGL8_R = crate::R<bool, OUTTGL8_A>;
-impl OUTTGL8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL8_A {
-        match self.bits {
-            false => OUTTGL8_A::NOP,
-            true => OUTTGL8_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL8_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL8_A::TOGGLE
-    }
-}
+pub type OUTTGL8_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 8"]
+pub type OUTTGL8_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL8`"]
 pub struct OUTTGL8_W<'a> {
     w: &'a mut W,
@@ -653,7 +427,7 @@ pub struct OUTTGL8_W<'a> {
 impl<'a> OUTTGL8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL8_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL8_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -661,12 +435,12 @@ impl<'a> OUTTGL8_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL8_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL8_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +459,12 @@ impl<'a> OUTTGL8_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL9_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL9_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 9"]
+pub type OUTTGL9_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL9`"]
-pub type OUTTGL9_R = crate::R<bool, OUTTGL9_A>;
-impl OUTTGL9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL9_A {
-        match self.bits {
-            false => OUTTGL9_A::NOP,
-            true => OUTTGL9_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL9_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL9_A::TOGGLE
-    }
-}
+pub type OUTTGL9_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 9"]
+pub type OUTTGL9_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL9`"]
 pub struct OUTTGL9_W<'a> {
     w: &'a mut W,
@@ -728,7 +472,7 @@ pub struct OUTTGL9_W<'a> {
 impl<'a> OUTTGL9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL9_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL9_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -736,12 +480,12 @@ impl<'a> OUTTGL9_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL9_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL9_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +504,12 @@ impl<'a> OUTTGL9_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL10_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL10_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 10"]
+pub type OUTTGL10_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL10`"]
-pub type OUTTGL10_R = crate::R<bool, OUTTGL10_A>;
-impl OUTTGL10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL10_A {
-        match self.bits {
-            false => OUTTGL10_A::NOP,
-            true => OUTTGL10_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL10_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL10_A::TOGGLE
-    }
-}
+pub type OUTTGL10_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 10"]
+pub type OUTTGL10_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL10`"]
 pub struct OUTTGL10_W<'a> {
     w: &'a mut W,
@@ -803,7 +517,7 @@ pub struct OUTTGL10_W<'a> {
 impl<'a> OUTTGL10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL10_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL10_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -811,12 +525,12 @@ impl<'a> OUTTGL10_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL10_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL10_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +549,12 @@ impl<'a> OUTTGL10_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL11_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL11_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 11"]
+pub type OUTTGL11_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL11`"]
-pub type OUTTGL11_R = crate::R<bool, OUTTGL11_A>;
-impl OUTTGL11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL11_A {
-        match self.bits {
-            false => OUTTGL11_A::NOP,
-            true => OUTTGL11_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL11_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL11_A::TOGGLE
-    }
-}
+pub type OUTTGL11_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 11"]
+pub type OUTTGL11_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL11`"]
 pub struct OUTTGL11_W<'a> {
     w: &'a mut W,
@@ -878,7 +562,7 @@ pub struct OUTTGL11_W<'a> {
 impl<'a> OUTTGL11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL11_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL11_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -886,12 +570,12 @@ impl<'a> OUTTGL11_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL11_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL11_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +594,12 @@ impl<'a> OUTTGL11_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL12_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL12_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 12"]
+pub type OUTTGL12_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL12`"]
-pub type OUTTGL12_R = crate::R<bool, OUTTGL12_A>;
-impl OUTTGL12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL12_A {
-        match self.bits {
-            false => OUTTGL12_A::NOP,
-            true => OUTTGL12_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL12_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL12_A::TOGGLE
-    }
-}
+pub type OUTTGL12_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 12"]
+pub type OUTTGL12_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL12`"]
 pub struct OUTTGL12_W<'a> {
     w: &'a mut W,
@@ -953,7 +607,7 @@ pub struct OUTTGL12_W<'a> {
 impl<'a> OUTTGL12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL12_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL12_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -961,12 +615,12 @@ impl<'a> OUTTGL12_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL12_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL12_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +639,12 @@ impl<'a> OUTTGL12_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL13_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL13_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 13"]
+pub type OUTTGL13_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL13`"]
-pub type OUTTGL13_R = crate::R<bool, OUTTGL13_A>;
-impl OUTTGL13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL13_A {
-        match self.bits {
-            false => OUTTGL13_A::NOP,
-            true => OUTTGL13_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL13_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL13_A::TOGGLE
-    }
-}
+pub type OUTTGL13_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 13"]
+pub type OUTTGL13_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL13`"]
 pub struct OUTTGL13_W<'a> {
     w: &'a mut W,
@@ -1028,7 +652,7 @@ pub struct OUTTGL13_W<'a> {
 impl<'a> OUTTGL13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL13_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL13_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1036,12 +660,12 @@ impl<'a> OUTTGL13_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL13_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL13_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +684,12 @@ impl<'a> OUTTGL13_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL14_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL14_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 14"]
+pub type OUTTGL14_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL14`"]
-pub type OUTTGL14_R = crate::R<bool, OUTTGL14_A>;
-impl OUTTGL14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL14_A {
-        match self.bits {
-            false => OUTTGL14_A::NOP,
-            true => OUTTGL14_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL14_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL14_A::TOGGLE
-    }
-}
+pub type OUTTGL14_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 14"]
+pub type OUTTGL14_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL14`"]
 pub struct OUTTGL14_W<'a> {
     w: &'a mut W,
@@ -1103,7 +697,7 @@ pub struct OUTTGL14_W<'a> {
 impl<'a> OUTTGL14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL14_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL14_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1111,12 +705,12 @@ impl<'a> OUTTGL14_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL14_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL14_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +729,12 @@ impl<'a> OUTTGL14_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL15_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL15_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 15"]
+pub type OUTTGL15_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL15`"]
-pub type OUTTGL15_R = crate::R<bool, OUTTGL15_A>;
-impl OUTTGL15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL15_A {
-        match self.bits {
-            false => OUTTGL15_A::NOP,
-            true => OUTTGL15_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL15_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL15_A::TOGGLE
-    }
-}
+pub type OUTTGL15_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 15"]
+pub type OUTTGL15_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL15`"]
 pub struct OUTTGL15_W<'a> {
     w: &'a mut W,
@@ -1178,7 +742,7 @@ pub struct OUTTGL15_W<'a> {
 impl<'a> OUTTGL15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL15_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL15_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1186,12 +750,12 @@ impl<'a> OUTTGL15_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL15_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL15_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +774,12 @@ impl<'a> OUTTGL15_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL16_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL16_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 16"]
+pub type OUTTGL16_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL16`"]
-pub type OUTTGL16_R = crate::R<bool, OUTTGL16_A>;
-impl OUTTGL16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL16_A {
-        match self.bits {
-            false => OUTTGL16_A::NOP,
-            true => OUTTGL16_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL16_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL16_A::TOGGLE
-    }
-}
+pub type OUTTGL16_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 16"]
+pub type OUTTGL16_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL16`"]
 pub struct OUTTGL16_W<'a> {
     w: &'a mut W,
@@ -1253,7 +787,7 @@ pub struct OUTTGL16_W<'a> {
 impl<'a> OUTTGL16_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL16_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL16_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1261,12 +795,12 @@ impl<'a> OUTTGL16_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL16_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL16_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +819,12 @@ impl<'a> OUTTGL16_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL17_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL17_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 17"]
+pub type OUTTGL17_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL17`"]
-pub type OUTTGL17_R = crate::R<bool, OUTTGL17_A>;
-impl OUTTGL17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL17_A {
-        match self.bits {
-            false => OUTTGL17_A::NOP,
-            true => OUTTGL17_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL17_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL17_A::TOGGLE
-    }
-}
+pub type OUTTGL17_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 17"]
+pub type OUTTGL17_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL17`"]
 pub struct OUTTGL17_W<'a> {
     w: &'a mut W,
@@ -1328,7 +832,7 @@ pub struct OUTTGL17_W<'a> {
 impl<'a> OUTTGL17_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL17_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL17_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1336,12 +840,12 @@ impl<'a> OUTTGL17_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL17_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL17_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +864,12 @@ impl<'a> OUTTGL17_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL18_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL18_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 18"]
+pub type OUTTGL18_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL18`"]
-pub type OUTTGL18_R = crate::R<bool, OUTTGL18_A>;
-impl OUTTGL18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL18_A {
-        match self.bits {
-            false => OUTTGL18_A::NOP,
-            true => OUTTGL18_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL18_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL18_A::TOGGLE
-    }
-}
+pub type OUTTGL18_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 18"]
+pub type OUTTGL18_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL18`"]
 pub struct OUTTGL18_W<'a> {
     w: &'a mut W,
@@ -1403,7 +877,7 @@ pub struct OUTTGL18_W<'a> {
 impl<'a> OUTTGL18_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL18_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL18_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1411,12 +885,12 @@ impl<'a> OUTTGL18_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL18_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL18_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +909,12 @@ impl<'a> OUTTGL18_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL19_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL19_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 19"]
+pub type OUTTGL19_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL19`"]
-pub type OUTTGL19_R = crate::R<bool, OUTTGL19_A>;
-impl OUTTGL19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL19_A {
-        match self.bits {
-            false => OUTTGL19_A::NOP,
-            true => OUTTGL19_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL19_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL19_A::TOGGLE
-    }
-}
+pub type OUTTGL19_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 19"]
+pub type OUTTGL19_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL19`"]
 pub struct OUTTGL19_W<'a> {
     w: &'a mut W,
@@ -1478,7 +922,7 @@ pub struct OUTTGL19_W<'a> {
 impl<'a> OUTTGL19_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL19_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL19_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1486,12 +930,12 @@ impl<'a> OUTTGL19_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL19_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL19_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +954,12 @@ impl<'a> OUTTGL19_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL20_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL20_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 20"]
+pub type OUTTGL20_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL20`"]
-pub type OUTTGL20_R = crate::R<bool, OUTTGL20_A>;
-impl OUTTGL20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL20_A {
-        match self.bits {
-            false => OUTTGL20_A::NOP,
-            true => OUTTGL20_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL20_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL20_A::TOGGLE
-    }
-}
+pub type OUTTGL20_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 20"]
+pub type OUTTGL20_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL20`"]
 pub struct OUTTGL20_W<'a> {
     w: &'a mut W,
@@ -1553,7 +967,7 @@ pub struct OUTTGL20_W<'a> {
 impl<'a> OUTTGL20_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL20_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL20_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1561,12 +975,12 @@ impl<'a> OUTTGL20_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL20_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL20_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +999,12 @@ impl<'a> OUTTGL20_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL21_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL21_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 21"]
+pub type OUTTGL21_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL21`"]
-pub type OUTTGL21_R = crate::R<bool, OUTTGL21_A>;
-impl OUTTGL21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL21_A {
-        match self.bits {
-            false => OUTTGL21_A::NOP,
-            true => OUTTGL21_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL21_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL21_A::TOGGLE
-    }
-}
+pub type OUTTGL21_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 21"]
+pub type OUTTGL21_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL21`"]
 pub struct OUTTGL21_W<'a> {
     w: &'a mut W,
@@ -1628,7 +1012,7 @@ pub struct OUTTGL21_W<'a> {
 impl<'a> OUTTGL21_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL21_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL21_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1636,12 +1020,12 @@ impl<'a> OUTTGL21_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL21_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL21_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +1044,12 @@ impl<'a> OUTTGL21_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL22_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL22_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 22"]
+pub type OUTTGL22_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL22`"]
-pub type OUTTGL22_R = crate::R<bool, OUTTGL22_A>;
-impl OUTTGL22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL22_A {
-        match self.bits {
-            false => OUTTGL22_A::NOP,
-            true => OUTTGL22_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL22_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL22_A::TOGGLE
-    }
-}
+pub type OUTTGL22_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 22"]
+pub type OUTTGL22_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL22`"]
 pub struct OUTTGL22_W<'a> {
     w: &'a mut W,
@@ -1703,7 +1057,7 @@ pub struct OUTTGL22_W<'a> {
 impl<'a> OUTTGL22_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL22_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL22_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1711,12 +1065,12 @@ impl<'a> OUTTGL22_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL22_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL22_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1089,12 @@ impl<'a> OUTTGL22_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL23_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL23_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 23"]
+pub type OUTTGL23_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL23`"]
-pub type OUTTGL23_R = crate::R<bool, OUTTGL23_A>;
-impl OUTTGL23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL23_A {
-        match self.bits {
-            false => OUTTGL23_A::NOP,
-            true => OUTTGL23_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL23_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL23_A::TOGGLE
-    }
-}
+pub type OUTTGL23_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 23"]
+pub type OUTTGL23_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL23`"]
 pub struct OUTTGL23_W<'a> {
     w: &'a mut W,
@@ -1778,7 +1102,7 @@ pub struct OUTTGL23_W<'a> {
 impl<'a> OUTTGL23_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL23_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL23_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1786,12 +1110,12 @@ impl<'a> OUTTGL23_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL23_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL23_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1134,12 @@ impl<'a> OUTTGL23_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL24_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL24_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 24"]
+pub type OUTTGL24_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL24`"]
-pub type OUTTGL24_R = crate::R<bool, OUTTGL24_A>;
-impl OUTTGL24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL24_A {
-        match self.bits {
-            false => OUTTGL24_A::NOP,
-            true => OUTTGL24_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL24_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL24_A::TOGGLE
-    }
-}
+pub type OUTTGL24_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 24"]
+pub type OUTTGL24_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL24`"]
 pub struct OUTTGL24_W<'a> {
     w: &'a mut W,
@@ -1853,7 +1147,7 @@ pub struct OUTTGL24_W<'a> {
 impl<'a> OUTTGL24_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL24_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL24_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1861,12 +1155,12 @@ impl<'a> OUTTGL24_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL24_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL24_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1179,12 @@ impl<'a> OUTTGL24_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL25_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL25_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 25"]
+pub type OUTTGL25_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL25`"]
-pub type OUTTGL25_R = crate::R<bool, OUTTGL25_A>;
-impl OUTTGL25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL25_A {
-        match self.bits {
-            false => OUTTGL25_A::NOP,
-            true => OUTTGL25_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL25_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL25_A::TOGGLE
-    }
-}
+pub type OUTTGL25_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 25"]
+pub type OUTTGL25_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL25`"]
 pub struct OUTTGL25_W<'a> {
     w: &'a mut W,
@@ -1928,7 +1192,7 @@ pub struct OUTTGL25_W<'a> {
 impl<'a> OUTTGL25_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL25_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL25_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1936,12 +1200,12 @@ impl<'a> OUTTGL25_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL25_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL25_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1224,12 @@ impl<'a> OUTTGL25_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL26_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL26_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 26"]
+pub type OUTTGL26_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL26`"]
-pub type OUTTGL26_R = crate::R<bool, OUTTGL26_A>;
-impl OUTTGL26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL26_A {
-        match self.bits {
-            false => OUTTGL26_A::NOP,
-            true => OUTTGL26_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL26_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL26_A::TOGGLE
-    }
-}
+pub type OUTTGL26_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 26"]
+pub type OUTTGL26_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL26`"]
 pub struct OUTTGL26_W<'a> {
     w: &'a mut W,
@@ -2003,7 +1237,7 @@ pub struct OUTTGL26_W<'a> {
 impl<'a> OUTTGL26_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL26_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL26_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2011,12 +1245,12 @@ impl<'a> OUTTGL26_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL26_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL26_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1269,12 @@ impl<'a> OUTTGL26_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL27_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL27_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 27"]
+pub type OUTTGL27_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL27`"]
-pub type OUTTGL27_R = crate::R<bool, OUTTGL27_A>;
-impl OUTTGL27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL27_A {
-        match self.bits {
-            false => OUTTGL27_A::NOP,
-            true => OUTTGL27_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL27_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL27_A::TOGGLE
-    }
-}
+pub type OUTTGL27_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 27"]
+pub type OUTTGL27_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL27`"]
 pub struct OUTTGL27_W<'a> {
     w: &'a mut W,
@@ -2078,7 +1282,7 @@ pub struct OUTTGL27_W<'a> {
 impl<'a> OUTTGL27_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL27_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL27_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2086,12 +1290,12 @@ impl<'a> OUTTGL27_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL27_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL27_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1314,12 @@ impl<'a> OUTTGL27_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL28_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL28_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 28"]
+pub type OUTTGL28_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL28`"]
-pub type OUTTGL28_R = crate::R<bool, OUTTGL28_A>;
-impl OUTTGL28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL28_A {
-        match self.bits {
-            false => OUTTGL28_A::NOP,
-            true => OUTTGL28_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL28_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL28_A::TOGGLE
-    }
-}
+pub type OUTTGL28_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 28"]
+pub type OUTTGL28_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL28`"]
 pub struct OUTTGL28_W<'a> {
     w: &'a mut W,
@@ -2153,7 +1327,7 @@ pub struct OUTTGL28_W<'a> {
 impl<'a> OUTTGL28_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL28_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL28_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2161,12 +1335,12 @@ impl<'a> OUTTGL28_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL28_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL28_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1359,12 @@ impl<'a> OUTTGL28_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL29_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL29_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 29"]
+pub type OUTTGL29_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL29`"]
-pub type OUTTGL29_R = crate::R<bool, OUTTGL29_A>;
-impl OUTTGL29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL29_A {
-        match self.bits {
-            false => OUTTGL29_A::NOP,
-            true => OUTTGL29_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL29_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL29_A::TOGGLE
-    }
-}
+pub type OUTTGL29_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 29"]
+pub type OUTTGL29_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL29`"]
 pub struct OUTTGL29_W<'a> {
     w: &'a mut W,
@@ -2228,7 +1372,7 @@ pub struct OUTTGL29_W<'a> {
 impl<'a> OUTTGL29_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL29_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL29_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2236,12 +1380,12 @@ impl<'a> OUTTGL29_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL29_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL29_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1404,12 @@ impl<'a> OUTTGL29_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL30_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL30_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 30"]
+pub type OUTTGL30_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL30`"]
-pub type OUTTGL30_R = crate::R<bool, OUTTGL30_A>;
-impl OUTTGL30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL30_A {
-        match self.bits {
-            false => OUTTGL30_A::NOP,
-            true => OUTTGL30_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL30_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL30_A::TOGGLE
-    }
-}
+pub type OUTTGL30_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 30"]
+pub type OUTTGL30_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL30`"]
 pub struct OUTTGL30_W<'a> {
     w: &'a mut W,
@@ -2303,7 +1417,7 @@ pub struct OUTTGL30_W<'a> {
 impl<'a> OUTTGL30_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL30_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL30_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2311,12 +1425,12 @@ impl<'a> OUTTGL30_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL30_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL30_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1449,12 @@ impl<'a> OUTTGL30_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Toggle 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTTGL31_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output toggle"]
-    TOGGLE = 1,
-}
-impl From<OUTTGL31_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTTGL31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Toggle 31"]
+pub type OUTTGL31_A = OUTTGL0_A;
 #[doc = "Reader of field `OUTTGL31`"]
-pub type OUTTGL31_R = crate::R<bool, OUTTGL31_A>;
-impl OUTTGL31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTTGL31_A {
-        match self.bits {
-            false => OUTTGL31_A::NOP,
-            true => OUTTGL31_A::TOGGLE,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTTGL31_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `TOGGLE`"]
-    #[inline(always)]
-    pub fn is_toggle(&self) -> bool {
-        *self == OUTTGL31_A::TOGGLE
-    }
-}
+pub type OUTTGL31_R = crate::R<bool, OUTTGL0_A>;
+#[doc = "Port Data Output Value Toggle 31"]
+pub type OUTTGL31_AW = OUTTGL0_AW;
 #[doc = "Write proxy for field `OUTTGL31`"]
 pub struct OUTTGL31_W<'a> {
     w: &'a mut W,
@@ -2378,7 +1462,7 @@ pub struct OUTTGL31_W<'a> {
 impl<'a> OUTTGL31_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTTGL31_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTTGL31_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2386,12 +1470,12 @@ impl<'a> OUTTGL31_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTTGL31_A::NOP)
+        self.variant(OUTTGL0_AW::NOP)
     }
     #[doc = "Output toggle"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut W {
-        self.variant(OUTTGL31_A::TOGGLE)
+        self.variant(OUTTGL0_AW::TOGGLE)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]

@@ -13,10 +13,10 @@ impl crate::ResetValue for super::OUTSET {
 #[doc = "Port Data Output Value Set 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUTSET0_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
+    #[doc = "0: Output 0"]
+    _0 = 0,
     #[doc = "1: Output 1"]
-    OUT1 = 1,
+    _1 = 1,
 }
 impl From<OUTSET0_A> for bool {
     #[inline(always)]
@@ -31,19 +31,33 @@ impl OUTSET0_R {
     #[inline(always)]
     pub fn variant(&self) -> OUTSET0_A {
         match self.bits {
-            false => OUTSET0_A::NOP,
-            true => OUTSET0_A::OUT1,
+            false => OUTSET0_A::_0,
+            true => OUTSET0_A::_1,
         }
     }
-    #[doc = "Checks if the value of the field is `NOP`"]
+    #[doc = "Checks if the value of the field is `_0`"]
     #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET0_A::NOP
+    pub fn is_0(&self) -> bool {
+        *self == OUTSET0_A::_0
     }
-    #[doc = "Checks if the value of the field is `OUT1`"]
+    #[doc = "Checks if the value of the field is `_1`"]
     #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET0_A::OUT1
+    pub fn is_1(&self) -> bool {
+        *self == OUTSET0_A::_1
+    }
+}
+#[doc = "Port Data Output Value Set 0\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum OUTSET0_AW {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Output 1"]
+    OUT1 = 1,
+}
+impl From<OUTSET0_AW> for bool {
+    #[inline(always)]
+    fn from(variant: OUTSET0_AW) -> Self {
+        variant as u8 != 0
     }
 }
 #[doc = "Write proxy for field `OUTSET0`"]
@@ -53,7 +67,7 @@ pub struct OUTSET0_W<'a> {
 impl<'a> OUTSET0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET0_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET0_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -61,12 +75,12 @@ impl<'a> OUTSET0_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET0_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET0_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -85,42 +99,12 @@ impl<'a> OUTSET0_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET1_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET1_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 1"]
+pub type OUTSET1_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET1`"]
-pub type OUTSET1_R = crate::R<bool, OUTSET1_A>;
-impl OUTSET1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET1_A {
-        match self.bits {
-            false => OUTSET1_A::NOP,
-            true => OUTSET1_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET1_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET1_A::OUT1
-    }
-}
+pub type OUTSET1_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 1"]
+pub type OUTSET1_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET1`"]
 pub struct OUTSET1_W<'a> {
     w: &'a mut W,
@@ -128,7 +112,7 @@ pub struct OUTSET1_W<'a> {
 impl<'a> OUTSET1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET1_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET1_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -136,12 +120,12 @@ impl<'a> OUTSET1_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET1_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET1_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +144,12 @@ impl<'a> OUTSET1_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET2_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET2_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 2"]
+pub type OUTSET2_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET2`"]
-pub type OUTSET2_R = crate::R<bool, OUTSET2_A>;
-impl OUTSET2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET2_A {
-        match self.bits {
-            false => OUTSET2_A::NOP,
-            true => OUTSET2_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET2_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET2_A::OUT1
-    }
-}
+pub type OUTSET2_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 2"]
+pub type OUTSET2_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET2`"]
 pub struct OUTSET2_W<'a> {
     w: &'a mut W,
@@ -203,7 +157,7 @@ pub struct OUTSET2_W<'a> {
 impl<'a> OUTSET2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET2_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET2_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -211,12 +165,12 @@ impl<'a> OUTSET2_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET2_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET2_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +189,12 @@ impl<'a> OUTSET2_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET3_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET3_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 3"]
+pub type OUTSET3_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET3`"]
-pub type OUTSET3_R = crate::R<bool, OUTSET3_A>;
-impl OUTSET3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET3_A {
-        match self.bits {
-            false => OUTSET3_A::NOP,
-            true => OUTSET3_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET3_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET3_A::OUT1
-    }
-}
+pub type OUTSET3_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 3"]
+pub type OUTSET3_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET3`"]
 pub struct OUTSET3_W<'a> {
     w: &'a mut W,
@@ -278,7 +202,7 @@ pub struct OUTSET3_W<'a> {
 impl<'a> OUTSET3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET3_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET3_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -286,12 +210,12 @@ impl<'a> OUTSET3_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET3_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET3_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +234,12 @@ impl<'a> OUTSET3_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET4_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET4_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 4"]
+pub type OUTSET4_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET4`"]
-pub type OUTSET4_R = crate::R<bool, OUTSET4_A>;
-impl OUTSET4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET4_A {
-        match self.bits {
-            false => OUTSET4_A::NOP,
-            true => OUTSET4_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET4_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET4_A::OUT1
-    }
-}
+pub type OUTSET4_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 4"]
+pub type OUTSET4_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET4`"]
 pub struct OUTSET4_W<'a> {
     w: &'a mut W,
@@ -353,7 +247,7 @@ pub struct OUTSET4_W<'a> {
 impl<'a> OUTSET4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET4_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET4_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -361,12 +255,12 @@ impl<'a> OUTSET4_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET4_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET4_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +279,12 @@ impl<'a> OUTSET4_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET5_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET5_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 5"]
+pub type OUTSET5_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET5`"]
-pub type OUTSET5_R = crate::R<bool, OUTSET5_A>;
-impl OUTSET5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET5_A {
-        match self.bits {
-            false => OUTSET5_A::NOP,
-            true => OUTSET5_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET5_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET5_A::OUT1
-    }
-}
+pub type OUTSET5_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 5"]
+pub type OUTSET5_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET5`"]
 pub struct OUTSET5_W<'a> {
     w: &'a mut W,
@@ -428,7 +292,7 @@ pub struct OUTSET5_W<'a> {
 impl<'a> OUTSET5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET5_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET5_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -436,12 +300,12 @@ impl<'a> OUTSET5_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET5_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET5_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +324,12 @@ impl<'a> OUTSET5_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET6_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET6_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 6"]
+pub type OUTSET6_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET6`"]
-pub type OUTSET6_R = crate::R<bool, OUTSET6_A>;
-impl OUTSET6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET6_A {
-        match self.bits {
-            false => OUTSET6_A::NOP,
-            true => OUTSET6_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET6_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET6_A::OUT1
-    }
-}
+pub type OUTSET6_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 6"]
+pub type OUTSET6_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET6`"]
 pub struct OUTSET6_W<'a> {
     w: &'a mut W,
@@ -503,7 +337,7 @@ pub struct OUTSET6_W<'a> {
 impl<'a> OUTSET6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET6_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET6_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -511,12 +345,12 @@ impl<'a> OUTSET6_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET6_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET6_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +369,12 @@ impl<'a> OUTSET6_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET7_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET7_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 7"]
+pub type OUTSET7_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET7`"]
-pub type OUTSET7_R = crate::R<bool, OUTSET7_A>;
-impl OUTSET7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET7_A {
-        match self.bits {
-            false => OUTSET7_A::NOP,
-            true => OUTSET7_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET7_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET7_A::OUT1
-    }
-}
+pub type OUTSET7_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 7"]
+pub type OUTSET7_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET7`"]
 pub struct OUTSET7_W<'a> {
     w: &'a mut W,
@@ -578,7 +382,7 @@ pub struct OUTSET7_W<'a> {
 impl<'a> OUTSET7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET7_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET7_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -586,12 +390,12 @@ impl<'a> OUTSET7_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET7_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET7_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +414,12 @@ impl<'a> OUTSET7_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET8_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET8_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 8"]
+pub type OUTSET8_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET8`"]
-pub type OUTSET8_R = crate::R<bool, OUTSET8_A>;
-impl OUTSET8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET8_A {
-        match self.bits {
-            false => OUTSET8_A::NOP,
-            true => OUTSET8_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET8_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET8_A::OUT1
-    }
-}
+pub type OUTSET8_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 8"]
+pub type OUTSET8_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET8`"]
 pub struct OUTSET8_W<'a> {
     w: &'a mut W,
@@ -653,7 +427,7 @@ pub struct OUTSET8_W<'a> {
 impl<'a> OUTSET8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET8_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET8_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -661,12 +435,12 @@ impl<'a> OUTSET8_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET8_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET8_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +459,12 @@ impl<'a> OUTSET8_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET9_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET9_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 9"]
+pub type OUTSET9_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET9`"]
-pub type OUTSET9_R = crate::R<bool, OUTSET9_A>;
-impl OUTSET9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET9_A {
-        match self.bits {
-            false => OUTSET9_A::NOP,
-            true => OUTSET9_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET9_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET9_A::OUT1
-    }
-}
+pub type OUTSET9_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 9"]
+pub type OUTSET9_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET9`"]
 pub struct OUTSET9_W<'a> {
     w: &'a mut W,
@@ -728,7 +472,7 @@ pub struct OUTSET9_W<'a> {
 impl<'a> OUTSET9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET9_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET9_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -736,12 +480,12 @@ impl<'a> OUTSET9_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET9_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET9_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +504,12 @@ impl<'a> OUTSET9_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET10_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET10_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 10"]
+pub type OUTSET10_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET10`"]
-pub type OUTSET10_R = crate::R<bool, OUTSET10_A>;
-impl OUTSET10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET10_A {
-        match self.bits {
-            false => OUTSET10_A::NOP,
-            true => OUTSET10_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET10_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET10_A::OUT1
-    }
-}
+pub type OUTSET10_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 10"]
+pub type OUTSET10_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET10`"]
 pub struct OUTSET10_W<'a> {
     w: &'a mut W,
@@ -803,7 +517,7 @@ pub struct OUTSET10_W<'a> {
 impl<'a> OUTSET10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET10_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET10_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -811,12 +525,12 @@ impl<'a> OUTSET10_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET10_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET10_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +549,12 @@ impl<'a> OUTSET10_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET11_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET11_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 11"]
+pub type OUTSET11_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET11`"]
-pub type OUTSET11_R = crate::R<bool, OUTSET11_A>;
-impl OUTSET11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET11_A {
-        match self.bits {
-            false => OUTSET11_A::NOP,
-            true => OUTSET11_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET11_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET11_A::OUT1
-    }
-}
+pub type OUTSET11_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 11"]
+pub type OUTSET11_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET11`"]
 pub struct OUTSET11_W<'a> {
     w: &'a mut W,
@@ -878,7 +562,7 @@ pub struct OUTSET11_W<'a> {
 impl<'a> OUTSET11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET11_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET11_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -886,12 +570,12 @@ impl<'a> OUTSET11_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET11_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET11_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +594,12 @@ impl<'a> OUTSET11_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET12_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET12_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 12"]
+pub type OUTSET12_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET12`"]
-pub type OUTSET12_R = crate::R<bool, OUTSET12_A>;
-impl OUTSET12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET12_A {
-        match self.bits {
-            false => OUTSET12_A::NOP,
-            true => OUTSET12_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET12_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET12_A::OUT1
-    }
-}
+pub type OUTSET12_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 12"]
+pub type OUTSET12_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET12`"]
 pub struct OUTSET12_W<'a> {
     w: &'a mut W,
@@ -953,7 +607,7 @@ pub struct OUTSET12_W<'a> {
 impl<'a> OUTSET12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET12_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET12_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -961,12 +615,12 @@ impl<'a> OUTSET12_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET12_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET12_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +639,12 @@ impl<'a> OUTSET12_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET13_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET13_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 13"]
+pub type OUTSET13_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET13`"]
-pub type OUTSET13_R = crate::R<bool, OUTSET13_A>;
-impl OUTSET13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET13_A {
-        match self.bits {
-            false => OUTSET13_A::NOP,
-            true => OUTSET13_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET13_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET13_A::OUT1
-    }
-}
+pub type OUTSET13_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 13"]
+pub type OUTSET13_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET13`"]
 pub struct OUTSET13_W<'a> {
     w: &'a mut W,
@@ -1028,7 +652,7 @@ pub struct OUTSET13_W<'a> {
 impl<'a> OUTSET13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET13_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET13_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1036,12 +660,12 @@ impl<'a> OUTSET13_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET13_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET13_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +684,12 @@ impl<'a> OUTSET13_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET14_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET14_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 14"]
+pub type OUTSET14_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET14`"]
-pub type OUTSET14_R = crate::R<bool, OUTSET14_A>;
-impl OUTSET14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET14_A {
-        match self.bits {
-            false => OUTSET14_A::NOP,
-            true => OUTSET14_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET14_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET14_A::OUT1
-    }
-}
+pub type OUTSET14_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 14"]
+pub type OUTSET14_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET14`"]
 pub struct OUTSET14_W<'a> {
     w: &'a mut W,
@@ -1103,7 +697,7 @@ pub struct OUTSET14_W<'a> {
 impl<'a> OUTSET14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET14_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET14_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1111,12 +705,12 @@ impl<'a> OUTSET14_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET14_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET14_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +729,12 @@ impl<'a> OUTSET14_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET15_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET15_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 15"]
+pub type OUTSET15_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET15`"]
-pub type OUTSET15_R = crate::R<bool, OUTSET15_A>;
-impl OUTSET15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET15_A {
-        match self.bits {
-            false => OUTSET15_A::NOP,
-            true => OUTSET15_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET15_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET15_A::OUT1
-    }
-}
+pub type OUTSET15_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 15"]
+pub type OUTSET15_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET15`"]
 pub struct OUTSET15_W<'a> {
     w: &'a mut W,
@@ -1178,7 +742,7 @@ pub struct OUTSET15_W<'a> {
 impl<'a> OUTSET15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET15_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET15_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1186,12 +750,12 @@ impl<'a> OUTSET15_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET15_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET15_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +774,12 @@ impl<'a> OUTSET15_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET16_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET16_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 16"]
+pub type OUTSET16_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET16`"]
-pub type OUTSET16_R = crate::R<bool, OUTSET16_A>;
-impl OUTSET16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET16_A {
-        match self.bits {
-            false => OUTSET16_A::NOP,
-            true => OUTSET16_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET16_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET16_A::OUT1
-    }
-}
+pub type OUTSET16_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 16"]
+pub type OUTSET16_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET16`"]
 pub struct OUTSET16_W<'a> {
     w: &'a mut W,
@@ -1253,7 +787,7 @@ pub struct OUTSET16_W<'a> {
 impl<'a> OUTSET16_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET16_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET16_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1261,12 +795,12 @@ impl<'a> OUTSET16_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET16_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET16_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +819,12 @@ impl<'a> OUTSET16_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET17_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET17_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 17"]
+pub type OUTSET17_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET17`"]
-pub type OUTSET17_R = crate::R<bool, OUTSET17_A>;
-impl OUTSET17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET17_A {
-        match self.bits {
-            false => OUTSET17_A::NOP,
-            true => OUTSET17_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET17_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET17_A::OUT1
-    }
-}
+pub type OUTSET17_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 17"]
+pub type OUTSET17_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET17`"]
 pub struct OUTSET17_W<'a> {
     w: &'a mut W,
@@ -1328,7 +832,7 @@ pub struct OUTSET17_W<'a> {
 impl<'a> OUTSET17_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET17_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET17_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1336,12 +840,12 @@ impl<'a> OUTSET17_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET17_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET17_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +864,12 @@ impl<'a> OUTSET17_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET18_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET18_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 18"]
+pub type OUTSET18_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET18`"]
-pub type OUTSET18_R = crate::R<bool, OUTSET18_A>;
-impl OUTSET18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET18_A {
-        match self.bits {
-            false => OUTSET18_A::NOP,
-            true => OUTSET18_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET18_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET18_A::OUT1
-    }
-}
+pub type OUTSET18_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 18"]
+pub type OUTSET18_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET18`"]
 pub struct OUTSET18_W<'a> {
     w: &'a mut W,
@@ -1403,7 +877,7 @@ pub struct OUTSET18_W<'a> {
 impl<'a> OUTSET18_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET18_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET18_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1411,12 +885,12 @@ impl<'a> OUTSET18_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET18_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET18_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +909,12 @@ impl<'a> OUTSET18_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET19_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET19_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 19"]
+pub type OUTSET19_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET19`"]
-pub type OUTSET19_R = crate::R<bool, OUTSET19_A>;
-impl OUTSET19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET19_A {
-        match self.bits {
-            false => OUTSET19_A::NOP,
-            true => OUTSET19_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET19_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET19_A::OUT1
-    }
-}
+pub type OUTSET19_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 19"]
+pub type OUTSET19_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET19`"]
 pub struct OUTSET19_W<'a> {
     w: &'a mut W,
@@ -1478,7 +922,7 @@ pub struct OUTSET19_W<'a> {
 impl<'a> OUTSET19_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET19_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET19_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1486,12 +930,12 @@ impl<'a> OUTSET19_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET19_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET19_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +954,12 @@ impl<'a> OUTSET19_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET20_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET20_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 20"]
+pub type OUTSET20_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET20`"]
-pub type OUTSET20_R = crate::R<bool, OUTSET20_A>;
-impl OUTSET20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET20_A {
-        match self.bits {
-            false => OUTSET20_A::NOP,
-            true => OUTSET20_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET20_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET20_A::OUT1
-    }
-}
+pub type OUTSET20_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 20"]
+pub type OUTSET20_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET20`"]
 pub struct OUTSET20_W<'a> {
     w: &'a mut W,
@@ -1553,7 +967,7 @@ pub struct OUTSET20_W<'a> {
 impl<'a> OUTSET20_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET20_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET20_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1561,12 +975,12 @@ impl<'a> OUTSET20_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET20_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET20_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +999,12 @@ impl<'a> OUTSET20_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET21_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET21_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 21"]
+pub type OUTSET21_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET21`"]
-pub type OUTSET21_R = crate::R<bool, OUTSET21_A>;
-impl OUTSET21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET21_A {
-        match self.bits {
-            false => OUTSET21_A::NOP,
-            true => OUTSET21_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET21_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET21_A::OUT1
-    }
-}
+pub type OUTSET21_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 21"]
+pub type OUTSET21_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET21`"]
 pub struct OUTSET21_W<'a> {
     w: &'a mut W,
@@ -1628,7 +1012,7 @@ pub struct OUTSET21_W<'a> {
 impl<'a> OUTSET21_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET21_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET21_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1636,12 +1020,12 @@ impl<'a> OUTSET21_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET21_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET21_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +1044,12 @@ impl<'a> OUTSET21_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET22_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET22_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 22"]
+pub type OUTSET22_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET22`"]
-pub type OUTSET22_R = crate::R<bool, OUTSET22_A>;
-impl OUTSET22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET22_A {
-        match self.bits {
-            false => OUTSET22_A::NOP,
-            true => OUTSET22_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET22_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET22_A::OUT1
-    }
-}
+pub type OUTSET22_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 22"]
+pub type OUTSET22_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET22`"]
 pub struct OUTSET22_W<'a> {
     w: &'a mut W,
@@ -1703,7 +1057,7 @@ pub struct OUTSET22_W<'a> {
 impl<'a> OUTSET22_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET22_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET22_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1711,12 +1065,12 @@ impl<'a> OUTSET22_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET22_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET22_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1089,12 @@ impl<'a> OUTSET22_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET23_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET23_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 23"]
+pub type OUTSET23_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET23`"]
-pub type OUTSET23_R = crate::R<bool, OUTSET23_A>;
-impl OUTSET23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET23_A {
-        match self.bits {
-            false => OUTSET23_A::NOP,
-            true => OUTSET23_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET23_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET23_A::OUT1
-    }
-}
+pub type OUTSET23_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 23"]
+pub type OUTSET23_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET23`"]
 pub struct OUTSET23_W<'a> {
     w: &'a mut W,
@@ -1778,7 +1102,7 @@ pub struct OUTSET23_W<'a> {
 impl<'a> OUTSET23_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET23_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET23_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1786,12 +1110,12 @@ impl<'a> OUTSET23_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET23_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET23_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1134,12 @@ impl<'a> OUTSET23_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET24_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET24_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 24"]
+pub type OUTSET24_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET24`"]
-pub type OUTSET24_R = crate::R<bool, OUTSET24_A>;
-impl OUTSET24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET24_A {
-        match self.bits {
-            false => OUTSET24_A::NOP,
-            true => OUTSET24_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET24_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET24_A::OUT1
-    }
-}
+pub type OUTSET24_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 24"]
+pub type OUTSET24_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET24`"]
 pub struct OUTSET24_W<'a> {
     w: &'a mut W,
@@ -1853,7 +1147,7 @@ pub struct OUTSET24_W<'a> {
 impl<'a> OUTSET24_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET24_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET24_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1861,12 +1155,12 @@ impl<'a> OUTSET24_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET24_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET24_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1179,12 @@ impl<'a> OUTSET24_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET25_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET25_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 25"]
+pub type OUTSET25_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET25`"]
-pub type OUTSET25_R = crate::R<bool, OUTSET25_A>;
-impl OUTSET25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET25_A {
-        match self.bits {
-            false => OUTSET25_A::NOP,
-            true => OUTSET25_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET25_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET25_A::OUT1
-    }
-}
+pub type OUTSET25_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 25"]
+pub type OUTSET25_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET25`"]
 pub struct OUTSET25_W<'a> {
     w: &'a mut W,
@@ -1928,7 +1192,7 @@ pub struct OUTSET25_W<'a> {
 impl<'a> OUTSET25_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET25_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET25_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -1936,12 +1200,12 @@ impl<'a> OUTSET25_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET25_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET25_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1224,12 @@ impl<'a> OUTSET25_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET26_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET26_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 26"]
+pub type OUTSET26_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET26`"]
-pub type OUTSET26_R = crate::R<bool, OUTSET26_A>;
-impl OUTSET26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET26_A {
-        match self.bits {
-            false => OUTSET26_A::NOP,
-            true => OUTSET26_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET26_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET26_A::OUT1
-    }
-}
+pub type OUTSET26_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 26"]
+pub type OUTSET26_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET26`"]
 pub struct OUTSET26_W<'a> {
     w: &'a mut W,
@@ -2003,7 +1237,7 @@ pub struct OUTSET26_W<'a> {
 impl<'a> OUTSET26_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET26_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET26_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2011,12 +1245,12 @@ impl<'a> OUTSET26_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET26_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET26_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1269,12 @@ impl<'a> OUTSET26_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET27_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET27_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 27"]
+pub type OUTSET27_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET27`"]
-pub type OUTSET27_R = crate::R<bool, OUTSET27_A>;
-impl OUTSET27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET27_A {
-        match self.bits {
-            false => OUTSET27_A::NOP,
-            true => OUTSET27_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET27_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET27_A::OUT1
-    }
-}
+pub type OUTSET27_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 27"]
+pub type OUTSET27_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET27`"]
 pub struct OUTSET27_W<'a> {
     w: &'a mut W,
@@ -2078,7 +1282,7 @@ pub struct OUTSET27_W<'a> {
 impl<'a> OUTSET27_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET27_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET27_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2086,12 +1290,12 @@ impl<'a> OUTSET27_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET27_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET27_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1314,12 @@ impl<'a> OUTSET27_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET28_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET28_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 28"]
+pub type OUTSET28_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET28`"]
-pub type OUTSET28_R = crate::R<bool, OUTSET28_A>;
-impl OUTSET28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET28_A {
-        match self.bits {
-            false => OUTSET28_A::NOP,
-            true => OUTSET28_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET28_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET28_A::OUT1
-    }
-}
+pub type OUTSET28_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 28"]
+pub type OUTSET28_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET28`"]
 pub struct OUTSET28_W<'a> {
     w: &'a mut W,
@@ -2153,7 +1327,7 @@ pub struct OUTSET28_W<'a> {
 impl<'a> OUTSET28_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET28_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET28_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2161,12 +1335,12 @@ impl<'a> OUTSET28_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET28_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET28_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1359,12 @@ impl<'a> OUTSET28_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET29_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET29_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 29"]
+pub type OUTSET29_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET29`"]
-pub type OUTSET29_R = crate::R<bool, OUTSET29_A>;
-impl OUTSET29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET29_A {
-        match self.bits {
-            false => OUTSET29_A::NOP,
-            true => OUTSET29_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET29_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET29_A::OUT1
-    }
-}
+pub type OUTSET29_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 29"]
+pub type OUTSET29_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET29`"]
 pub struct OUTSET29_W<'a> {
     w: &'a mut W,
@@ -2228,7 +1372,7 @@ pub struct OUTSET29_W<'a> {
 impl<'a> OUTSET29_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET29_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET29_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2236,12 +1380,12 @@ impl<'a> OUTSET29_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET29_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET29_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1404,12 @@ impl<'a> OUTSET29_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET30_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET30_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 30"]
+pub type OUTSET30_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET30`"]
-pub type OUTSET30_R = crate::R<bool, OUTSET30_A>;
-impl OUTSET30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET30_A {
-        match self.bits {
-            false => OUTSET30_A::NOP,
-            true => OUTSET30_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET30_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET30_A::OUT1
-    }
-}
+pub type OUTSET30_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 30"]
+pub type OUTSET30_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET30`"]
 pub struct OUTSET30_W<'a> {
     w: &'a mut W,
@@ -2303,7 +1417,7 @@ pub struct OUTSET30_W<'a> {
 impl<'a> OUTSET30_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET30_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET30_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2311,12 +1425,12 @@ impl<'a> OUTSET30_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET30_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET30_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1449,12 @@ impl<'a> OUTSET30_W<'a> {
         self.w
     }
 }
-#[doc = "Port Data Output Value Set 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum OUTSET31_A {
-    #[doc = "0: No effect"]
-    NOP = 0,
-    #[doc = "1: Output 1"]
-    OUT1 = 1,
-}
-impl From<OUTSET31_A> for bool {
-    #[inline(always)]
-    fn from(variant: OUTSET31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Output Value Set 31"]
+pub type OUTSET31_A = OUTSET0_A;
 #[doc = "Reader of field `OUTSET31`"]
-pub type OUTSET31_R = crate::R<bool, OUTSET31_A>;
-impl OUTSET31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OUTSET31_A {
-        match self.bits {
-            false => OUTSET31_A::NOP,
-            true => OUTSET31_A::OUT1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `NOP`"]
-    #[inline(always)]
-    pub fn is_nop(&self) -> bool {
-        *self == OUTSET31_A::NOP
-    }
-    #[doc = "Checks if the value of the field is `OUT1`"]
-    #[inline(always)]
-    pub fn is_out1(&self) -> bool {
-        *self == OUTSET31_A::OUT1
-    }
-}
+pub type OUTSET31_R = crate::R<bool, OUTSET0_A>;
+#[doc = "Port Data Output Value Set 31"]
+pub type OUTSET31_AW = OUTSET0_AW;
 #[doc = "Write proxy for field `OUTSET31`"]
 pub struct OUTSET31_W<'a> {
     w: &'a mut W,
@@ -2378,7 +1462,7 @@ pub struct OUTSET31_W<'a> {
 impl<'a> OUTSET31_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
-    pub fn variant(self, variant: OUTSET31_A) -> &'a mut W {
+    pub fn variant(self, variant: OUTSET31_AW) -> &'a mut W {
         {
             self.bit(variant.into())
         }
@@ -2386,12 +1470,12 @@ impl<'a> OUTSET31_W<'a> {
     #[doc = "No effect"]
     #[inline(always)]
     pub fn nop(self) -> &'a mut W {
-        self.variant(OUTSET31_A::NOP)
+        self.variant(OUTSET0_AW::NOP)
     }
     #[doc = "Output 1"]
     #[inline(always)]
     pub fn out1(self) -> &'a mut W {
-        self.variant(OUTSET31_A::OUT1)
+        self.variant(OUTSET0_AW::OUT1)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]

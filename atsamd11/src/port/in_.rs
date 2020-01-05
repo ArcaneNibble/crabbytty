@@ -36,1122 +36,130 @@ impl IN0_R {
         *self == IN0_A::_1
     }
 }
-#[doc = "Port Data Input Value 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN1_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN1_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Port Data Input Value 1"]
+pub type IN1_A = IN0_A;
 #[doc = "Reader of field `IN1`"]
-pub type IN1_R = crate::R<bool, IN1_A>;
-impl IN1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN1_A {
-        match self.bits {
-            false => IN1_A::_0,
-            true => IN1_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN1_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN1_A::_1
-    }
-}
-#[doc = "Port Data Input Value 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN2_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN2_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN1_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 2"]
+pub type IN2_A = IN0_A;
 #[doc = "Reader of field `IN2`"]
-pub type IN2_R = crate::R<bool, IN2_A>;
-impl IN2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN2_A {
-        match self.bits {
-            false => IN2_A::_0,
-            true => IN2_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN2_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN2_A::_1
-    }
-}
-#[doc = "Port Data Input Value 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN3_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN3_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN2_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 3"]
+pub type IN3_A = IN0_A;
 #[doc = "Reader of field `IN3`"]
-pub type IN3_R = crate::R<bool, IN3_A>;
-impl IN3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN3_A {
-        match self.bits {
-            false => IN3_A::_0,
-            true => IN3_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN3_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN3_A::_1
-    }
-}
-#[doc = "Port Data Input Value 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN4_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN4_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN3_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 4"]
+pub type IN4_A = IN0_A;
 #[doc = "Reader of field `IN4`"]
-pub type IN4_R = crate::R<bool, IN4_A>;
-impl IN4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN4_A {
-        match self.bits {
-            false => IN4_A::_0,
-            true => IN4_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN4_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN4_A::_1
-    }
-}
-#[doc = "Port Data Input Value 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN5_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN5_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN4_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 5"]
+pub type IN5_A = IN0_A;
 #[doc = "Reader of field `IN5`"]
-pub type IN5_R = crate::R<bool, IN5_A>;
-impl IN5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN5_A {
-        match self.bits {
-            false => IN5_A::_0,
-            true => IN5_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN5_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN5_A::_1
-    }
-}
-#[doc = "Port Data Input Value 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN6_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN6_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN5_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 6"]
+pub type IN6_A = IN0_A;
 #[doc = "Reader of field `IN6`"]
-pub type IN6_R = crate::R<bool, IN6_A>;
-impl IN6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN6_A {
-        match self.bits {
-            false => IN6_A::_0,
-            true => IN6_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN6_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN6_A::_1
-    }
-}
-#[doc = "Port Data Input Value 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN7_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN7_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN6_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 7"]
+pub type IN7_A = IN0_A;
 #[doc = "Reader of field `IN7`"]
-pub type IN7_R = crate::R<bool, IN7_A>;
-impl IN7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN7_A {
-        match self.bits {
-            false => IN7_A::_0,
-            true => IN7_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN7_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN7_A::_1
-    }
-}
-#[doc = "Port Data Input Value 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN8_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN8_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN7_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 8"]
+pub type IN8_A = IN0_A;
 #[doc = "Reader of field `IN8`"]
-pub type IN8_R = crate::R<bool, IN8_A>;
-impl IN8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN8_A {
-        match self.bits {
-            false => IN8_A::_0,
-            true => IN8_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN8_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN8_A::_1
-    }
-}
-#[doc = "Port Data Input Value 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN9_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN9_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN8_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 9"]
+pub type IN9_A = IN0_A;
 #[doc = "Reader of field `IN9`"]
-pub type IN9_R = crate::R<bool, IN9_A>;
-impl IN9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN9_A {
-        match self.bits {
-            false => IN9_A::_0,
-            true => IN9_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN9_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN9_A::_1
-    }
-}
-#[doc = "Port Data Input Value 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN10_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN10_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN9_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 10"]
+pub type IN10_A = IN0_A;
 #[doc = "Reader of field `IN10`"]
-pub type IN10_R = crate::R<bool, IN10_A>;
-impl IN10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN10_A {
-        match self.bits {
-            false => IN10_A::_0,
-            true => IN10_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN10_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN10_A::_1
-    }
-}
-#[doc = "Port Data Input Value 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN11_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN11_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN10_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 11"]
+pub type IN11_A = IN0_A;
 #[doc = "Reader of field `IN11`"]
-pub type IN11_R = crate::R<bool, IN11_A>;
-impl IN11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN11_A {
-        match self.bits {
-            false => IN11_A::_0,
-            true => IN11_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN11_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN11_A::_1
-    }
-}
-#[doc = "Port Data Input Value 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN12_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN12_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN11_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 12"]
+pub type IN12_A = IN0_A;
 #[doc = "Reader of field `IN12`"]
-pub type IN12_R = crate::R<bool, IN12_A>;
-impl IN12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN12_A {
-        match self.bits {
-            false => IN12_A::_0,
-            true => IN12_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN12_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN12_A::_1
-    }
-}
-#[doc = "Port Data Input Value 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN13_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN13_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN12_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 13"]
+pub type IN13_A = IN0_A;
 #[doc = "Reader of field `IN13`"]
-pub type IN13_R = crate::R<bool, IN13_A>;
-impl IN13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN13_A {
-        match self.bits {
-            false => IN13_A::_0,
-            true => IN13_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN13_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN13_A::_1
-    }
-}
-#[doc = "Port Data Input Value 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN14_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN14_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN13_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 14"]
+pub type IN14_A = IN0_A;
 #[doc = "Reader of field `IN14`"]
-pub type IN14_R = crate::R<bool, IN14_A>;
-impl IN14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN14_A {
-        match self.bits {
-            false => IN14_A::_0,
-            true => IN14_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN14_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN14_A::_1
-    }
-}
-#[doc = "Port Data Input Value 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN15_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN15_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN14_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 15"]
+pub type IN15_A = IN0_A;
 #[doc = "Reader of field `IN15`"]
-pub type IN15_R = crate::R<bool, IN15_A>;
-impl IN15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN15_A {
-        match self.bits {
-            false => IN15_A::_0,
-            true => IN15_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN15_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN15_A::_1
-    }
-}
-#[doc = "Port Data Input Value 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN16_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN16_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN15_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 16"]
+pub type IN16_A = IN0_A;
 #[doc = "Reader of field `IN16`"]
-pub type IN16_R = crate::R<bool, IN16_A>;
-impl IN16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN16_A {
-        match self.bits {
-            false => IN16_A::_0,
-            true => IN16_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN16_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN16_A::_1
-    }
-}
-#[doc = "Port Data Input Value 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN17_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN17_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN16_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 17"]
+pub type IN17_A = IN0_A;
 #[doc = "Reader of field `IN17`"]
-pub type IN17_R = crate::R<bool, IN17_A>;
-impl IN17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN17_A {
-        match self.bits {
-            false => IN17_A::_0,
-            true => IN17_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN17_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN17_A::_1
-    }
-}
-#[doc = "Port Data Input Value 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN18_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN18_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN17_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 18"]
+pub type IN18_A = IN0_A;
 #[doc = "Reader of field `IN18`"]
-pub type IN18_R = crate::R<bool, IN18_A>;
-impl IN18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN18_A {
-        match self.bits {
-            false => IN18_A::_0,
-            true => IN18_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN18_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN18_A::_1
-    }
-}
-#[doc = "Port Data Input Value 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN19_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN19_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN18_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 19"]
+pub type IN19_A = IN0_A;
 #[doc = "Reader of field `IN19`"]
-pub type IN19_R = crate::R<bool, IN19_A>;
-impl IN19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN19_A {
-        match self.bits {
-            false => IN19_A::_0,
-            true => IN19_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN19_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN19_A::_1
-    }
-}
-#[doc = "Port Data Input Value 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN20_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN20_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN19_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 20"]
+pub type IN20_A = IN0_A;
 #[doc = "Reader of field `IN20`"]
-pub type IN20_R = crate::R<bool, IN20_A>;
-impl IN20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN20_A {
-        match self.bits {
-            false => IN20_A::_0,
-            true => IN20_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN20_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN20_A::_1
-    }
-}
-#[doc = "Port Data Input Value 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN21_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN21_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN20_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 21"]
+pub type IN21_A = IN0_A;
 #[doc = "Reader of field `IN21`"]
-pub type IN21_R = crate::R<bool, IN21_A>;
-impl IN21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN21_A {
-        match self.bits {
-            false => IN21_A::_0,
-            true => IN21_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN21_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN21_A::_1
-    }
-}
-#[doc = "Port Data Input Value 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN22_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN22_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN21_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 22"]
+pub type IN22_A = IN0_A;
 #[doc = "Reader of field `IN22`"]
-pub type IN22_R = crate::R<bool, IN22_A>;
-impl IN22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN22_A {
-        match self.bits {
-            false => IN22_A::_0,
-            true => IN22_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN22_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN22_A::_1
-    }
-}
-#[doc = "Port Data Input Value 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN23_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN23_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN22_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 23"]
+pub type IN23_A = IN0_A;
 #[doc = "Reader of field `IN23`"]
-pub type IN23_R = crate::R<bool, IN23_A>;
-impl IN23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN23_A {
-        match self.bits {
-            false => IN23_A::_0,
-            true => IN23_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN23_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN23_A::_1
-    }
-}
-#[doc = "Port Data Input Value 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN24_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN24_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN23_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 24"]
+pub type IN24_A = IN0_A;
 #[doc = "Reader of field `IN24`"]
-pub type IN24_R = crate::R<bool, IN24_A>;
-impl IN24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN24_A {
-        match self.bits {
-            false => IN24_A::_0,
-            true => IN24_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN24_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN24_A::_1
-    }
-}
-#[doc = "Port Data Input Value 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN25_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN25_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN24_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 25"]
+pub type IN25_A = IN0_A;
 #[doc = "Reader of field `IN25`"]
-pub type IN25_R = crate::R<bool, IN25_A>;
-impl IN25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN25_A {
-        match self.bits {
-            false => IN25_A::_0,
-            true => IN25_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN25_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN25_A::_1
-    }
-}
-#[doc = "Port Data Input Value 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN26_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN26_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN25_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 26"]
+pub type IN26_A = IN0_A;
 #[doc = "Reader of field `IN26`"]
-pub type IN26_R = crate::R<bool, IN26_A>;
-impl IN26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN26_A {
-        match self.bits {
-            false => IN26_A::_0,
-            true => IN26_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN26_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN26_A::_1
-    }
-}
-#[doc = "Port Data Input Value 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN27_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN27_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN26_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 27"]
+pub type IN27_A = IN0_A;
 #[doc = "Reader of field `IN27`"]
-pub type IN27_R = crate::R<bool, IN27_A>;
-impl IN27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN27_A {
-        match self.bits {
-            false => IN27_A::_0,
-            true => IN27_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN27_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN27_A::_1
-    }
-}
-#[doc = "Port Data Input Value 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN28_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN28_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN27_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 28"]
+pub type IN28_A = IN0_A;
 #[doc = "Reader of field `IN28`"]
-pub type IN28_R = crate::R<bool, IN28_A>;
-impl IN28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN28_A {
-        match self.bits {
-            false => IN28_A::_0,
-            true => IN28_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN28_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN28_A::_1
-    }
-}
-#[doc = "Port Data Input Value 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN29_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN29_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN28_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 29"]
+pub type IN29_A = IN0_A;
 #[doc = "Reader of field `IN29`"]
-pub type IN29_R = crate::R<bool, IN29_A>;
-impl IN29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN29_A {
-        match self.bits {
-            false => IN29_A::_0,
-            true => IN29_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN29_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN29_A::_1
-    }
-}
-#[doc = "Port Data Input Value 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN30_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN30_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN29_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 30"]
+pub type IN30_A = IN0_A;
 #[doc = "Reader of field `IN30`"]
-pub type IN30_R = crate::R<bool, IN30_A>;
-impl IN30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN30_A {
-        match self.bits {
-            false => IN30_A::_0,
-            true => IN30_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN30_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN30_A::_1
-    }
-}
-#[doc = "Port Data Input Value 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IN31_A {
-    #[doc = "0: Input 0"]
-    _0 = 0,
-    #[doc = "1: Input 1"]
-    _1 = 1,
-}
-impl From<IN31_A> for bool {
-    #[inline(always)]
-    fn from(variant: IN31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+pub type IN30_R = crate::R<bool, IN0_A>;
+#[doc = "Port Data Input Value 31"]
+pub type IN31_A = IN0_A;
 #[doc = "Reader of field `IN31`"]
-pub type IN31_R = crate::R<bool, IN31_A>;
-impl IN31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IN31_A {
-        match self.bits {
-            false => IN31_A::_0,
-            true => IN31_A::_1,
-        }
-    }
-    #[doc = "Checks if the value of the field is `_0`"]
-    #[inline(always)]
-    pub fn is_0(&self) -> bool {
-        *self == IN31_A::_0
-    }
-    #[doc = "Checks if the value of the field is `_1`"]
-    #[inline(always)]
-    pub fn is_1(&self) -> bool {
-        *self == IN31_A::_1
-    }
-}
+pub type IN31_R = crate::R<bool, IN0_A>;
 impl R {
     #[doc = "Bit 0 - Port Data Input Value 0"]
     #[inline(always)]

@@ -85,42 +85,10 @@ impl<'a> SAMPLING0_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING1_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING1_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING1_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 1"]
+pub type SAMPLING1_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING1`"]
-pub type SAMPLING1_R = crate::R<bool, SAMPLING1_A>;
-impl SAMPLING1_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING1_A {
-        match self.bits {
-            false => SAMPLING1_A::ONREAD,
-            true => SAMPLING1_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING1_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING1_A::CONTINUOUS
-    }
-}
+pub type SAMPLING1_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING1`"]
 pub struct SAMPLING1_W<'a> {
     w: &'a mut W,
@@ -136,12 +104,12 @@ impl<'a> SAMPLING1_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING1_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING1_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -160,42 +128,10 @@ impl<'a> SAMPLING1_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING2_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING2_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING2_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 2"]
+pub type SAMPLING2_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING2`"]
-pub type SAMPLING2_R = crate::R<bool, SAMPLING2_A>;
-impl SAMPLING2_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING2_A {
-        match self.bits {
-            false => SAMPLING2_A::ONREAD,
-            true => SAMPLING2_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING2_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING2_A::CONTINUOUS
-    }
-}
+pub type SAMPLING2_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING2`"]
 pub struct SAMPLING2_W<'a> {
     w: &'a mut W,
@@ -211,12 +147,12 @@ impl<'a> SAMPLING2_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING2_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING2_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -235,42 +171,10 @@ impl<'a> SAMPLING2_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING3_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING3_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING3_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 3"]
+pub type SAMPLING3_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING3`"]
-pub type SAMPLING3_R = crate::R<bool, SAMPLING3_A>;
-impl SAMPLING3_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING3_A {
-        match self.bits {
-            false => SAMPLING3_A::ONREAD,
-            true => SAMPLING3_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING3_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING3_A::CONTINUOUS
-    }
-}
+pub type SAMPLING3_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING3`"]
 pub struct SAMPLING3_W<'a> {
     w: &'a mut W,
@@ -286,12 +190,12 @@ impl<'a> SAMPLING3_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING3_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING3_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -310,42 +214,10 @@ impl<'a> SAMPLING3_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING4_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING4_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING4_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 4"]
+pub type SAMPLING4_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING4`"]
-pub type SAMPLING4_R = crate::R<bool, SAMPLING4_A>;
-impl SAMPLING4_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING4_A {
-        match self.bits {
-            false => SAMPLING4_A::ONREAD,
-            true => SAMPLING4_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING4_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING4_A::CONTINUOUS
-    }
-}
+pub type SAMPLING4_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING4`"]
 pub struct SAMPLING4_W<'a> {
     w: &'a mut W,
@@ -361,12 +233,12 @@ impl<'a> SAMPLING4_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING4_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING4_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -385,42 +257,10 @@ impl<'a> SAMPLING4_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 5\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING5_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING5_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING5_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 5"]
+pub type SAMPLING5_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING5`"]
-pub type SAMPLING5_R = crate::R<bool, SAMPLING5_A>;
-impl SAMPLING5_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING5_A {
-        match self.bits {
-            false => SAMPLING5_A::ONREAD,
-            true => SAMPLING5_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING5_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING5_A::CONTINUOUS
-    }
-}
+pub type SAMPLING5_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING5`"]
 pub struct SAMPLING5_W<'a> {
     w: &'a mut W,
@@ -436,12 +276,12 @@ impl<'a> SAMPLING5_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING5_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING5_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -460,42 +300,10 @@ impl<'a> SAMPLING5_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 6\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING6_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING6_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING6_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 6"]
+pub type SAMPLING6_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING6`"]
-pub type SAMPLING6_R = crate::R<bool, SAMPLING6_A>;
-impl SAMPLING6_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING6_A {
-        match self.bits {
-            false => SAMPLING6_A::ONREAD,
-            true => SAMPLING6_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING6_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING6_A::CONTINUOUS
-    }
-}
+pub type SAMPLING6_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING6`"]
 pub struct SAMPLING6_W<'a> {
     w: &'a mut W,
@@ -511,12 +319,12 @@ impl<'a> SAMPLING6_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING6_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING6_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -535,42 +343,10 @@ impl<'a> SAMPLING6_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 7\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING7_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING7_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING7_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 7"]
+pub type SAMPLING7_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING7`"]
-pub type SAMPLING7_R = crate::R<bool, SAMPLING7_A>;
-impl SAMPLING7_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING7_A {
-        match self.bits {
-            false => SAMPLING7_A::ONREAD,
-            true => SAMPLING7_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING7_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING7_A::CONTINUOUS
-    }
-}
+pub type SAMPLING7_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING7`"]
 pub struct SAMPLING7_W<'a> {
     w: &'a mut W,
@@ -586,12 +362,12 @@ impl<'a> SAMPLING7_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING7_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING7_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -610,42 +386,10 @@ impl<'a> SAMPLING7_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 8\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING8_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING8_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING8_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 8"]
+pub type SAMPLING8_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING8`"]
-pub type SAMPLING8_R = crate::R<bool, SAMPLING8_A>;
-impl SAMPLING8_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING8_A {
-        match self.bits {
-            false => SAMPLING8_A::ONREAD,
-            true => SAMPLING8_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING8_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING8_A::CONTINUOUS
-    }
-}
+pub type SAMPLING8_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING8`"]
 pub struct SAMPLING8_W<'a> {
     w: &'a mut W,
@@ -661,12 +405,12 @@ impl<'a> SAMPLING8_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING8_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING8_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -685,42 +429,10 @@ impl<'a> SAMPLING8_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 9\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING9_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING9_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING9_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 9"]
+pub type SAMPLING9_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING9`"]
-pub type SAMPLING9_R = crate::R<bool, SAMPLING9_A>;
-impl SAMPLING9_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING9_A {
-        match self.bits {
-            false => SAMPLING9_A::ONREAD,
-            true => SAMPLING9_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING9_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING9_A::CONTINUOUS
-    }
-}
+pub type SAMPLING9_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING9`"]
 pub struct SAMPLING9_W<'a> {
     w: &'a mut W,
@@ -736,12 +448,12 @@ impl<'a> SAMPLING9_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING9_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING9_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -760,42 +472,10 @@ impl<'a> SAMPLING9_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 10\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING10_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING10_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING10_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 10"]
+pub type SAMPLING10_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING10`"]
-pub type SAMPLING10_R = crate::R<bool, SAMPLING10_A>;
-impl SAMPLING10_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING10_A {
-        match self.bits {
-            false => SAMPLING10_A::ONREAD,
-            true => SAMPLING10_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING10_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING10_A::CONTINUOUS
-    }
-}
+pub type SAMPLING10_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING10`"]
 pub struct SAMPLING10_W<'a> {
     w: &'a mut W,
@@ -811,12 +491,12 @@ impl<'a> SAMPLING10_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING10_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING10_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -835,42 +515,10 @@ impl<'a> SAMPLING10_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 11\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING11_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING11_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING11_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 11"]
+pub type SAMPLING11_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING11`"]
-pub type SAMPLING11_R = crate::R<bool, SAMPLING11_A>;
-impl SAMPLING11_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING11_A {
-        match self.bits {
-            false => SAMPLING11_A::ONREAD,
-            true => SAMPLING11_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING11_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING11_A::CONTINUOUS
-    }
-}
+pub type SAMPLING11_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING11`"]
 pub struct SAMPLING11_W<'a> {
     w: &'a mut W,
@@ -886,12 +534,12 @@ impl<'a> SAMPLING11_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING11_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING11_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -910,42 +558,10 @@ impl<'a> SAMPLING11_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 12\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING12_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING12_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING12_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 12"]
+pub type SAMPLING12_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING12`"]
-pub type SAMPLING12_R = crate::R<bool, SAMPLING12_A>;
-impl SAMPLING12_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING12_A {
-        match self.bits {
-            false => SAMPLING12_A::ONREAD,
-            true => SAMPLING12_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING12_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING12_A::CONTINUOUS
-    }
-}
+pub type SAMPLING12_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING12`"]
 pub struct SAMPLING12_W<'a> {
     w: &'a mut W,
@@ -961,12 +577,12 @@ impl<'a> SAMPLING12_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING12_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING12_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -985,42 +601,10 @@ impl<'a> SAMPLING12_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 13\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING13_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING13_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING13_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 13"]
+pub type SAMPLING13_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING13`"]
-pub type SAMPLING13_R = crate::R<bool, SAMPLING13_A>;
-impl SAMPLING13_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING13_A {
-        match self.bits {
-            false => SAMPLING13_A::ONREAD,
-            true => SAMPLING13_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING13_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING13_A::CONTINUOUS
-    }
-}
+pub type SAMPLING13_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING13`"]
 pub struct SAMPLING13_W<'a> {
     w: &'a mut W,
@@ -1036,12 +620,12 @@ impl<'a> SAMPLING13_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING13_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING13_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1060,42 +644,10 @@ impl<'a> SAMPLING13_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 14\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING14_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING14_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING14_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 14"]
+pub type SAMPLING14_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING14`"]
-pub type SAMPLING14_R = crate::R<bool, SAMPLING14_A>;
-impl SAMPLING14_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING14_A {
-        match self.bits {
-            false => SAMPLING14_A::ONREAD,
-            true => SAMPLING14_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING14_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING14_A::CONTINUOUS
-    }
-}
+pub type SAMPLING14_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING14`"]
 pub struct SAMPLING14_W<'a> {
     w: &'a mut W,
@@ -1111,12 +663,12 @@ impl<'a> SAMPLING14_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING14_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING14_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1135,42 +687,10 @@ impl<'a> SAMPLING14_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 15\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING15_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING15_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING15_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 15"]
+pub type SAMPLING15_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING15`"]
-pub type SAMPLING15_R = crate::R<bool, SAMPLING15_A>;
-impl SAMPLING15_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING15_A {
-        match self.bits {
-            false => SAMPLING15_A::ONREAD,
-            true => SAMPLING15_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING15_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING15_A::CONTINUOUS
-    }
-}
+pub type SAMPLING15_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING15`"]
 pub struct SAMPLING15_W<'a> {
     w: &'a mut W,
@@ -1186,12 +706,12 @@ impl<'a> SAMPLING15_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING15_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING15_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1210,42 +730,10 @@ impl<'a> SAMPLING15_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 16\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING16_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING16_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING16_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 16"]
+pub type SAMPLING16_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING16`"]
-pub type SAMPLING16_R = crate::R<bool, SAMPLING16_A>;
-impl SAMPLING16_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING16_A {
-        match self.bits {
-            false => SAMPLING16_A::ONREAD,
-            true => SAMPLING16_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING16_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING16_A::CONTINUOUS
-    }
-}
+pub type SAMPLING16_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING16`"]
 pub struct SAMPLING16_W<'a> {
     w: &'a mut W,
@@ -1261,12 +749,12 @@ impl<'a> SAMPLING16_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING16_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING16_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1285,42 +773,10 @@ impl<'a> SAMPLING16_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 17\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING17_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING17_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING17_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 17"]
+pub type SAMPLING17_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING17`"]
-pub type SAMPLING17_R = crate::R<bool, SAMPLING17_A>;
-impl SAMPLING17_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING17_A {
-        match self.bits {
-            false => SAMPLING17_A::ONREAD,
-            true => SAMPLING17_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING17_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING17_A::CONTINUOUS
-    }
-}
+pub type SAMPLING17_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING17`"]
 pub struct SAMPLING17_W<'a> {
     w: &'a mut W,
@@ -1336,12 +792,12 @@ impl<'a> SAMPLING17_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING17_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING17_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1360,42 +816,10 @@ impl<'a> SAMPLING17_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 18\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING18_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING18_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING18_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 18"]
+pub type SAMPLING18_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING18`"]
-pub type SAMPLING18_R = crate::R<bool, SAMPLING18_A>;
-impl SAMPLING18_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING18_A {
-        match self.bits {
-            false => SAMPLING18_A::ONREAD,
-            true => SAMPLING18_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING18_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING18_A::CONTINUOUS
-    }
-}
+pub type SAMPLING18_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING18`"]
 pub struct SAMPLING18_W<'a> {
     w: &'a mut W,
@@ -1411,12 +835,12 @@ impl<'a> SAMPLING18_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING18_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING18_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1435,42 +859,10 @@ impl<'a> SAMPLING18_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 19\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING19_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING19_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING19_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 19"]
+pub type SAMPLING19_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING19`"]
-pub type SAMPLING19_R = crate::R<bool, SAMPLING19_A>;
-impl SAMPLING19_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING19_A {
-        match self.bits {
-            false => SAMPLING19_A::ONREAD,
-            true => SAMPLING19_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING19_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING19_A::CONTINUOUS
-    }
-}
+pub type SAMPLING19_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING19`"]
 pub struct SAMPLING19_W<'a> {
     w: &'a mut W,
@@ -1486,12 +878,12 @@ impl<'a> SAMPLING19_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING19_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING19_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1510,42 +902,10 @@ impl<'a> SAMPLING19_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 20\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING20_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING20_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING20_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 20"]
+pub type SAMPLING20_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING20`"]
-pub type SAMPLING20_R = crate::R<bool, SAMPLING20_A>;
-impl SAMPLING20_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING20_A {
-        match self.bits {
-            false => SAMPLING20_A::ONREAD,
-            true => SAMPLING20_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING20_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING20_A::CONTINUOUS
-    }
-}
+pub type SAMPLING20_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING20`"]
 pub struct SAMPLING20_W<'a> {
     w: &'a mut W,
@@ -1561,12 +921,12 @@ impl<'a> SAMPLING20_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING20_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING20_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1585,42 +945,10 @@ impl<'a> SAMPLING20_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 21\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING21_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING21_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING21_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 21"]
+pub type SAMPLING21_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING21`"]
-pub type SAMPLING21_R = crate::R<bool, SAMPLING21_A>;
-impl SAMPLING21_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING21_A {
-        match self.bits {
-            false => SAMPLING21_A::ONREAD,
-            true => SAMPLING21_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING21_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING21_A::CONTINUOUS
-    }
-}
+pub type SAMPLING21_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING21`"]
 pub struct SAMPLING21_W<'a> {
     w: &'a mut W,
@@ -1636,12 +964,12 @@ impl<'a> SAMPLING21_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING21_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING21_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1660,42 +988,10 @@ impl<'a> SAMPLING21_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 22\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING22_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING22_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING22_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 22"]
+pub type SAMPLING22_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING22`"]
-pub type SAMPLING22_R = crate::R<bool, SAMPLING22_A>;
-impl SAMPLING22_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING22_A {
-        match self.bits {
-            false => SAMPLING22_A::ONREAD,
-            true => SAMPLING22_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING22_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING22_A::CONTINUOUS
-    }
-}
+pub type SAMPLING22_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING22`"]
 pub struct SAMPLING22_W<'a> {
     w: &'a mut W,
@@ -1711,12 +1007,12 @@ impl<'a> SAMPLING22_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING22_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING22_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1735,42 +1031,10 @@ impl<'a> SAMPLING22_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 23\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING23_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING23_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING23_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 23"]
+pub type SAMPLING23_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING23`"]
-pub type SAMPLING23_R = crate::R<bool, SAMPLING23_A>;
-impl SAMPLING23_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING23_A {
-        match self.bits {
-            false => SAMPLING23_A::ONREAD,
-            true => SAMPLING23_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING23_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING23_A::CONTINUOUS
-    }
-}
+pub type SAMPLING23_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING23`"]
 pub struct SAMPLING23_W<'a> {
     w: &'a mut W,
@@ -1786,12 +1050,12 @@ impl<'a> SAMPLING23_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING23_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING23_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1810,42 +1074,10 @@ impl<'a> SAMPLING23_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 24\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING24_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING24_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING24_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 24"]
+pub type SAMPLING24_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING24`"]
-pub type SAMPLING24_R = crate::R<bool, SAMPLING24_A>;
-impl SAMPLING24_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING24_A {
-        match self.bits {
-            false => SAMPLING24_A::ONREAD,
-            true => SAMPLING24_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING24_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING24_A::CONTINUOUS
-    }
-}
+pub type SAMPLING24_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING24`"]
 pub struct SAMPLING24_W<'a> {
     w: &'a mut W,
@@ -1861,12 +1093,12 @@ impl<'a> SAMPLING24_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING24_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING24_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1885,42 +1117,10 @@ impl<'a> SAMPLING24_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 25\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING25_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING25_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING25_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 25"]
+pub type SAMPLING25_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING25`"]
-pub type SAMPLING25_R = crate::R<bool, SAMPLING25_A>;
-impl SAMPLING25_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING25_A {
-        match self.bits {
-            false => SAMPLING25_A::ONREAD,
-            true => SAMPLING25_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING25_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING25_A::CONTINUOUS
-    }
-}
+pub type SAMPLING25_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING25`"]
 pub struct SAMPLING25_W<'a> {
     w: &'a mut W,
@@ -1936,12 +1136,12 @@ impl<'a> SAMPLING25_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING25_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING25_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -1960,42 +1160,10 @@ impl<'a> SAMPLING25_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 26\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING26_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING26_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING26_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 26"]
+pub type SAMPLING26_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING26`"]
-pub type SAMPLING26_R = crate::R<bool, SAMPLING26_A>;
-impl SAMPLING26_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING26_A {
-        match self.bits {
-            false => SAMPLING26_A::ONREAD,
-            true => SAMPLING26_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING26_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING26_A::CONTINUOUS
-    }
-}
+pub type SAMPLING26_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING26`"]
 pub struct SAMPLING26_W<'a> {
     w: &'a mut W,
@@ -2011,12 +1179,12 @@ impl<'a> SAMPLING26_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING26_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING26_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2035,42 +1203,10 @@ impl<'a> SAMPLING26_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 27\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING27_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING27_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING27_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 27"]
+pub type SAMPLING27_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING27`"]
-pub type SAMPLING27_R = crate::R<bool, SAMPLING27_A>;
-impl SAMPLING27_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING27_A {
-        match self.bits {
-            false => SAMPLING27_A::ONREAD,
-            true => SAMPLING27_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING27_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING27_A::CONTINUOUS
-    }
-}
+pub type SAMPLING27_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING27`"]
 pub struct SAMPLING27_W<'a> {
     w: &'a mut W,
@@ -2086,12 +1222,12 @@ impl<'a> SAMPLING27_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING27_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING27_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2110,42 +1246,10 @@ impl<'a> SAMPLING27_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 28\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING28_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING28_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING28_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 28"]
+pub type SAMPLING28_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING28`"]
-pub type SAMPLING28_R = crate::R<bool, SAMPLING28_A>;
-impl SAMPLING28_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING28_A {
-        match self.bits {
-            false => SAMPLING28_A::ONREAD,
-            true => SAMPLING28_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING28_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING28_A::CONTINUOUS
-    }
-}
+pub type SAMPLING28_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING28`"]
 pub struct SAMPLING28_W<'a> {
     w: &'a mut W,
@@ -2161,12 +1265,12 @@ impl<'a> SAMPLING28_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING28_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING28_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2185,42 +1289,10 @@ impl<'a> SAMPLING28_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 29\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING29_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING29_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING29_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 29"]
+pub type SAMPLING29_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING29`"]
-pub type SAMPLING29_R = crate::R<bool, SAMPLING29_A>;
-impl SAMPLING29_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING29_A {
-        match self.bits {
-            false => SAMPLING29_A::ONREAD,
-            true => SAMPLING29_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING29_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING29_A::CONTINUOUS
-    }
-}
+pub type SAMPLING29_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING29`"]
 pub struct SAMPLING29_W<'a> {
     w: &'a mut W,
@@ -2236,12 +1308,12 @@ impl<'a> SAMPLING29_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING29_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING29_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2260,42 +1332,10 @@ impl<'a> SAMPLING29_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 30\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING30_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING30_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING30_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 30"]
+pub type SAMPLING30_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING30`"]
-pub type SAMPLING30_R = crate::R<bool, SAMPLING30_A>;
-impl SAMPLING30_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING30_A {
-        match self.bits {
-            false => SAMPLING30_A::ONREAD,
-            true => SAMPLING30_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING30_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING30_A::CONTINUOUS
-    }
-}
+pub type SAMPLING30_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING30`"]
 pub struct SAMPLING30_W<'a> {
     w: &'a mut W,
@@ -2311,12 +1351,12 @@ impl<'a> SAMPLING30_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING30_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING30_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
@@ -2335,42 +1375,10 @@ impl<'a> SAMPLING30_W<'a> {
         self.w
     }
 }
-#[doc = "Input Sampling Mode 31\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SAMPLING31_A {
-    #[doc = "0: Only on reads"]
-    ONREAD = 0,
-    #[doc = "1: Continuously"]
-    CONTINUOUS = 1,
-}
-impl From<SAMPLING31_A> for bool {
-    #[inline(always)]
-    fn from(variant: SAMPLING31_A) -> Self {
-        variant as u8 != 0
-    }
-}
+#[doc = "Input Sampling Mode 31"]
+pub type SAMPLING31_A = SAMPLING0_A;
 #[doc = "Reader of field `SAMPLING31`"]
-pub type SAMPLING31_R = crate::R<bool, SAMPLING31_A>;
-impl SAMPLING31_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SAMPLING31_A {
-        match self.bits {
-            false => SAMPLING31_A::ONREAD,
-            true => SAMPLING31_A::CONTINUOUS,
-        }
-    }
-    #[doc = "Checks if the value of the field is `ONREAD`"]
-    #[inline(always)]
-    pub fn is_onread(&self) -> bool {
-        *self == SAMPLING31_A::ONREAD
-    }
-    #[doc = "Checks if the value of the field is `CONTINUOUS`"]
-    #[inline(always)]
-    pub fn is_continuous(&self) -> bool {
-        *self == SAMPLING31_A::CONTINUOUS
-    }
-}
+pub type SAMPLING31_R = crate::R<bool, SAMPLING0_A>;
 #[doc = "Write proxy for field `SAMPLING31`"]
 pub struct SAMPLING31_W<'a> {
     w: &'a mut W,
@@ -2386,12 +1394,12 @@ impl<'a> SAMPLING31_W<'a> {
     #[doc = "Only on reads"]
     #[inline(always)]
     pub fn onread(self) -> &'a mut W {
-        self.variant(SAMPLING31_A::ONREAD)
+        self.variant(SAMPLING0_A::ONREAD)
     }
     #[doc = "Continuously"]
     #[inline(always)]
     pub fn continuous(self) -> &'a mut W {
-        self.variant(SAMPLING31_A::CONTINUOUS)
+        self.variant(SAMPLING0_A::CONTINUOUS)
     }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
