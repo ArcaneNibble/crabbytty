@@ -140,15 +140,60 @@ const APP: () = {
 
         hprintln!("Hello world!").unwrap();
 
-        // TEST: Set up PIN 10 PA23 and toggle it
-        cx.device.PORT.dirset0.write(|w| {
-            w.dirset23().setoutput()
+        // Set up clocks for USB
+        cx.device.PM.ahbmask.modify(|_, w| {
+            w.usb_().bit(true)
+        });
+        cx.device.PM.apbbmask.modify(|_, w| {
+            w.usb_().bit(true)
+        });
+        cx.device.GCLK.clkctrl.write(|w| {
+            w.id().usb()
+                .gen().gclk0()
+                .clken().enabled()
+        });
+        // Set up IOs for USB
+        cx.device.PORT.pmux0_[12].write(|w| {
+            w.pmuxe().g().pmuxo().g()
+        });
+        cx.device.PORT.pincfg0_[24].write(|w| {
+            w.pmuxen().periph()
+        });
+        cx.device.PORT.pincfg0_[25].write(|w| {
+            w.pmuxen().periph()
         });
 
-        loop {
-            cx.device.PORT_IOBUS.outtgl0.write(|w| {
-                w.outtgl23().toggle()
-            });
-        }
+        // Reset USB
+        cx.device.USB.device.ctrla.write(|w| {
+            w.swrst().bit(true)
+        });
+        while cx.device.USB.device.ctrla.read().swrst().bit() ||
+            cx.device.USB.device.syncbusy.read().swrst().bit() {}
+
+        // Pad calibration
+        let nvm_transn_cal = ((nvm_cal_1 >> (45 - 32)) & 0b11111) as u8;
+        let nvm_transp_cal = ((nvm_cal_1 >> (50 - 32)) & 0b11111) as u8;
+        let nvm_trim_cal = ((nvm_cal_1 >> (55 - 32)) & 0b111) as u8;
+        cx.device.USB.device.padcal.write(|w| unsafe {
+            w.trim().bits(nvm_trim_cal)
+                .transn().bits(nvm_transn_cal)
+                .transp().bits(nvm_transp_cal)
+        });
+
+        // Enable USB
+        cx.device.USB.device.ctrla.write(|w| {
+            w.enable().bit(true)
+        });
+        // Attach USB
+        cx.device.USB.device.ctrlb.write(|w| {
+            w.detach().bit(false)
+        });
+
+        hprintln!("Survived init!").unwrap();
+    }
+
+    #[task(binds = USB)]
+    fn usb_isr(_cx: usb_isr::Context) {
+
     }
 };
