@@ -25,6 +25,10 @@ path = "atsamd11"
 [dependencies.usb-justthebits]
 path = "usb-justthebits"
 
+[dependencies.num_enum]
+version = "0.4.2"
+default-features = false
+
 # this lets you use `cargo fix`!
 [[bin]]
 name = "crabbytty"

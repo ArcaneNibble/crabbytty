@@ -11,14 +11,117 @@ extern crate usb_justthebits;
 
 use cortex_m_semihosting::hprintln;
 use rtfm::app;
+use num_enum::TryFromPrimitive;
+use core::convert::TryFrom;
+
+#[repr(u8)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+#[derive(TryFromPrimitive)]
+pub enum USBCoreEPBufSize {
+    _8 = 0,
+    _16 = 1,
+    _32 = 2,
+    _64 = 3,
+    _128 = 4,
+    _256 = 5,
+    _512 = 6,
+    _1023 = 7,
+}
+
+#[repr(C)]
+#[repr(packed)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+pub struct USBCoreEPDescriptorPcksize {
+    pcksize: u32,
+}
+
+impl USBCoreEPDescriptorPcksize {
+    pub fn is_auto_zlp(&self) -> bool {
+        (self.pcksize & 0x80000000) != 0
+    }
+
+    pub fn disable_auto_zlp(&mut self) {
+        self.pcksize &= !0x80000000;
+    }
+
+    pub fn enable_auto_zlp(&mut self) {
+        self.pcksize |= 0x80000000;
+    }
+
+    pub fn get_byte_count(&self) -> u32 {
+        self.pcksize & 0x3FFF
+    }
+
+    pub fn set_byte_count(&mut self, newval: u32) {
+        let newval = newval & 0x3FFF;
+        self.pcksize = (self.pcksize & !0x3FFF) | newval;
+    }
+
+    pub fn get_multi_packet_size(&self) -> u32 {
+        (self.pcksize >> 14) & 0x3FFF
+    }
+
+    pub fn set_multi_packet_size(&mut self, newval: u32) {
+        let newval = newval & 0x3FFF;
+        self.pcksize = (self.pcksize & !0x0FFFC000) | (newval << 14);
+    }
+
+    pub fn get_size(&self) -> USBCoreEPBufSize {
+        let val = ((self.pcksize >> 28) & 0b111) as u8;
+        USBCoreEPBufSize::try_from(val).unwrap()
+    }
+
+    pub fn set_size(&mut self, newval: USBCoreEPBufSize) {
+        self.pcksize = (self.pcksize & !0x70000000) | ((newval as u32) << 28);
+    }
+}
+
+#[repr(C)]
+#[repr(packed)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+pub struct USBCoreEPDescriptor {
+    pub bank0_addr: *mut u8,
+    pub bank0_pcksize: USBCoreEPDescriptorPcksize,
+    pub bank0_extreg: u16,
+    pub bank0_statusbk: u8,
+    _bank0_reserved: [u8; 5],
+    pub bank1_addr: *mut u8,
+    pub bank1_pcksize: USBCoreEPDescriptorPcksize,
+    _bank1_reserved1: u16,
+    pub bank1_statusbk: u8,
+    _bank1_reserved2: [u8; 5],
+}
+
+impl USBCoreEPDescriptor {
+    pub const fn default() -> Self {
+        Self {
+            bank0_addr: core::ptr::null_mut(),
+            bank0_pcksize: USBCoreEPDescriptorPcksize{pcksize: 0},
+            bank0_extreg: 0,
+            bank0_statusbk: 0,
+            _bank0_reserved: [0; 5],
+            bank1_addr: core::ptr::null_mut(),
+            bank1_pcksize: USBCoreEPDescriptorPcksize{pcksize: 0},
+            _bank1_reserved1: 0,
+            bank1_statusbk: 0,
+            _bank1_reserved2: [0; 5],
+        }
+    }
+}
 
 #[app(device = atsamd11, peripherals = true)]
 const APP: () = {
     struct Resources {
         USB_PERIPH: atsamd11::USB,
+        #[init([0; 8])]
+        ep0outbuf: [u8; 8],
+        #[init([0; 8])]
+        ep0inbuf: [u8; 8],
+        #[init([USBCoreEPDescriptor::default(); 1])]
+        epdescs: [USBCoreEPDescriptor; 1],
     }
 
-    #[init]
+    #[init(resources = [epdescs, ep0outbuf, ep0inbuf])]
     fn init(cx: init::Context) -> init::LateResources {
         // Atmel has an "Errata 9905" that says that ondemand must be
         // disabled before doing any other writes. The ASF code seems to
@@ -191,14 +294,29 @@ const APP: () = {
             w.enable().enabled().mode().device()
         });
 
-        // Turn on interrupts
+        // Set up descriptors
+        cx.resources.epdescs[0].bank0_addr =
+            cx.resources.ep0outbuf.as_mut_ptr();
+        cx.resources.epdescs[0].bank0_pcksize.set_size(USBCoreEPBufSize::_8);
+
+        cx.resources.epdescs[0].bank1_addr =
+            cx.resources.ep0inbuf.as_mut_ptr();
+        cx.resources.epdescs[0].bank1_pcksize.set_size(USBCoreEPBufSize::_8);
+        cx.resources.epdescs[0].bank1_pcksize.enable_auto_zlp();
+
+        cx.device.USB.descadd.write(|w| {
+            w.descadd().bits(cx.resources.epdescs.as_ptr() as u32)
+        });
+
+        // Turn on EP0 (which won't change during reset)
+        cx.device.USB.epcfg0.write(|w| {
+            w.eptype0().controlout()
+                .eptype1().controlin()
+        });
+
+        // Turn on interrupt on reset
         cx.device.USB.intenset.write(|w| {
             w.eorst().enable()
-        });
-        cx.device.USB.epintenset0.write(|w| {
-            w.rxstp().enable()
-                .trcpt1().enable()
-                .trcpt0().enable()
         });
 
         // Attach USB
@@ -213,12 +331,21 @@ const APP: () = {
         }
     }
 
-    #[task(binds = USB, resources = [USB_PERIPH])]
+    #[task(binds = USB, resources = [USB_PERIPH, ep0outbuf, ep0inbuf])]
     fn usb_isr(cx: usb_isr::Context) {
         // hprintln!("USB ISR!").unwrap();
 
         if cx.resources.USB_PERIPH.intflag.read().eorst().is_pending() {
             hprintln!("USB reset").unwrap();
+
+            // TODO: Would have to set up all the endpoints here
+
+            // Set up all the endpoint interrupts
+            cx.resources.USB_PERIPH.epintenset0.write(|w| {
+                w.rxstp().enable()
+                    .trcpt1().enable()
+                    .trcpt0().enable()
+            });
         }
 
         // Acknowledge all the USB device interrupts
