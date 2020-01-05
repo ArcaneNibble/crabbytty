@@ -165,10 +165,10 @@ const APP: () = {
 
         // Reset USB
         cx.device.USB.ctrla.write(|w| {
-            w.swrst().bit(true)
+            w.swrst().reset()
         });
-        while cx.device.USB.ctrla.read().swrst().bit() ||
-            cx.device.USB.syncbusy.read().swrst().bit() {}
+        while cx.device.USB.ctrla.read().swrst().is_reset() ||
+            cx.device.USB.syncbusy.read().swrst().is_syncing() {}
 
         // Pad calibration
         let nvm_transn_cal = ((nvm_cal_1 >> (45 - 32)) & 0b11111) as u8;
@@ -182,11 +182,11 @@ const APP: () = {
 
         // Enable USB
         cx.device.USB.ctrla.write(|w| {
-            w.enable().bit(true)
+            w.enable().enabled().mode().device()
         });
         // Attach USB
         cx.device.USB.ctrlb.write(|w| {
-            w.detach().bit(false)
+            w.spdconf().fs().detach().attach()
         });
 
         // hprintln!("Survived init!").unwrap();

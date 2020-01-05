@@ -10,13 +10,64 @@ impl crate::ResetValue for super::CTRLB {
         0x01
     }
 }
+#[doc = "Detach\n\nValue on reset: 1"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DETACH_A {
+    #[doc = "0: Detach USB"]
+    DETACH = 0,
+    #[doc = "1: Attach USB"]
+    ATTACH = 1,
+}
+impl From<DETACH_A> for bool {
+    #[inline(always)]
+    fn from(variant: DETACH_A) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Reader of field `DETACH`"]
-pub type DETACH_R = crate::R<bool, bool>;
+pub type DETACH_R = crate::R<bool, DETACH_A>;
+impl DETACH_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DETACH_A {
+        match self.bits {
+            false => DETACH_A::DETACH,
+            true => DETACH_A::ATTACH,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DETACH`"]
+    #[inline(always)]
+    pub fn is_detach(&self) -> bool {
+        *self == DETACH_A::DETACH
+    }
+    #[doc = "Checks if the value of the field is `ATTACH`"]
+    #[inline(always)]
+    pub fn is_attach(&self) -> bool {
+        *self == DETACH_A::ATTACH
+    }
+}
 #[doc = "Write proxy for field `DETACH`"]
 pub struct DETACH_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DETACH_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DETACH_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Detach USB"]
+    #[inline(always)]
+    pub fn detach(self) -> &'a mut W {
+        self.variant(DETACH_A::DETACH)
+    }
+    #[doc = "Attach USB"]
+    #[inline(always)]
+    pub fn attach(self) -> &'a mut W {
+        self.variant(DETACH_A::ATTACH)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -34,13 +85,64 @@ impl<'a> DETACH_W<'a> {
         self.w
     }
 }
+#[doc = "Upstream Resume\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum UPRSM_A {
+    #[doc = "0: No effect"]
+    NOP = 0,
+    #[doc = "1: Send resume"]
+    RESUME = 1,
+}
+impl From<UPRSM_A> for bool {
+    #[inline(always)]
+    fn from(variant: UPRSM_A) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Reader of field `UPRSM`"]
-pub type UPRSM_R = crate::R<bool, bool>;
+pub type UPRSM_R = crate::R<bool, UPRSM_A>;
+impl UPRSM_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> UPRSM_A {
+        match self.bits {
+            false => UPRSM_A::NOP,
+            true => UPRSM_A::RESUME,
+        }
+    }
+    #[doc = "Checks if the value of the field is `NOP`"]
+    #[inline(always)]
+    pub fn is_nop(&self) -> bool {
+        *self == UPRSM_A::NOP
+    }
+    #[doc = "Checks if the value of the field is `RESUME`"]
+    #[inline(always)]
+    pub fn is_resume(&self) -> bool {
+        *self == UPRSM_A::RESUME
+    }
+}
 #[doc = "Write proxy for field `UPRSM`"]
 pub struct UPRSM_W<'a> {
     w: &'a mut W,
 }
 impl<'a> UPRSM_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: UPRSM_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "No effect"]
+    #[inline(always)]
+    pub fn nop(self) -> &'a mut W {
+        self.variant(UPRSM_A::NOP)
+    }
+    #[doc = "Send resume"]
+    #[inline(always)]
+    pub fn resume(self) -> &'a mut W {
+        self.variant(UPRSM_A::RESUME)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -151,13 +253,64 @@ impl<'a> SPDCONF_W<'a> {
         self.w
     }
 }
+#[doc = "No Reply\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum NREPLY_A {
+    #[doc = "0: Follow USB standard"]
+    STANDARD = 0,
+    #[doc = "1: Only respond to SETUP"]
+    ONLYSETUP = 1,
+}
+impl From<NREPLY_A> for bool {
+    #[inline(always)]
+    fn from(variant: NREPLY_A) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Reader of field `NREPLY`"]
-pub type NREPLY_R = crate::R<bool, bool>;
+pub type NREPLY_R = crate::R<bool, NREPLY_A>;
+impl NREPLY_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> NREPLY_A {
+        match self.bits {
+            false => NREPLY_A::STANDARD,
+            true => NREPLY_A::ONLYSETUP,
+        }
+    }
+    #[doc = "Checks if the value of the field is `STANDARD`"]
+    #[inline(always)]
+    pub fn is_standard(&self) -> bool {
+        *self == NREPLY_A::STANDARD
+    }
+    #[doc = "Checks if the value of the field is `ONLYSETUP`"]
+    #[inline(always)]
+    pub fn is_onlysetup(&self) -> bool {
+        *self == NREPLY_A::ONLYSETUP
+    }
+}
 #[doc = "Write proxy for field `NREPLY`"]
 pub struct NREPLY_W<'a> {
     w: &'a mut W,
 }
 impl<'a> NREPLY_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: NREPLY_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Follow USB standard"]
+    #[inline(always)]
+    pub fn standard(self) -> &'a mut W {
+        self.variant(NREPLY_A::STANDARD)
+    }
+    #[doc = "Only respond to SETUP"]
+    #[inline(always)]
+    pub fn onlysetup(self) -> &'a mut W {
+        self.variant(NREPLY_A::ONLYSETUP)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -271,13 +424,64 @@ impl<'a> OPMODE2_W<'a> {
         self.w
     }
 }
+#[doc = "Global NAK\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum GNAK_A {
+    #[doc = "0: Respond according to status"]
+    STANDARD = 0,
+    #[doc = "1: Always respond NAK"]
+    ALWAYSNAK = 1,
+}
+impl From<GNAK_A> for bool {
+    #[inline(always)]
+    fn from(variant: GNAK_A) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Reader of field `GNAK`"]
-pub type GNAK_R = crate::R<bool, bool>;
+pub type GNAK_R = crate::R<bool, GNAK_A>;
+impl GNAK_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> GNAK_A {
+        match self.bits {
+            false => GNAK_A::STANDARD,
+            true => GNAK_A::ALWAYSNAK,
+        }
+    }
+    #[doc = "Checks if the value of the field is `STANDARD`"]
+    #[inline(always)]
+    pub fn is_standard(&self) -> bool {
+        *self == GNAK_A::STANDARD
+    }
+    #[doc = "Checks if the value of the field is `ALWAYSNAK`"]
+    #[inline(always)]
+    pub fn is_alwaysnak(&self) -> bool {
+        *self == GNAK_A::ALWAYSNAK
+    }
+}
 #[doc = "Write proxy for field `GNAK`"]
 pub struct GNAK_W<'a> {
     w: &'a mut W,
 }
 impl<'a> GNAK_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: GNAK_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    #[doc = "Respond according to status"]
+    #[inline(always)]
+    pub fn standard(self) -> &'a mut W {
+        self.variant(GNAK_A::STANDARD)
+    }
+    #[doc = "Always respond NAK"]
+    #[inline(always)]
+    pub fn alwaysnak(self) -> &'a mut W {
+        self.variant(GNAK_A::ALWAYSNAK)
+    }
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
