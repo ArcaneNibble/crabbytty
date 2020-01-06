@@ -128,6 +128,7 @@ pub struct DescriptorHeader {
 
 #[repr(u8)]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+#[derive(TryFromPrimitive)]
 pub enum DescriptorType {
     Device = 1,
     Configuration = 2,
