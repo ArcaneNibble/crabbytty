@@ -31,6 +31,17 @@ const DEV_DESC: usb_justthebits::DeviceDescriptor = usb_justthebits::DeviceDescr
     bNumConfigurations: 1,
 };
 
+const CONF_DESC: usb_justthebits::ConfigurationDescriptor = usb_justthebits::ConfigurationDescriptor {
+    bLength: core::mem::size_of::<usb_justthebits::ConfigurationDescriptor>() as u8,
+    bDescriptorType: usb_justthebits::DescriptorType::Configuration as u8,
+    wTotalLength: core::mem::size_of::<usb_justthebits::ConfigurationDescriptor>() as u16,
+    bNumInterfaces: 0,
+    bConfigurationValue: 1,
+    iConfiguration: 0,
+    bmAttributes: 0,
+    bMaxPower: 250,
+};
+
 unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
     core::slice::from_raw_parts(
         (p as *const T) as *const u8,
@@ -459,6 +470,24 @@ const APP: () = {
 
                                                     *GET_DESCRIPTOR_OFFSOFAR += bytesnow;
                                                 },
+                                                Ok(usb_justthebits::DescriptorType::Configuration) => {
+                                                    let conf_desc_bytes: &[u8] = unsafe {any_as_u8_slice(&CONF_DESC)};
+                                                    *GET_DESCRIPTOR_LEN = core::cmp::min(*GET_DESCRIPTOR_LEN, conf_desc_bytes.len() as u16);
+
+                                                    let bytesleft = *GET_DESCRIPTOR_LEN - *GET_DESCRIPTOR_OFFSOFAR;
+                                                    let bytesnow = core::cmp::min(bytesleft, 8);
+
+                                                    // hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
+
+                                                    cx.resources.epdescs[0].bank1_pcksize.set_byte_count(bytesnow as u32);
+                                                    cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                                    cx.resources.ep0inbuf.0[..bytesnow as usize].copy_from_slice(&conf_desc_bytes[*GET_DESCRIPTOR_OFFSOFAR as usize..*GET_DESCRIPTOR_OFFSOFAR as usize + bytesnow as usize]);
+                                                    cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                        w.bk1rdy().set()
+                                                    });
+
+                                                    *GET_DESCRIPTOR_OFFSOFAR += bytesnow;
+                                                },
                                                 _ => {
                                                     cx.resources.epdescs[0].bank1_pcksize.set_byte_count(0);
                                                     cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
@@ -527,6 +556,27 @@ const APP: () = {
                                 cx.resources.epdescs[0].bank1_pcksize.set_byte_count(bytesnow as u32);
                                 cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                                 cx.resources.ep0inbuf.0[..bytesnow as usize].copy_from_slice(&dev_desc_bytes[*GET_DESCRIPTOR_OFFSOFAR as usize..*GET_DESCRIPTOR_OFFSOFAR as usize + bytesnow as usize]);
+                                cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                    w.bk1rdy().set()
+                                });
+
+                                *GET_DESCRIPTOR_OFFSOFAR += bytesnow;
+
+                                if *GET_DESCRIPTOR_OFFSOFAR == *GET_DESCRIPTOR_LEN {
+                                    *IS_GETTING_DESCRIPTOR = false;
+                                }
+                            },
+                            Ok(usb_justthebits::DescriptorType::Configuration) => {
+                                let conf_desc_bytes: &[u8] = unsafe {any_as_u8_slice(&CONF_DESC)};
+
+                                let bytesleft = *GET_DESCRIPTOR_LEN - *GET_DESCRIPTOR_OFFSOFAR;
+                                let bytesnow = core::cmp::min(bytesleft, 8);
+
+                                // hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
+
+                                cx.resources.epdescs[0].bank1_pcksize.set_byte_count(bytesnow as u32);
+                                cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                cx.resources.ep0inbuf.0[..bytesnow as usize].copy_from_slice(&conf_desc_bytes[*GET_DESCRIPTOR_OFFSOFAR as usize..*GET_DESCRIPTOR_OFFSOFAR as usize + bytesnow as usize]);
                                 cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                                     w.bk1rdy().set()
                                 });
