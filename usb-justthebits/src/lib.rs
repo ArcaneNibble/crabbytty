@@ -1,5 +1,7 @@
 #![no_std]
 
+use num_enum::TryFromPrimitive;
+
 #[repr(C)]
 #[repr(packed)]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
@@ -14,6 +16,26 @@ pub struct SetupPacket {
 
 #[repr(u8)]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+#[derive(TryFromPrimitive)]
+pub enum RequestTypeType {
+    Standard = 0,
+    Class = 1,
+    Vendor = 2,
+}
+
+#[repr(u8)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+#[derive(TryFromPrimitive)]
+pub enum RequestTypeRecipient {
+    Device = 0,
+    Interface = 1,
+    Endpoint = 2,
+    Other = 3,
+}
+
+#[repr(u8)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+#[derive(TryFromPrimitive)]
 pub enum StandardRequest {
     GetStatus = 0,
     ClearFeature = 1,

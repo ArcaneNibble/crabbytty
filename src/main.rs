@@ -80,12 +80,13 @@ impl USBCoreEPDescriptorPcksize {
 #[repr(align(4))]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
 pub struct USBCoreEPDescriptor {
-    pub bank0_addr: *mut u8,
+    // FIXME: Addresses lie to the type system
+    pub bank0_addr: u32,
     pub bank0_pcksize: USBCoreEPDescriptorPcksize,
     pub bank0_extreg: u16,
     pub bank0_statusbk: u8,
     _bank0_reserved: [u8; 5],
-    pub bank1_addr: *mut u8,
+    pub bank1_addr: u32,
     pub bank1_pcksize: USBCoreEPDescriptorPcksize,
     _bank1_reserved1: u16,
     pub bank1_statusbk: u8,
@@ -95,12 +96,12 @@ pub struct USBCoreEPDescriptor {
 impl USBCoreEPDescriptor {
     pub const fn default() -> Self {
         Self {
-            bank0_addr: core::ptr::null_mut(),
+            bank0_addr: 0,
             bank0_pcksize: USBCoreEPDescriptorPcksize{pcksize: 0},
             bank0_extreg: 0,
             bank0_statusbk: 0,
             _bank0_reserved: [0; 5],
-            bank1_addr: core::ptr::null_mut(),
+            bank1_addr: 0,
             bank1_pcksize: USBCoreEPDescriptorPcksize{pcksize: 0},
             _bank1_reserved1: 0,
             bank1_statusbk: 0,
@@ -299,11 +300,11 @@ const APP: () = {
 
         // Set up descriptors
         cx.resources.epdescs[0].bank0_addr =
-            cx.resources.ep0outbuf.0.as_mut_ptr();
+            cx.resources.ep0outbuf.0.as_mut_ptr() as u32;
         cx.resources.epdescs[0].bank0_pcksize.set_size(USBCoreEPBufSize::_8);
 
         cx.resources.epdescs[0].bank1_addr =
-            cx.resources.ep0inbuf.0.as_mut_ptr();
+            cx.resources.ep0inbuf.0.as_mut_ptr() as u32;
         cx.resources.epdescs[0].bank1_pcksize.set_size(USBCoreEPBufSize::_8);
         cx.resources.epdescs[0].bank1_pcksize.enable_auto_zlp();
 
@@ -334,7 +335,7 @@ const APP: () = {
         }
     }
 
-    #[task(binds = USB, resources = [USB_PERIPH, ep0outbuf, ep0inbuf])]
+    #[task(binds = USB, resources = [USB_PERIPH, epdescs, ep0outbuf, ep0inbuf])]
     fn usb_isr(cx: usb_isr::Context) {
         // hprintln!("USB ISR!").unwrap();
 
@@ -360,7 +361,57 @@ const APP: () = {
             if cx.resources.USB_PERIPH.epintflag0.read().rxstp().is_pending() {
                 hprintln!("EP0 setup").unwrap();
 
-                hprintln!("{:?}", cx.resources.ep0outbuf.0).unwrap();
+                let setuppkt: &usb_justthebits::SetupPacket = unsafe {
+                    core::mem::transmute(&cx.resources.ep0outbuf.0)
+                };
+
+                hprintln!("{:?}", setuppkt).unwrap();
+
+                let direction = setuppkt.bmRequestType >> 7;
+                let reqtype = (setuppkt.bmRequestType >> 5) & 0b11;
+                let reqrec = setuppkt.bmRequestType & 0b11111;
+
+                let mut handled = false;
+
+                match usb_justthebits::RequestTypeType::try_from(reqtype) {
+                    Ok(usb_justthebits::RequestTypeType::Standard) => {
+                        // USB standard requests
+                        match usb_justthebits::RequestTypeRecipient::try_from(reqrec) {
+                            Ok(usb_justthebits::RequestTypeRecipient::Device) => {
+                                // Device requests
+                                match usb_justthebits::StandardRequest::try_from(setuppkt.bRequest) {
+                                    Ok(usb_justthebits::StandardRequest::SetAddress) => {
+                                        let addr = setuppkt.wValue;
+                                        hprintln!("set address to {}", addr).unwrap();
+                                        handled = true;
+                                    },
+                                    _ => {}
+                                }
+                            },
+                            _ => {}
+                        }
+                    },
+                    _ => {}
+                }
+
+                if !handled {
+                    // Set stall for future requests
+                    cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                        w.stallrq0().set().stallrq1().set()
+                    });
+                } else {
+                    // Handled
+
+                    // TODO: What if data is expected?
+
+                    if direction == 0 {
+                        // Host to device so set up for ZLP IN
+                        cx.resources.epdescs[0].bank1_pcksize.set_byte_count(0);
+                        cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                            w.bk1rdy().set()
+                        });
+                    }
+                }
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt1().is_pending() {
                 hprintln!("EP0 Bank1 IN done").unwrap();

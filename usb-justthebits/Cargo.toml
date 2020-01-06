@@ -3,3 +3,7 @@ authors = ["Robert Ou"]
 edition = "2018"
 name = "usb-justthebits"
 version = "0.0.1"
+
+[dependencies.num_enum]
+version = "0.4.2"
+default-features = false
