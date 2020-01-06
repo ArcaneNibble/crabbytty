@@ -338,9 +338,13 @@ const APP: () = {
     #[task(binds = USB, resources = [USB_PERIPH, epdescs, ep0outbuf, ep0inbuf])]
     fn usb_isr(cx: usb_isr::Context) {
         // hprintln!("USB ISR!").unwrap();
+        static mut NEEDS_SET_ADDRESS: bool = false;
+        static mut ADDRESS_TO_SET: u8 = 0;
 
         if cx.resources.USB_PERIPH.intflag.read().eorst().is_pending() {
             hprintln!("USB reset").unwrap();
+
+            *NEEDS_SET_ADDRESS = false;
 
             // TODO: Would have to set up all the endpoints here
 
@@ -383,6 +387,8 @@ const APP: () = {
                                     Ok(usb_justthebits::StandardRequest::SetAddress) => {
                                         let addr = setuppkt.wValue;
                                         hprintln!("set address to {}", addr).unwrap();
+                                        *NEEDS_SET_ADDRESS = true;
+                                        *ADDRESS_TO_SET = addr as u8;
                                         handled = true;
                                     },
                                     _ => {}
@@ -415,6 +421,13 @@ const APP: () = {
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt1().is_pending() {
                 hprintln!("EP0 Bank1 IN done").unwrap();
+
+                if *NEEDS_SET_ADDRESS {
+                    cx.resources.USB_PERIPH.dadd.write(|w| {
+                        w.adden().activate().dadd().bits(*ADDRESS_TO_SET)
+                    });
+                    *NEEDS_SET_ADDRESS = false;
+                }
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt0().is_pending() {
                 hprintln!("EP0 Bank0 OUT done").unwrap();
