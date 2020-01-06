@@ -135,16 +135,16 @@ impl USBCoreEPDescriptor {
 }
 
 #[repr(align(4))]
-pub struct Buf64Bytes([u8; 64]);
+pub struct Buf8Bytes([u8; 8]);
 
 #[app(device = atsamd11, peripherals = true)]
 const APP: () = {
     struct Resources {
         USB_PERIPH: atsamd11::USB,
-        #[init(Buf64Bytes([0; 64]))]
-        ep0outbuf: Buf64Bytes,
-        #[init(Buf64Bytes([0; 64]))]
-        ep0inbuf: Buf64Bytes,
+        #[init(Buf8Bytes([0; 8]))]
+        ep0outbuf: Buf8Bytes,
+        #[init(Buf8Bytes([0; 8]))]
+        ep0inbuf: Buf8Bytes,
         #[init([USBCoreEPDescriptor::default(); 1])]
         epdescs: [USBCoreEPDescriptor; 1],
     }
@@ -330,7 +330,7 @@ const APP: () = {
         cx.resources.epdescs[0].bank1_addr =
             cx.resources.ep0inbuf.0.as_mut_ptr() as u32;
         cx.resources.epdescs[0].bank1_pcksize.set_size(USBCoreEPBufSize::_8);
-        cx.resources.epdescs[0].bank1_pcksize.enable_auto_zlp();
+        // cx.resources.epdescs[0].bank1_pcksize.enable_auto_zlp();
 
         cx.device.USB.descadd.write(|w| {
             w.descadd().bits(cx.resources.epdescs.as_ptr() as u32)
@@ -352,7 +352,7 @@ const APP: () = {
             w.spdconf().fs().detach().attach()
         });
 
-        hprintln!("Survived init!").unwrap();
+        // hprintln!("Survived init!").unwrap();
 
         init::LateResources {
             USB_PERIPH: cx.device.USB,
@@ -372,7 +372,7 @@ const APP: () = {
         static mut GET_DESCRIPTOR_OFFSOFAR: u16 = 0;
 
         if cx.resources.USB_PERIPH.intflag.read().eorst().is_pending() {
-            hprintln!("USB reset").unwrap();
+            // hprintln!("USB reset").unwrap();
 
             *NEEDS_SET_ADDRESS = false;
             *IS_GETTING_DESCRIPTOR = false;
@@ -394,7 +394,7 @@ const APP: () = {
             // TODO: Handle all the endpoints
 
             if cx.resources.USB_PERIPH.epintflag0.read().rxstp().is_pending() {
-                hprintln!("EP0 setup").unwrap();
+                // hprintln!("EP0 setup").unwrap();
 
                 let setuppkt: &usb_justthebits::SetupPacket = unsafe {
                     core::mem::transmute(&cx.resources.ep0outbuf.0)
@@ -416,7 +416,7 @@ const APP: () = {
                                     Ok(usb_justthebits::StandardRequest::SetAddress) => {
                                         if direction == 0 {
                                             let addr = setuppkt.wValue;
-                                            hprintln!("set address to {}", addr).unwrap();
+                                            // hprintln!("set address to {}", addr).unwrap();
                                             *NEEDS_SET_ADDRESS = true;
                                             *ADDRESS_TO_SET = addr as u8;
                                             handled = true;
@@ -428,7 +428,7 @@ const APP: () = {
                                             let descidx = setuppkt.wValue as u8;
                                             let langidx = setuppkt.wIndex;
                                             let len = setuppkt.wLength;
-                                            hprintln!("get descriptor {} {} {} {}", desctype, descidx, langidx, len).unwrap();
+                                            // hprintln!("get descriptor {} {} {} {}", desctype, descidx, langidx, len).unwrap();
 
                                             handled = true;
 
@@ -446,11 +446,12 @@ const APP: () = {
                                                     *GET_DESCRIPTOR_LEN = core::cmp::min(*GET_DESCRIPTOR_LEN, dev_desc_bytes.len() as u16);
 
                                                     let bytesleft = *GET_DESCRIPTOR_LEN - *GET_DESCRIPTOR_OFFSOFAR;
-                                                    let bytesnow = core::cmp::min(bytesleft, 64);
+                                                    let bytesnow = core::cmp::min(bytesleft, 8);
 
-                                                    hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
+                                                    // hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
 
                                                     cx.resources.epdescs[0].bank1_pcksize.set_byte_count(bytesnow as u32);
+                                                    cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                                                     cx.resources.ep0inbuf.0[..bytesnow as usize].copy_from_slice(&dev_desc_bytes[*GET_DESCRIPTOR_OFFSOFAR as usize..*GET_DESCRIPTOR_OFFSOFAR as usize + bytesnow as usize]);
                                                     cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                                                         w.bk1rdy().set()
@@ -460,6 +461,7 @@ const APP: () = {
                                                 },
                                                 _ => {
                                                     cx.resources.epdescs[0].bank1_pcksize.set_byte_count(0);
+                                                    cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                                                     cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                                                         w.bk1rdy().set()
                                                     });
@@ -477,7 +479,7 @@ const APP: () = {
                 }
 
                 if !handled {
-                    hprintln!("{:?}", setuppkt).unwrap();
+                    // hprintln!("{:?}", setuppkt).unwrap();
                     // Set stall for future requests
                     cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                         w.stallrq0().set().stallrq1().set()
@@ -490,6 +492,7 @@ const APP: () = {
                     if direction == 0 {
                         // Host to device so set up for ZLP IN
                         cx.resources.epdescs[0].bank1_pcksize.set_byte_count(0);
+                        cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                         cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                             w.bk1rdy().set()
                         });
@@ -502,7 +505,7 @@ const APP: () = {
                 }
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt1().is_pending() {
-                hprintln!("EP0 Bank1 IN done").unwrap();
+                // hprintln!("EP0 Bank1 IN done").unwrap();
 
                 if *NEEDS_SET_ADDRESS {
                     cx.resources.USB_PERIPH.dadd.write(|w| {
@@ -517,11 +520,12 @@ const APP: () = {
                                 let dev_desc_bytes: &[u8] = unsafe {any_as_u8_slice(&DEV_DESC)};
 
                                 let bytesleft = *GET_DESCRIPTOR_LEN - *GET_DESCRIPTOR_OFFSOFAR;
-                                let bytesnow = core::cmp::min(bytesleft, 64);
+                                let bytesnow = core::cmp::min(bytesleft, 8);
 
-                                hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
+                                // hprintln!("descriptor at {} remain {} this {}", *GET_DESCRIPTOR_OFFSOFAR, bytesleft, bytesnow).unwrap();
 
                                 cx.resources.epdescs[0].bank1_pcksize.set_byte_count(bytesnow as u32);
+                                cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                                 cx.resources.ep0inbuf.0[..bytesnow as usize].copy_from_slice(&dev_desc_bytes[*GET_DESCRIPTOR_OFFSOFAR as usize..*GET_DESCRIPTOR_OFFSOFAR as usize + bytesnow as usize]);
                                 cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                                     w.bk1rdy().set()
@@ -535,6 +539,7 @@ const APP: () = {
                             },
                             _ => {
                                 cx.resources.epdescs[0].bank1_pcksize.set_byte_count(0);
+                                cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
                                 cx.resources.USB_PERIPH.epstatusset0.write(|w| {
                                     w.bk1rdy().set()
                                 });
@@ -544,7 +549,7 @@ const APP: () = {
                 }
             }
             if cx.resources.USB_PERIPH.epintflag0.read().trcpt0().is_pending() {
-                hprintln!("EP0 Bank0 OUT done").unwrap();
+                // hprintln!("EP0 Bank0 OUT done").unwrap();
             }
 
             // Acknowledge all the USB endpoint interrupts
