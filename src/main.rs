@@ -173,6 +173,8 @@ pub struct Buf8Bytes([u8; 8]);
 const APP: () = {
     struct Resources {
         USB_PERIPH: atsamd11::USB,
+        PORT_PERIPH: atsamd11::PORT,
+        PM_PERIPH: atsamd11::PM,
         #[init(Buf8Bytes([0; 8]))]
         ep0outbuf: Buf8Bytes,
         #[init(Buf8Bytes([0; 8]))]
@@ -309,6 +311,23 @@ const APP: () = {
 
         // hprintln!("Hello world!").unwrap();
 
+        // Set up input samplers for IO ports
+        cx.device.PORT.ctrl0.write(|w| {
+            w.sampling2().continuous()
+                .sampling3().continuous()
+                .sampling4().continuous()
+                .sampling5().continuous()
+                .sampling6().continuous()
+                .sampling7().continuous()
+                .sampling8().continuous()
+                .sampling9().continuous()
+                .sampling14().continuous()
+                .sampling15().continuous()
+                .sampling16().continuous()
+                .sampling22().continuous()
+                .sampling23().continuous()
+        });
+
         // Set up clocks for USB
         cx.device.PM.ahbmask.modify(|_, w| {
             w.usb_().enabled()
@@ -388,10 +407,12 @@ const APP: () = {
 
         init::LateResources {
             USB_PERIPH: cx.device.USB,
+            PORT_PERIPH: cx.device.PORT,
+            PM_PERIPH: cx.device.PM,
         }
     }
 
-    #[task(binds = USB, resources = [USB_PERIPH, epdescs, ep0outbuf, ep0inbuf])]
+    #[task(binds = USB, resources = [USB_PERIPH, PORT_PERIPH, PM_PERIPH, epdescs, ep0outbuf, ep0inbuf])]
     fn usb_isr(cx: usb_isr::Context) {
         // hprintln!("USB ISR!").unwrap();
         static mut NEEDS_SET_ADDRESS: bool = false;
@@ -612,6 +633,90 @@ const APP: () = {
                                     _ => {}
                                 }
                             },
+                            _ => {}
+                        }
+                    },
+                    Ok(usb_justthebits::RequestTypeType::Vendor) => {
+                        // For now, hack in all the logic here
+                        match setuppkt.bRequest {
+                            0x00 => {
+                                if direction == 1 {
+                                    // Test request
+                                    handled = true;
+
+                                    cx.resources.epdescs[0].bank1_pcksize.set_byte_count(2);
+                                    cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                    cx.resources.ep0inbuf.0[0] = 0xaa;
+                                    cx.resources.ep0inbuf.0[1] = 0x55;
+                                    cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                        w.bk1rdy().set()
+                                    });
+                                }
+                            },
+                            0x01 => {
+                                // Set up IO ports
+
+                                handled = true;
+
+                                // Disable reset
+                                cx.resources.PM_PERIPH.extctrl.write(|w| {
+                                    w.setdis().bit(true)
+                                });
+
+                                // Set up direction and initial value for JTAG
+                                cx.resources.PORT_PERIPH.outclr0.write(|w| {
+                                    w.outclr28().out0()
+                                        .outclr30().out0()
+                                        .outclr31().out0()
+                                });
+                                cx.resources.PORT_PERIPH.dirset0.write(|w| {
+                                    w.dirset28().setoutput()
+                                        .dirset30().setoutput()
+                                        .dirset31().setoutput()
+                                });
+                                cx.resources.PORT_PERIPH.dirclr0.write(|w| {
+                                    w.dirclr2().setinput()
+                                });
+
+                                // Generic input/output on JTAG pins
+                                cx.resources.PORT_PERIPH.pincfg0_[28].write(|w| {
+                                    w.pmuxen().port().inen().enabled()
+                                });
+                                cx.resources.PORT_PERIPH.pincfg0_[30].write(|w| {
+                                    w.pmuxen().port().inen().enabled()
+                                });
+                                cx.resources.PORT_PERIPH.pincfg0_[31].write(|w| {
+                                    w.pmuxen().port().inen().enabled()
+                                });
+                                cx.resources.PORT_PERIPH.pincfg0_[2].write(|w| {
+                                    w.pmuxen().port().inen().enabled()
+                                });
+                            },
+                            0x02 => {
+                                // Un-set-up IO ports
+
+                                handled = true;
+
+                                // Set these back to inputs
+                                cx.resources.PORT_PERIPH.dirclr0.write(|w| {
+                                    w.dirclr28().setinput()
+                                        .dirclr30().setinput()
+                                        .dirclr31().setinput()
+                                });
+
+                                // Enable reset
+                                cx.resources.PM_PERIPH.extctrl.write(|w| {
+                                    w.setdis().bit(false)
+                                });
+
+                                // Set SWD back
+                                cx.resources.PORT_PERIPH.pincfg0_[30].write(|w| {
+                                    w.pmuxen().periph()
+                                });
+                                cx.resources.PORT_PERIPH.pincfg0_[31].write(|w| {
+                                    w.pmuxen().periph()
+                                });
+                            }
                             _ => {}
                         }
                     },
