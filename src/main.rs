@@ -173,7 +173,7 @@ pub struct Buf8Bytes([u8; 8]);
 const APP: () = {
     struct Resources {
         USB_PERIPH: atsamd11::USB,
-        PORT_PERIPH: atsamd11::PORT,
+        PORT_PERIPH: atsamd11::PORT_IOBUS,
         PM_PERIPH: atsamd11::PM,
         #[init(Buf8Bytes([0; 8]))]
         ep0outbuf: Buf8Bytes,
@@ -407,7 +407,7 @@ const APP: () = {
 
         init::LateResources {
             USB_PERIPH: cx.device.USB,
-            PORT_PERIPH: cx.device.PORT,
+            PORT_PERIPH: cx.device.PORT_IOBUS,
             PM_PERIPH: cx.device.PM,
         }
     }
@@ -716,6 +716,56 @@ const APP: () = {
                                 cx.resources.PORT_PERIPH.pincfg0_[31].write(|w| {
                                     w.pmuxen().periph()
                                 });
+                            },
+                            0x03 => {
+                                // Bitbang JTAG
+                                if direction == 1 {
+                                    handled = true;
+
+                                    let tdi = (setuppkt.wValue & 0b01) != 0;
+                                    let tms = (setuppkt.wValue & 0b10) != 0;
+
+                                    if tdi {
+                                        cx.resources.PORT_PERIPH.outset0.write(|w| {
+                                            w.outset31().out1()
+                                        });
+                                    } else {
+                                        cx.resources.PORT_PERIPH.outclr0.write(|w| {
+                                            w.outclr31().out0()
+                                        });
+                                    }
+
+                                    if tms {
+                                        cx.resources.PORT_PERIPH.outset0.write(|w| {
+                                            w.outset28().out1()
+                                        });
+                                    } else {
+                                        cx.resources.PORT_PERIPH.outclr0.write(|w| {
+                                            w.outclr28().out0()
+                                        });
+                                    }
+
+                                    // Pulse the clock line
+                                    cx.resources.PORT_PERIPH.outset0.write(|w| {
+                                        w.outset30().out1()
+                                    });
+                                    cx.resources.PORT_PERIPH.outclr0.write(|w| {
+                                        w.outclr30().out0()
+                                    });
+
+                                    // Just in case
+                                    cortex_m::asm::nop();
+                                    cortex_m::asm::nop();
+
+                                    let tdo = cx.resources.PORT_PERIPH.in0.read().in2().is_1();
+
+                                    cx.resources.epdescs[0].bank1_pcksize.set_byte_count(1);
+                                    cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                    cx.resources.ep0inbuf.0[0] = tdo as u8;
+                                    cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                        w.bk1rdy().set()
+                                    });
+                                }
                             }
                             _ => {}
                         }
