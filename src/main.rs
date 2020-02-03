@@ -381,12 +381,14 @@ const APP: () = {
         static mut GET_DESCRIPTOR_LANG: u16 = 0;
         static mut GET_DESCRIPTOR_LEN: u16 = 0;
         static mut GET_DESCRIPTOR_OFFSOFAR: u16 = 0;
+        static mut CURRENT_CONFIG: u8 = 0;
 
         if cx.resources.USB_PERIPH.intflag.read().eorst().is_pending() {
             // hprintln!("USB reset").unwrap();
 
             *NEEDS_SET_ADDRESS = false;
             *IS_GETTING_DESCRIPTOR = false;
+            *CURRENT_CONFIG = 0;
 
             // TODO: Would have to set up all the endpoints here
 
@@ -497,7 +499,28 @@ const APP: () = {
                                                 }
                                             }
                                         }
-                                    }
+                                    },
+                                    Ok(usb_justthebits::StandardRequest::SetConfiguration) => {
+                                        if direction == 0 {
+                                            if setuppkt.wValue == 1 {
+                                                // Only supported configuration is 1
+                                                *CURRENT_CONFIG = 1;
+                                                handled = true;
+                                            }
+                                        }
+                                    },
+                                    Ok(usb_justthebits::StandardRequest::GetConfiguration) => {
+                                        if direction == 1 {
+                                            handled = true;
+
+                                            cx.resources.epdescs[0].bank1_pcksize.set_byte_count(1);
+                                            cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                            cx.resources.ep0inbuf.0[0] = *CURRENT_CONFIG;
+                                            cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                w.bk1rdy().set()
+                                            });
+                                        }
+                                    },
                                     _ => {}
                                 }
                             },
