@@ -555,7 +555,60 @@ const APP: () = {
                                                 w.bk1rdy().set()
                                             });
                                         }
-                                    }
+                                    },
+                                    _ => {}
+                                }
+                            },
+                            Ok(usb_justthebits::RequestTypeRecipient::Interface) => {
+                                // Interface requests (dummy)
+                                match usb_justthebits::StandardRequest::try_from(setuppkt.bRequest) {
+                                    Ok(usb_justthebits::StandardRequest::GetStatus) => {
+                                        if direction == 1 {
+                                            // Dummy for now
+                                            handled = true;
+
+                                            cx.resources.epdescs[0].bank1_pcksize.set_byte_count(2);
+                                            cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                            cx.resources.ep0inbuf.0[0] = 0;
+                                            cx.resources.ep0inbuf.0[1] = 0;
+                                            cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                w.bk1rdy().set()
+                                            });
+                                        }
+                                    },
+                                    Ok(usb_justthebits::StandardRequest::GetInterface) => {
+                                        if direction == 1 {
+                                            // Dummy for now
+                                            handled = true;
+
+                                            cx.resources.epdescs[0].bank1_pcksize.set_byte_count(1);
+                                            cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                            cx.resources.ep0inbuf.0[0] = 0;
+                                            cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                w.bk1rdy().set()
+                                            });
+                                        }
+                                    },
+                                    _ => {}
+                                }
+                            },
+                            Ok(usb_justthebits::RequestTypeRecipient::Endpoint) => {
+                                // Endpoint requests (dummy)
+                                match usb_justthebits::StandardRequest::try_from(setuppkt.bRequest) {
+                                    Ok(usb_justthebits::StandardRequest::GetStatus) => {
+                                        if direction == 1 {
+                                            // Dummy for now
+                                            handled = true;
+
+                                            cx.resources.epdescs[0].bank1_pcksize.set_byte_count(2);
+                                            cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                            cx.resources.ep0inbuf.0[0] = 0;
+                                            cx.resources.ep0inbuf.0[1] = 0;
+                                            cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                w.bk1rdy().set()
+                                            });
+                                        }
+                                    },
                                     _ => {}
                                 }
                             },
