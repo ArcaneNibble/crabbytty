@@ -31,15 +31,36 @@ const DEV_DESC: usb_justthebits::DeviceDescriptor = usb_justthebits::DeviceDescr
     bNumConfigurations: 1,
 };
 
-const CONF_DESC: usb_justthebits::ConfigurationDescriptor = usb_justthebits::ConfigurationDescriptor {
-    bLength: core::mem::size_of::<usb_justthebits::ConfigurationDescriptor>() as u8,
-    bDescriptorType: usb_justthebits::DescriptorType::Configuration as u8,
-    wTotalLength: core::mem::size_of::<usb_justthebits::ConfigurationDescriptor>() as u16,
-    bNumInterfaces: 0,
-    bConfigurationValue: 1,
-    iConfiguration: 0,
-    bmAttributes: 0,
-    bMaxPower: 250,
+#[repr(C)]
+#[repr(packed)]
+#[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
+struct ConcatConfDesc {
+    conf: usb_justthebits::ConfigurationDescriptor,
+    iface: usb_justthebits::InterfaceDescriptor,
+}
+
+const CONF_DESC: ConcatConfDesc = ConcatConfDesc {
+    conf: usb_justthebits::ConfigurationDescriptor {
+        bLength: core::mem::size_of::<usb_justthebits::ConfigurationDescriptor>() as u8,
+        bDescriptorType: usb_justthebits::DescriptorType::Configuration as u8,
+        wTotalLength: core::mem::size_of::<ConcatConfDesc>() as u16,
+        bNumInterfaces: 1,
+        bConfigurationValue: 1,
+        iConfiguration: 0,
+        bmAttributes: 0b10000000,
+        bMaxPower: 250,
+    },
+    iface: usb_justthebits::InterfaceDescriptor {
+        bLength: core::mem::size_of::<usb_justthebits::InterfaceDescriptor>() as u8,
+        bDescriptorType: usb_justthebits::DescriptorType::Interface as u8,
+        bInterfaceNumber: 0,
+        bAlternateSetting: 0,
+        bNumEndpoints: 0,
+        bInterfaceClass: 0xFF,
+        bInterfaceSubClass: 0xFF,
+        bInterfaceProtocol: 0xFF,
+        iInterface: 0,
+    },
 };
 
 unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
@@ -521,6 +542,20 @@ const APP: () = {
                                             });
                                         }
                                     },
+                                    Ok(usb_justthebits::StandardRequest::GetStatus) => {
+                                        if direction == 1 {
+                                            // Dummy for now
+                                            handled = true;
+
+                                            cx.resources.epdescs[0].bank1_pcksize.set_byte_count(2);
+                                            cx.resources.epdescs[0].bank1_pcksize.set_multi_packet_size(0);
+                                            cx.resources.ep0inbuf.0[0] = 0;
+                                            cx.resources.ep0inbuf.0[1] = 0;
+                                            cx.resources.USB_PERIPH.epstatusset0.write(|w| {
+                                                w.bk1rdy().set()
+                                            });
+                                        }
+                                    }
                                     _ => {}
                                 }
                             },
