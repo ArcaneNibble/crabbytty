@@ -36,18 +36,22 @@ def rti_from_tlr(dev):
 
 def shift_dr_from_rti(dev):
     global _last_bit
-    print("shift dr")
+    print("rti -> shift dr")
     jtag_bit(dev, 1, 0)
     jtag_bit(dev, 0, 0)
     _last_bit = jtag_bit(dev, 0, 0)
 
-def shift_bits(dev, bits_in):
+def shift_bits(dev, bits_in, exit):
     global _last_bit
     bits_out = []
     print("shifting {} bits".format(len(bits_in)))
     for i in range(len(bits_in)):
         bits_out.append(_last_bit)
-        _last_bit = jtag_bit(dev, 0, bits_in[i])
+        if exit and i == len(bits_in) - 1:
+            tms = 1
+        else:
+            tms = 0
+        _last_bit = jtag_bit(dev, tms, bits_in[i])
     return bits_out
 
 def arr2num(arr):
@@ -62,6 +66,29 @@ def num2arr(num, bits):
         bit = num & (1 << i)
         ret.append(1 if bit else 0)
     return ret
+
+def rti_from_exit1(dev):
+    print("exit1 -> rti")
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 0, 0)
+
+# XXX
+def shift_ir_from_rti(dev):
+    global _last_bit
+    print("rti -> shift ir")
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 0, 0)
+    _last_bit = jtag_bit(dev, 0, 0)
+
+def shift_ir_from_exit1(dev):
+    global _last_bit
+    print("exit1 -> shift ir")
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 0, 0)
+    _last_bit = jtag_bit(dev, 0, 0)
 
 # def shift_ir_from_tlr(dev):
 #     print("shift ir")
@@ -79,30 +106,20 @@ def num2arr(num, bits):
 #     bit0 = jtag_bit(dev, 0, 0)
 #     return bit0
 
+BYPASS = 0b11111111
+
 go_tlr(dev)
 rti_from_tlr(dev)
 shift_dr_from_rti(dev)
 print("idcode")
-idcode = shift_bits(dev, num2arr(0x12345678, 32))
-# idcode = shift_dr_from_tlr(dev)
-# for i in range(31):
-#     idcode |= (jtag_bit(dev, 0, 0) << (i + 1))
+idcode = shift_bits(dev, [0] * 32, True)
 print("idcode is 0x{:08X}".format(arr2num(idcode)))
+# Now in exit1-dr
 
-test = shift_bits(dev, num2arr(0xA53CFACE, 32))
-print("test is 0x{:08X}".format(arr2num(test)))
-test = shift_bits(dev, [0, 0] * 16)
-print("test is 0x{:08X}".format(arr2num(test)))
-# shift_ir_from_tlr(dev)
-
-# print("sniff irlen")
-# for _ in range(100):
-#     jtag_bit(dev, 0, 1)
-
-# irlen = 0
-# for i in range(100):
-#     tdo = jtag_bit(dev, 0, 0)
-#     if not tdo:
-#         irlen = i
-#         break
-# print("irlen {}".format(irlen))
+shift_ir_from_exit1(dev)
+shift_bits(dev, num2arr(BYPASS, 8), True)
+rti_from_exit1(dev)
+shift_dr_from_rti(dev)
+print("bypass test")
+test = shift_bits(dev, num2arr(0x12345678, 32), True)
+print("test result is 0x{:08X}".format(arr2num(test)))
