@@ -2,6 +2,7 @@
 
 import usb.core
 import usb.util
+import time
 
 dev = usb.core.find(idVendor=0xf055, idProduct=0x0000)
 assert dev is not None
@@ -72,7 +73,6 @@ def rti_from_exit1(dev):
     jtag_bit(dev, 1, 0)
     jtag_bit(dev, 0, 0)
 
-# XXX
 def shift_ir_from_rti(dev):
     global _last_bit
     print("rti -> shift ir")
@@ -98,6 +98,15 @@ def shift_dr_from_exit1(dev):
     jtag_bit(dev, 0, 0)
     _last_bit = jtag_bit(dev, 0, 0)
 
+def init_pulse_from_exit1_to_rti(dev):
+    print("exit1 -> go through dr -> rti")
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 0, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 1, 0)
+    jtag_bit(dev, 0, 0)
+
 # def shift_ir_from_tlr(dev):
 #     print("shift ir")
 #     jtag_bit(dev, 0, 0)
@@ -114,8 +123,12 @@ def shift_dr_from_exit1(dev):
 #     bit0 = jtag_bit(dev, 0, 0)
 #     return bit0
 
-BYPASS = 0b11111111
-IDCODE = 0b00000001
+BYPASS      = 0b11111111
+IDCODE      = 0b00000001
+ISC_DISABLE = 0b11000000
+ISC_INIT    = 0b11110000
+ISC_ENABLE  = 0b11101000
+ISC_ERASE   = 0b11101101
 
 go_tlr(dev)
 rti_from_tlr(dev)
@@ -126,19 +139,30 @@ print("idcode is 0x{:08X}".format(arr2num(idcode)))
 # Now in exit1-dr
 
 shift_ir_from_exit1(dev)
-shift_bits(dev, num2arr(BYPASS, 8), True)
-# rti_from_exit1(dev)
-# shift_dr_from_rti(dev)
-shift_dr_from_exit1(dev)
-print("bypass test")
-test = shift_bits(dev, num2arr(0x12345678, 32), True)
-print("test result is 0x{:08X}".format(arr2num(test)))
-# Now in exit1-dr
+shift_bits(dev, num2arr(ISC_ENABLE, 8), True)
+rti_from_exit1(dev)
+time.sleep(0.001)
 
-shift_ir_from_exit1(dev)
-shift_bits(dev, num2arr(IDCODE, 8), True)
-shift_dr_from_exit1(dev)
-print("idcode again")
-idcode = shift_bits(dev, num2arr(0x12345678, 32), True)
-print("idcode is 0x{:08X}".format(arr2num(idcode)))
-# Now in exit1-dr
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_ERASE, 8), True)
+rti_from_exit1(dev)
+time.sleep(0.1)
+
+# DISCHARGE
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_INIT, 8), True)
+rti_from_exit1(dev)
+time.sleep(0.001)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_INIT, 8), True)
+init_pulse_from_exit1_to_rti(dev)
+time.sleep(0.001)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_DISABLE, 8), True)
+rti_from_exit1(dev)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(BYPASS, 8), True)
+go_tlr(dev)
