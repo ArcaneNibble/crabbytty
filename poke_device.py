@@ -4,6 +4,25 @@ import usb.core
 import usb.util
 import time
 
+crbit_bits = []
+with open("aaa.crbit", "r") as f:
+    for l in f.readlines():
+        l = l.strip()
+        if not l:
+            continue
+        if l.startswith("//"):
+            continue
+        # print(l)
+        linebits = [1 if c == '1' else 0 for c in l]
+        # print(linebits)
+        assert len(linebits) == 260
+        crbit_bits.append(linebits)
+
+assert len(crbit_bits) == 50
+crbit_bits = crbit_bits[:-1]
+print(crbit_bits)
+# aaaaaaaaaaaaa
+
 dev = usb.core.find(idVendor=0xf055, idProduct=0x0000)
 assert dev is not None
 # print(dev)
@@ -107,28 +126,13 @@ def init_pulse_from_exit1_to_rti(dev):
     jtag_bit(dev, 1, 0)
     jtag_bit(dev, 0, 0)
 
-# def shift_ir_from_tlr(dev):
-#     print("shift ir")
-#     jtag_bit(dev, 0, 0)
-#     jtag_bit(dev, 1, 0)
-#     jtag_bit(dev, 1, 0)
-#     jtag_bit(dev, 0, 0)
-#     jtag_bit(dev, 0, 0)
-
-# def shift_dr_from_tlr(dev):
-#     print("shift dr")
-#     jtag_bit(dev, 0, 0)
-#     jtag_bit(dev, 1, 0)
-#     jtag_bit(dev, 0, 0)
-#     bit0 = jtag_bit(dev, 0, 0)
-#     return bit0
-
 BYPASS      = 0b11111111
 IDCODE      = 0b00000001
 ISC_DISABLE = 0b11000000
-ISC_INIT    = 0b11110000
 ISC_ENABLE  = 0b11101000
+ISC_PROGRAM = 0b11101010
 ISC_ERASE   = 0b11101101
+ISC_INIT    = 0b11110000
 
 go_tlr(dev)
 rti_from_tlr(dev)
@@ -138,6 +142,7 @@ idcode = shift_bits(dev, [0] * 32, True)
 print("idcode is 0x{:08X}".format(arr2num(idcode)))
 # Now in exit1-dr
 
+##### ERASE #####
 shift_ir_from_exit1(dev)
 shift_bits(dev, num2arr(ISC_ENABLE, 8), True)
 rti_from_exit1(dev)
@@ -147,6 +152,52 @@ shift_ir_from_rti(dev)
 shift_bits(dev, num2arr(ISC_ERASE, 8), True)
 rti_from_exit1(dev)
 time.sleep(0.1)
+
+# DISCHARGE
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_INIT, 8), True)
+rti_from_exit1(dev)
+time.sleep(0.001)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_INIT, 8), True)
+init_pulse_from_exit1_to_rti(dev)
+time.sleep(0.001)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_DISABLE, 8), True)
+rti_from_exit1(dev)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(BYPASS, 8), True)
+go_tlr(dev)
+
+
+
+
+##### PROGRAM #####
+rti_from_tlr(dev)
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_ENABLE, 8), True)
+rti_from_exit1(dev)
+time.sleep(0.001)
+
+shift_ir_from_rti(dev)
+shift_bits(dev, num2arr(ISC_PROGRAM, 8), True)
+shift_dr_from_exit1(dev)
+
+for i in range(len(crbit_bits)):
+    # In shift-dr now
+    print("shifting row {}".format(i))
+    shift_bits(dev, crbit_bits[i][::-1], False)
+    addr_gray = i ^ (i >> 1)
+    shift_bits(dev, num2arr(addr_gray, 6)[::-1], True)
+    rti_from_exit1(dev)
+    time.sleep(0.01)
+    if i != len(crbit_bits) - 1:
+        shift_dr_from_rti(dev)
+
+# In RTI
 
 # DISCHARGE
 shift_ir_from_rti(dev)
